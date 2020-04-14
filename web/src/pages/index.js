@@ -21,24 +21,11 @@ export const query = graphql`
         node {
           id
           mainImage {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
             asset {
               _id
+              fluid(maxWidth: 600, maxHeight: 400) {
+                ...GatsbySanityImageFluid_noBase64
+              }
             }
             alt
           }
@@ -75,6 +62,9 @@ export const query = graphql`
             }
             asset {
               _id
+              fluid(maxWidth: 600, maxHeight: 400) {
+                ...GatsbySanityImageFluid_noBase64
+              }
             }
             alt
           }

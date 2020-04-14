@@ -16,24 +16,11 @@ export const query = graphql`
         title
       }
       mainImage {
-        crop {
-          _key
-          _type
-          top
-          bottom
-          left
-          right
-        }
-        hotspot {
-          _key
-          _type
-          x
-          y
-          height
-          width
-        }
         asset {
           _id
+          fluid(maxHeight: 600, maxWidth: 1200) {
+            ...GatsbySanityImageFluid_noBase64
+          }
         }
         alt
       }

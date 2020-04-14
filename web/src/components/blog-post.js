@@ -1,7 +1,10 @@
 import { format, distanceInWords, differenceInDays } from 'date-fns'
 import React from 'react'
-import { buildImageObj } from '../lib/helpers'
-import { imageUrlFor } from '../lib/image-url'
+import Img from 'gatsby-image'
+
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+
 import BlockContent from './block-content'
 import Container from './container'
 import RoleList from './role-list'
@@ -12,16 +15,18 @@ function BlogPost (props) {
   const { _rawBody, authors, categories, title, mainImage, publishedAt } = props
   return (
     <article className={styles.root}>
-      {mainImage && mainImage.asset && (
-        <div className={styles.mainImage}>
-          <img
-            src={imageUrlFor(buildImageObj(mainImage))
-              .width(1200)
-              .height(Math.floor((9 / 16) * 1200))
-              .fit('crop')
-              .url()}
-            alt={mainImage.alt}
-          />
+      {props.mainImage && mainImage.asset && (
+        <div
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: '256px 1fr',
+            color: 'primary',
+            maxWidth: '1200px',
+            m: '0 auto'
+          }}
+        >
+          <div />
+          <Img fluid={mainImage.asset.fluid} alt={mainImage.alt} />
         </div>
       )}
       <Container>
