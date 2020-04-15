@@ -1,21 +1,35 @@
 import React from 'react'
-import { buildImageObj } from '../../lib/helpers'
-import { imageUrlFor } from '../../lib/image-url'
+import Img from 'gatsby-image'
+import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 
-import styles from './figure.module.css'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+
+import { api as sanityConfig } from '../../../../studio/sanity.json'
 
 function Figure (props) {
+  console.log(props)
+
+  const imageAssetId = props.asset && props.asset._ref
+  const fluidProps = getFluidGatsbyImage(imageAssetId, {}, sanityConfig)
   return (
-    <figure className={styles.root}>
+    <figure
+      sx={{
+        m: 0,
+      }}
+    >
       {props.asset && (
-        <img
-          src={imageUrlFor(buildImageObj(props))
-            .width(1200)
-            .url()}
+        <Img
+          fluid={fluidProps}
           alt={props.alt}
         />
       )}
-      <figcaption className={styles.caption}>{props.caption}</figcaption>
+      <figcaption
+        sx={{
+          textAlign: `center`,
+          mt: 1,
+        }}
+      >{props.caption}</figcaption>
     </figure>
   )
 }

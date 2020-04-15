@@ -1,5 +1,7 @@
 import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
+import { Styled } from 'theme-ui'
+
 import Figure from './figure'
 import Slideshow from './slideshow'
 
@@ -10,16 +12,16 @@ const serializers = {
     block (props) {
       switch (props.node.style) {
         case 'h1':
-          return <h1 className={typography.responsiveTitle1}>{props.children}</h1>
+          return <Styled.h1>{props.children}</Styled.h1>
 
         case 'h2':
-          return <h2 className={typography.responsiveTitle2}>{props.children}</h2>
+          return <Styled.h2>{props.children}</Styled.h2>
 
         case 'h3':
-          return <h3 className={typography.responsiveTitle3}>{props.children}</h3>
+          return <Styled.h3>{props.children}</Styled.h3>
 
         case 'h4':
-          return <h4 className={typography.responsiveTitle4}>{props.children}</h4>
+          return <Styled.h4>{props.children}</Styled.h4>
 
         case 'blockquote':
           return <blockquote className={typography.blockQuote}>{props.children}</blockquote>

@@ -2,21 +2,48 @@ import { Link } from 'gatsby'
 import React from 'react'
 import BlogPostPreview from './blog-post-preview'
 
-import styles from './blog-post-preview-grid.module.css'
+/** @jsx jsx */
+import { jsx, css } from 'theme-ui'
 
 function BlogPostPreviewGrid (props) {
   return (
-    <div className={styles.root}>
+    <div
+      sx={{
+        mt: 3,
+        mb: 4
+      }}
+    >
       {props.title && (
-        <h2 className={styles.headline}>
+        <h2
+          sx={{
+            fontSize: 2,
+            my: 4
+          }}
+        >
           {props.browseMoreHref ? (
-            <Link to={props.browseMoreHref}>{props.title}</Link>
+            <Link
+              to={props.browseMoreHref}
+              sx={{
+                color: 'inherit',
+                textDecoration: 'none'
+              }}
+            >
+              {props.title}
+            </Link>
           ) : (
             props.title
           )}
         </h2>
       )}
-      <ul className={styles.grid}>
+      <ul
+        sx={{
+          margin: 0,
+          padding: 0,
+          listStyle: `none`,
+          display: `grid`,
+          gridTemplateColumns: [`1fr`, `1fr`, `1fr 1fr`, `1fr 1fr 1fr`],
+        }}
+      >
         {props.nodes &&
           props.nodes.map(node => (
             <li key={node.id}>
@@ -25,8 +52,25 @@ function BlogPostPreviewGrid (props) {
           ))}
       </ul>
       {props.browseMoreHref && (
-        <div className={styles.browseMoreNav}>
-          <Link to={props.browseMoreHref}>Browse more</Link>
+        <div
+          sx={{
+            fontSize: 1,
+            mt: 4,
+            textAlign: 'right'
+          }}
+        >
+          <Link
+            to={props.browseMoreHref}
+            sx={{
+              color: 'inherit',
+              textDecoration: 'none',
+              '&:hover': {
+                color: `primary`,
+              }
+            }}
+          >
+            Browse more
+          </Link>
         </div>
       )}
     </div>

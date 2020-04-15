@@ -4,8 +4,7 @@ import Img from 'gatsby-image'
 /** @jsx jsx */
 import { jsx, css } from 'theme-ui'
 
-import { buildImageObj, cn, getBlogUrl } from '../lib/helpers'
-import { imageUrlFor } from '../lib/image-url'
+import { cn, getBlogUrl } from '../lib/helpers'
 import BlockText from './block-text'
 
 import styles from './blog-post-preview.module.css'
@@ -13,7 +12,14 @@ import { responsiveTitle3 } from './typography.module.css'
 
 function BlogPostPreview (props) {
   return (
-    <Link className={styles.root} to={getBlogUrl(props.publishedAt, props.slug.current)}>
+    <Link
+      to={getBlogUrl(props.publishedAt, props.slug.current)}
+      css={css({
+        display: `block`,
+        color: `inherit`,
+        textDecoration: `none`,
+      })}
+    >
       {props.mainImage && props.mainImage.asset ? (
         <Img
           fluid={props.mainImage.asset.fluid}
