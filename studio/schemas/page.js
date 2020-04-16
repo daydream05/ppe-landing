@@ -29,6 +29,12 @@ export default {
       name: 'seo',
       title: 'SEO',
       type: 'seo',
+    },
+    {
+      name: 'sections',
+      title: 'Sections',
+      type: 'array',
+      of: [{ type: 'section' }]
     }
   ]
 }

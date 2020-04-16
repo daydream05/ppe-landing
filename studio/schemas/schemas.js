@@ -20,6 +20,8 @@ import projectMember from './projectMember'
 import seo from './seo'
 import siteSettings from './siteSettings'
 import slideshow from './slideshow'
+import section from './section'
+import heading from './heading'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -35,6 +37,7 @@ export default createSchema({
     category,
     companyInfo,
     figure,
+    heading,
     mainImage,
     page,
     person,
@@ -43,6 +46,7 @@ export default createSchema({
     project,
     projectMember,
     seo,
+    section,
     siteSettings,
     slideshow
 
