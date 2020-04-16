@@ -42,6 +42,7 @@ function BlogPostPreviewGrid (props) {
           listStyle: `none`,
           display: `grid`,
           gridTemplateColumns: [`1fr`, `1fr`, `1fr 1fr`, `1fr 1fr 1fr`],
+          gridGap: 4,
         }}
       >
         {props.nodes &&
