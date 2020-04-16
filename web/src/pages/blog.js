@@ -15,6 +15,7 @@ export const query = graphql`
       edges {
         node {
           id
+          path
           publishedAt
           mainImage {
             asset {

@@ -13,7 +13,7 @@ import { responsiveTitle3 } from './typography.module.css'
 function BlogPostPreview (props) {
   return (
     <Link
-      to={getBlogUrl(props.publishedAt, props.slug.current)}
+      to={props.path}
       css={css({
         display: `block`,
         color: `inherit`,

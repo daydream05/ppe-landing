@@ -13,7 +13,7 @@ import { responsiveTitle3 } from './typography.module.css'
 
 function ProjectPreview (props) {
   return (
-    <Link className={styles.root} to={`/project/${props.slug.current}`}>
+    <Link className={styles.root} to={props.path}>
       {props.mainImage && props.mainImage.asset ? (
         <Img
           fluid={props.mainImage.asset.fluid}

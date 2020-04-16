@@ -20,6 +20,7 @@ export const query = graphql`
       edges {
         node {
           id
+          path
           mainImage {
             asset {
               _id
@@ -43,6 +44,7 @@ export const query = graphql`
         node {
           id
           publishedAt
+          path
           mainImage {
             crop {
               _key

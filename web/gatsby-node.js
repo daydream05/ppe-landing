@@ -6,6 +6,45 @@ const { format } = require('date-fns')
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+exports.createResolvers = ({ createResolvers }) => {
+  createResolvers({
+    // `SanityPost` being the type name you want to extend
+    SanityPost: {
+      // `happiness` being the field name you want to add
+      path: {
+        // type is the _GraphQL_ type name, so you can do `String!` for "non-null string", `Int` for integer, `SanityCategory` for a document or object of type  `SanityCategory`.
+        type: 'String',
+        resolve (source, args, context, info) {
+          const { slug } = source
+          return `/blog/${slug.current}/`
+        }
+      }
+    },
+    SanityProject: {
+      // `happiness` being the field name you want to add
+      path: {
+        // type is the _GraphQL_ type name, so you can do `String!` for "non-null string", `Int` for integer, `SanityCategory` for a document or object of type  `SanityCategory`.
+        type: 'String',
+        resolve (source, args, context, info) {
+          const { slug } = source
+          return `/project/${slug.current}/`
+        }
+      }
+    },
+    SanityPage: {
+      // `happiness` being the field name you want to add
+      path: {
+        // type is the _GraphQL_ type name, so you can do `String!` for "non-null string", `Int` for integer, `SanityCategory` for a document or object of type  `SanityCategory`.
+        type: 'String',
+        resolve (source, args, context, info) {
+          const { slug } = source
+          return `/${slug.current}/`
+        }
+      }
+    }
+  })
+}
+
 async function createBlogPostPages (graphql, actions, reporter) {
   const { createPage } = actions
   const result = await graphql(`
@@ -14,10 +53,7 @@ async function createBlogPostPages (graphql, actions, reporter) {
         edges {
           node {
             id
-            publishedAt
-            slug {
-              current
-            }
+            path
           }
         }
       }
@@ -29,14 +65,12 @@ async function createBlogPostPages (graphql, actions, reporter) {
   const postEdges = (result.data.allSanityPost || {}).edges || []
 
   postEdges.forEach((edge, index) => {
-    const { id, slug = {}, publishedAt } = edge.node
-    const dateSegment = format(publishedAt, 'YYYY/MM')
-    const path = `/blog/${dateSegment}/${slug.current}/`
+    const { id, path } = edge.node
 
     reporter.info(`Creating blog post page: ${path}`)
 
     createPage({
-      path,
+      path: path,
       component: require.resolve('./src/templates/blog-post.js'),
       context: { id }
     })
