@@ -35,10 +35,10 @@ export default () =>
         .schemaType('post')
         .child(S.documentTypeList('post').title('Blog posts')),
       S.listItem()
-        .title('Pages')
+        .title('Default Pages')
         .child(
           S.list()
-            .title('Pages')
+            .title('Default Pages')
             .items([
               S.listItem()
                 .title('About')
@@ -60,6 +60,11 @@ export default () =>
                 .icon(FaFile)
             ])
         ),
+      S.listItem()
+        .title('All Pages')
+        .schemaType('page')
+        .child(S.documentTypeList('page').title('All pages'))
+      ,
       S.listItem()
         .title('People')
         .schemaType('person')

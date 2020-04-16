@@ -15,6 +15,20 @@ export default {
       name: 'body',
       title: 'Body',
       type: 'blockContent'
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      validation: Rule => Rule.required(),
+      options: {
+        source: 'title',
+      }
+    },
+    {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
     }
   ]
 }

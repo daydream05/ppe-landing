@@ -25,6 +25,11 @@ export default {
       type: 'datetime'
     },
     {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    },
+    {
       name: 'excerpt',
       title: 'Excerpt',
       type: 'blockText'
