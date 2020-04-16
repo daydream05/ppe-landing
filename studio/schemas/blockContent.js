@@ -61,6 +61,12 @@ export default {
                 name: 'blank',
                 description: 'Read https://css-tricks.com/use-target_blank/',
                 type: 'boolean'
+              },
+              {
+                title: 'No follow',
+                name: 'nofollow',
+                description: 'Make this link no follow',
+                type: 'boolean'
               }
             ]
           }
@@ -75,6 +81,6 @@ export default {
     },
     {
       type: 'slideshow'
-    }
+    },
   ]
 }
