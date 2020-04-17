@@ -1,8 +1,15 @@
 import S from '@sanity/desk-tool/structure-builder'
+import EditIcon from 'part:@sanity/base/edit-icon'
+import EyeIcon from 'part:@sanity/base/eye-icon'
+
 import { MdBusiness, MdSettings } from 'react-icons/md'
 import { FaFile } from 'react-icons/fa'
+import SeoPreview from './src/previews/seo/seo-preview'
 
 const hiddenTypes = ['category', 'companyInfo', 'page', 'person', 'post', 'project', 'siteSettings']
+
+const localURL = 'http://localhost:8000'
+const previewURL = window.location.hostname === 'localhost' ? localURL : null
 
 export default () =>
   S.list()
@@ -33,7 +40,23 @@ export default () =>
       S.listItem()
         .title('Blog posts')
         .schemaType('post')
-        .child(S.documentTypeList('post').title('Blog posts')),
+        .child(
+          S.documentTypeList('post')
+            .title('Blog posts')
+            .child(documentId =>
+              S.document()
+                .documentId(documentId)
+                .schemaType('post')
+                .views([
+                  S.view.form().icon(EditIcon),
+                  S.view
+                    .component(SeoPreview)
+                    .options({ previewURL })
+                    .title('SEO Preview')
+                    .icon(EyeIcon),
+                ])
+            )
+        ),
       S.listItem()
         .title('Default Pages')
         .child(
@@ -63,8 +86,7 @@ export default () =>
       S.listItem()
         .title('All Pages')
         .schemaType('page')
-        .child(S.documentTypeList('page').title('All pages'))
-      ,
+        .child(S.documentTypeList('page').title('All pages')),
       S.listItem()
         .title('People')
         .schemaType('person')
