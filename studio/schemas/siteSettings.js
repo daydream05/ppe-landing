@@ -14,6 +14,11 @@ export default {
       type: 'string'
     },
     {
+      name: 'url',
+      title: 'Site URL',
+      type: 'url',
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'text'
