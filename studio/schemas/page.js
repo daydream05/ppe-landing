@@ -12,6 +12,11 @@ export default {
       type: 'string'
     },
     {
+      name: 'hero',
+      title: 'Hero',
+      type: 'hero',
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'blockContent'

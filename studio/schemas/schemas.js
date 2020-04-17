@@ -22,6 +22,7 @@ import siteSettings from './siteSettings'
 import slideshow from './slideshow'
 import section from './section'
 import heading from './heading'
+import hero from './hero'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -38,6 +39,7 @@ export default createSchema({
     companyInfo,
     figure,
     heading,
+    hero,
     mainImage,
     page,
     person,
