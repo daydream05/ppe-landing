@@ -9,6 +9,17 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-theme-ui',
     {
+      resolve: 'gatsby-plugin-next-seo',
+      options: {
+        openGraph: {
+          type: 'website',
+          locale: 'en_US',
+          url: 'https://www.hungrygatsbear.com/',
+          site_name: 'HungryGatsbear'
+        }
+      }
+    },
+    {
       resolve: 'gatsby-source-sanity',
       options: {
         projectId,
