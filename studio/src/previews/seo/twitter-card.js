@@ -33,7 +33,7 @@ class TwitterCard extends React.PureComponent {
   render() {
     const { document, width, options } = this.props
     console.log(document)
-    const { title, excerpt, mainImage } = document
+    const { title, excerpt, mainImage, seo } = document
     const url = assemblePageUrl({ document, options })
     const websiteUrlWithoutProtocol = url.split('://')[1]
     return (
@@ -70,9 +70,9 @@ class TwitterCard extends React.PureComponent {
                 />
               </div>
               <div className={styles.tweetCardContent}>
-                <h2 className={styles.tweetCardTitle}>{title}</h2>
+                <h2 className={styles.tweetCardTitle}>{seo?.metaTitle || seo?.title}</h2>
                 {excerpt && (
-                  <div className={styles.tweetCardDescription}>{toPlainText(excerpt)}</div>
+                  <div className={styles.tweetCardDescription}>{seo?.metaDescription || toPlainText(excerpt)}</div>
                 )}
                 <div className={styles.tweetCardDestination}>{websiteUrlWithoutProtocol}</div>
               </div>

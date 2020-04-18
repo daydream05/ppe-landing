@@ -5,6 +5,7 @@ import EyeIcon from 'part:@sanity/base/eye-icon'
 import { MdBusiness, MdSettings } from 'react-icons/md'
 import { FaFile } from 'react-icons/fa'
 import SeoPreview from './src/previews/seo/seo-preview'
+import IframePreview from './src/previews/iframe/iframe-preview'
 
 const hiddenTypes = ['category', 'companyInfo', 'page', 'person', 'post', 'project', 'siteSettings']
 
@@ -36,7 +37,28 @@ export default () =>
       S.listItem()
         .title('Projects')
         .schemaType('project')
-        .child(S.documentTypeList('project')),
+        .child(
+          S.documentTypeList('project')
+            .title('Projects')
+            .child(documentId =>
+              S.document()
+                .documentId(documentId)
+                .schemaType('project')
+                .views([
+                  S.view.form().icon(EditIcon),
+                  S.view
+                    .component(SeoPreview)
+                    .options({ previewURL })
+                    .title('SEO Preview')
+                    .icon(EyeIcon),
+                  S.view
+                    .component(IframePreview)
+                    .options({ previewURL })
+                    .title('Web Preview')
+                    .icon(EyeIcon)
+                ])
+            )
+        ),
       S.listItem()
         .title('Blog posts')
         .schemaType('post')
@@ -54,6 +76,11 @@ export default () =>
                     .options({ previewURL })
                     .title('SEO Preview')
                     .icon(EyeIcon),
+                  S.view
+                    .component(IframePreview)
+                    .options({ previewURL })
+                    .title('Web Preview')
+                    .icon(EyeIcon)
                 ])
             )
         ),
