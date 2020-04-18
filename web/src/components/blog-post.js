@@ -18,7 +18,7 @@ function BlogPost (props) {
       {props.mainImage && mainImage.asset && (
         <div
           sx={{
-            display: 'grid',
+            display: [null, null, 'grid'],
             gridTemplateColumns: '256px 1fr',
             color: 'primary',
             maxWidth: '1200px',
@@ -32,7 +32,7 @@ function BlogPost (props) {
       <Container>
         <div className={styles.grid}>
           <div className={styles.mainContent}>
-            <Styled.h1>{title}</Styled.h1>
+            <Styled.h1 sx={{ fontWeight: `bold`}}>{title}</Styled.h1>
             {_rawBody && <BlockContent blocks={_rawBody} />}
           </div>
           <aside className={styles.metaContent}>
