@@ -9,6 +9,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'subTitle',
+      title: 'Subtitle',
+      type: 'blockText',
+    },
+    {
       name: 'mainImage',
       title: 'Main Image',
       type: 'mainImage',

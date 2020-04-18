@@ -18,5 +18,8 @@ export default {
         Rule.max(160).warning('Shorter meta descriptions are better.')
       ]
     }
-  ]
+  ],
+  options: {
+    collapsible: true
+  }
 }
