@@ -116,7 +116,7 @@ const IndexPage = props => {
 
   return (
     <Layout>
-      {page && page.hero && <DefaultHero hero={page._rawHero} />}
+      {page && page._rawHero && <DefaultHero hero={page._rawHero} />}
       <Container>
         {projectNodes && (
           <ProjectPreviewGrid
