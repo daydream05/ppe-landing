@@ -7,6 +7,7 @@ import { api as sanityConfig } from '../../../../studio/sanity.json'
 import GatsbyImage from 'gatsby-image'
 import { Link } from 'gatsby'
 import ButtonLink from '../button-link'
+import { getPagePath } from '../../lib/helpers'
 
 const serializers = {
   types: {
@@ -60,15 +61,10 @@ const DefaultHero = ({ hero }) => {
           <HeroSubTitle blocks={hero.subTitle} />
           {hero.buttons?.length > 0
             ? hero.buttons.map(button => {
-                let url
-                if (button.internalLink?._type === `post`) {
-                  url = `/blog/${button.internalLink?.slug?.current}/`
-                } else if (button.internalLink?._type === `page`) {
-                  url = `/${button.internalLink?.slug?.current}/`
-                }
+                const pagePath = getPagePath(button.internalLink?._type, button.internalLink?.slug)
                 return (
                   <ButtonLink
-                    to={url}
+                    to={pagePath}
                     key={button._key}
                     variant={button.color}
                     shape={button.variant}

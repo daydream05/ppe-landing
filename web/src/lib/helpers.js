@@ -13,8 +13,29 @@ export function filterOutDocsWithoutSlugs ({ slug }) {
   return (slug || {}).current
 }
 
-export function getBlogUrl (publishedAt, slug) {
-  return `/blog/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`
+export function getBlogUrl (slug) {
+  return `/blog/${slug.current || slug}/`
+}
+
+export function getPagePath (type, slug) {
+  let url
+  const pageSlug = slug?.current || slug
+  
+  if(type === `post`) {
+    url = `/blog/${pageSlug}`
+  } else if(type === `page`) {
+    if(pageSlug === `home`) {
+      url = `/`
+    } else {
+      url = `/${pageSlug}/`
+    }
+  } else if(type === `projects`) {
+    url = `/projects/${pageSlug}/`
+  } else {
+    return url
+  }
+
+  return url
 }
 
 export function buildImageObj (source) {
