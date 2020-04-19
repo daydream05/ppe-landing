@@ -32,7 +32,7 @@ function BlogPost (props) {
       <Container>
         <div className={styles.grid}>
           <div className={styles.mainContent}>
-            <Styled.h1 sx={{ fontWeight: `bold`}}>{title}</Styled.h1>
+            <Styled.h1 sx={{ fontWeight: `bold` }}>{title}</Styled.h1>
             {_rawBody && <BlockContent blocks={_rawBody} />}
           </div>
           <aside className={styles.metaContent}>

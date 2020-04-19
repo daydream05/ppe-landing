@@ -17,7 +17,7 @@ export const query = graphql`
     }
 
     page: sanityPage(slug: { current: { eq: "home" } }) {
-      _rawHero(resolveReferences: { maxDepth: 2 })
+      _rawHero(resolveReferences: { maxDepth: 3 })
     }
 
     projects: allSanityProject(limit: 6, sort: { fields: [publishedAt], order: DESC }) {

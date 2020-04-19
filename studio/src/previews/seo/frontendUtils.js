@@ -12,6 +12,9 @@ export const assemblePageUrl = ({ document, options }) => {
   } else if (document._type === 'project') {
     return `${previewURL}/project/${slug.current}`
   } else if (document._type === 'page') {
+    if(document.slug.current === `home`) {
+      return `${previewURL}/`
+    }
     return `${previewURL}/${slug.current}`
   } else {
     return `${previewURL}/${slug.current}`

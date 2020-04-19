@@ -5,6 +5,8 @@ import BaseBlockContent from '@sanity/block-content-to-react'
 import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
 import { api as sanityConfig } from '../../../../studio/sanity.json'
 import GatsbyImage from 'gatsby-image'
+import { Link } from 'gatsby'
+import ButtonLink from '../button-link'
 
 const serializers = {
   types: {
@@ -35,21 +37,51 @@ const DefaultHero = ({ hero }) => {
           display: [null, null, null, `flex`],
           flexDirection: `column`,
           alignItems: `center`,
-          py: 4,
+          pt: [4, 4, 4, 6],
           px: [3]
         }}
       >
-        <h1
+        <div
           sx={{
-            fontSize: [5, 5, 5, 6],
-            mt: 0,
-            mb: 2,
-            lineHeight: 1,
+            display: `flex`,
+            flexDirection: `column`
           }}
         >
-          {hero.title}
-        </h1>
-        <HeroSubTitle blocks={hero.subTitle} />
+          <h1
+            sx={{
+              fontSize: [5, 5, 5, 6],
+              mt: 0,
+              mb: 2,
+              lineHeight: 1
+            }}
+          >
+            {hero.title}
+          </h1>
+          <HeroSubTitle blocks={hero.subTitle} />
+          {hero.buttons?.length > 0
+            ? hero.buttons.map(button => {
+                let url
+                if (button.internalLink?._type === `post`) {
+                  url = `/blog/${button.internalLink?.slug?.current}/`
+                } else if (button.internalLink?._type === `page`) {
+                  url = `/${button.internalLink?.slug?.current}/`
+                }
+                return (
+                  <ButtonLink
+                    to={url}
+                    key={button._key}
+                    variant={button.color}
+                    shape={button.variant}
+                    sx={{
+                      mb: 2,
+                    }}
+                  >
+                    {button.label}
+                  </ButtonLink>
+                )
+              })
+            : null}
+        </div>
       </div>
       {fluidProps && <GatsbyImage fluid={fluidProps} alt={hero?.mainImage?.alt} />}
     </section>

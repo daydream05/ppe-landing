@@ -17,6 +17,12 @@ export default {
       name: 'mainImage',
       title: 'Main Image',
       type: 'mainImage',
+    },
+    {
+      name: 'buttons',
+      title: 'Buttons',
+      type: 'array',
+      of: [{ type: 'button' }]
     }
   ]
 }

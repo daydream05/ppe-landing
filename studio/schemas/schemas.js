@@ -23,6 +23,8 @@ import slideshow from './slideshow'
 import section from './section'
 import heading from './heading'
 import hero from './hero'
+import pageSettings from './objects/pageSettings'
+import button from './objects/button'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -35,6 +37,7 @@ export default createSchema({
     // in the studio.
     blockContent,
     blockText,
+    button,
     category,
     companyInfo,
     figure,
@@ -42,6 +45,7 @@ export default createSchema({
     hero,
     mainImage,
     page,
+    pageSettings,
     person,
     post,
     postAuthor,

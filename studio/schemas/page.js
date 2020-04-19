@@ -12,9 +12,24 @@ export default {
       type: 'string'
     },
     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      validation: Rule => Rule.required(),
+      options: {
+        source: 'title'
+      }
+    },
+    {
       name: 'hero',
       title: 'Hero',
-      type: 'hero',
+      type: 'hero'
+    },
+    {
+      name: 'sections',
+      title: 'Sections',
+      type: 'array',
+      of: [{ type: 'section' }]
     },
     {
       name: 'body',
@@ -22,24 +37,26 @@ export default {
       type: 'blockContent'
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      validation: Rule => Rule.required(),
-      options: {
-        source: 'title',
-      }
-    },
-    {
       name: 'seo',
       title: 'SEO',
-      type: 'seo',
+      type: 'seo'
     },
     {
-      name: 'sections',
-      title: 'Sections',
+      name: 'settings',
+      title: 'Settings',
+      type: 'pageSettings'
+    },
+    {
+      name: 'relatedPages',
+      title: 'Related Pages',
       type: 'array',
-      of: [{ type: 'section' }]
+      of: [{
+        type: 'reference',
+        to: [
+          { type: 'page' },
+          { type: 'post' }
+        ]
+      }]
     }
   ]
 }
