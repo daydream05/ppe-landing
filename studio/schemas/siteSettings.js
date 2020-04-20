@@ -36,6 +36,12 @@ export default {
       name: 'author',
       title: 'Author',
       type: 'string'
+    },
+    {
+      name: 'socialShareImage',
+      title: 'Social share image',
+      type: 'mainImage',
+      description: 'This is the image that is shown when the url is shared on social media.'
     }
   ]
 }

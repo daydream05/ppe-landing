@@ -38,6 +38,9 @@ exports.createResolvers = ({ createResolvers }) => {
         type: 'String',
         resolve (source, args, context, info) {
           const { slug } = source
+          if(slug.current === `home`) {
+            return `/`
+          }
           return `/${slug.current}/`
         }
       }

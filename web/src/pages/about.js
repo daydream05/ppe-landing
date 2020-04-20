@@ -9,6 +9,7 @@ import Layout from '../containers/layout'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
 
 import { responsiveTitle1 } from '../components/typography.module.css'
+import PageSEO from '../components/page-seo'
 
 export const query = graphql`
   query AboutPageQuery {
@@ -55,13 +56,16 @@ const AboutPage = props => {
     )
   }
 
+  const seo = page?.seo
+  const title = seo ? seo.metaTitle : page?.title
+
   return (
     <Layout>
-      <SEO title={page.title} />
+      {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
       <Container>
         <h1 className={responsiveTitle1}>{page.title}</h1>
         <BlockContent blocks={page._rawBody || []} />
-        {personNodes && personNodes.length > 0 && <PeopleGrid items={personNodes} title='People' />}
+        {personNodes && personNodes.length > 0 && <PeopleGrid items={personNodes} title="People" />}
       </Container>
     </Layout>
   )

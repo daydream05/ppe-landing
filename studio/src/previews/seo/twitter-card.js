@@ -71,8 +71,8 @@ class TwitterCard extends React.PureComponent {
               </div>
               <div className={styles.tweetCardContent}>
                 <h2 className={styles.tweetCardTitle}>{seo?.metaTitle || seo?.title}</h2>
-                {excerpt && (
-                  <div className={styles.tweetCardDescription}>{seo?.metaDescription || toPlainText(excerpt)}</div>
+                {seo && (
+                  <div className={styles.tweetCardDescription}>{seo?.metaDescription ||  `No meta description provided.`}</div>
                 )}
                 <div className={styles.tweetCardDestination}>{websiteUrlWithoutProtocol}</div>
               </div>

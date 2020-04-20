@@ -1,16 +1,40 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { BlogJsonLd } from 'gatsby-plugin-next-seo'
 import { mapEdgesToNodes } from '../lib/helpers'
 import BlogPostPreviewGrid from '../components/blog-post-preview-grid'
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
-import SEO from '../components/seo'
 import Layout from '../containers/layout'
 
 import { responsiveTitle1 } from '../components/typography.module.css'
+import PageSEO from '../components/page-seo'
 
 export const query = graphql`
   query BlogPageQuery {
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+      title
+      url
+      description
+      keywords
+      author
+      socialShareImage {
+        asset {
+          ogimage: fixed(width: 1200, height: 630) {
+            src
+          }
+        }
+        alt
+      }
+    }
+    page: sanityPage(slug: { current: { eq: "blog" } }) {
+      title
+      path
+      seo {
+        metaTitle
+        metaDescription
+      }
+    }
     posts: allSanityPost(limit: 12, sort: { fields: [publishedAt], order: DESC }) {
       edges {
         node {
@@ -50,9 +74,33 @@ const BlogPage = props => {
 
   const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
 
+  const { site, page } = data
+  const seo = page && page.seo
+  const title = seo ? seo.metaTitle : page.title
+  const pageUrl = `${site.url}${page?.path}`
+
+  const posts = data?.posts?.edges?.map(({ node }) => {
+    return {
+      headline: node.title,
+      image: node?.mainImage?.asset?.fluid?.src
+    }
+  })
+
   return (
     <Layout>
-      <SEO title='Blog' />
+      {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
+      {page && (
+        <BlogJsonLd
+          url={pageUrl}
+          headline="Blog headline"
+          images={site?.socialShareImage?.asset?.ogimage?.src}
+          posts={posts}
+          datePublished="2015-02-05T08:00:00+08:00"
+          dateModified="2015-02-05T09:00:00+08:00"
+          authorName={site?.author}
+          description={seo?.metaDescription}
+        />
+      )}
       <Container>
         <h1 className={responsiveTitle1}>Blog</h1>
         {postNodes && postNodes.length > 0 && <BlogPostPreviewGrid nodes={postNodes} />}

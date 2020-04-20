@@ -7,6 +7,8 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
 import Layout from '../containers/layout'
 import DefaultHero from '../components/hero/default-hero'
+import { GatsbySeo } from 'gatsby-plugin-next-seo'
+import PageSEO from '../components/page-seo'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -18,6 +20,12 @@ export const query = graphql`
 
     page: sanityPage(slug: { current: { eq: "home" } }) {
       _rawHero(resolveReferences: { maxDepth: 3 })
+      title
+      path
+      seo {
+        metaTitle
+        metaDescription
+      }
     }
 
     projects: allSanityProject(limit: 6, sort: { fields: [publishedAt], order: DESC }) {
@@ -105,6 +113,7 @@ const IndexPage = props => {
     : []
 
   const page = (data || {}).page
+  const seo = page && page.seo
 
   if (!site) {
     throw new Error(
@@ -112,8 +121,11 @@ const IndexPage = props => {
     )
   }
 
+  const title = seo ? seo.metaTitle : page.title
+
   return (
     <Layout>
+      {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path}/>}
       {page && page._rawHero && <DefaultHero hero={page._rawHero} />}
       <Container>
         {projectNodes && (

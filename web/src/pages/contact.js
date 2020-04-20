@@ -3,15 +3,20 @@ import { graphql } from 'gatsby'
 import BlockContent from '../components/block-content'
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
-import SEO from '../components/seo'
 import Layout from '../containers/layout'
 
 import { responsiveTitle1 } from '../components/typography.module.css'
+import PageSEO from '../components/page-seo'
 
 export const query = graphql`
   query ContactPageQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)contact/" }) {
       title
+      path
+      seo {
+        metaTitle
+        metaDescription
+      }
       _rawBody
     }
   }
@@ -29,6 +34,7 @@ const ContactPage = props => {
   }
 
   const page = data.page
+  const seo = page && page.seo
 
   if (!page) {
     throw new Error(
@@ -36,9 +42,11 @@ const ContactPage = props => {
     )
   }
 
+  const title = seo ? seo.metaTitle : page?.title
+
   return (
     <Layout>
-      <SEO title={page.title} />
+      {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
       <Container>
         <h1 className={responsiveTitle1}>{page.title}</h1>
         <BlockContent blocks={page._rawBody || []} />
