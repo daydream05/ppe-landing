@@ -1,5 +1,6 @@
 import { future } from '@theme-ui/presets'
 import { merge } from 'lodash'
+import { breakpoints } from './breakpoints'
 
 const colors = {
   white: '#fff',
@@ -25,14 +26,15 @@ const baseTheme = merge(future, {
     },
     black: {
       color: 'white',
-      bg: 'black',
+      bg: 'black'
     },
     danger: {
       color: 'white',
-      bg: 'danger',
+      bg: 'danger'
     }
   },
-  colors
+  colors,
+  breakpoints
 })
 
 export default baseTheme

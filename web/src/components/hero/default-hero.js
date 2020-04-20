@@ -2,12 +2,14 @@ import React from 'react'
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import BaseBlockContent from '@sanity/block-content-to-react'
-import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
+import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 import { api as sanityConfig } from '../../../../studio/sanity.json'
 import GatsbyImage from 'gatsby-image'
-import { Link } from 'gatsby'
 import ButtonLink from '../button-link'
 import { getPagePath } from '../../lib/helpers'
+
+import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
+import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 
 const serializers = {
   types: {
@@ -28,9 +30,13 @@ const DefaultHero = ({ hero }) => {
   return (
     <section
       sx={{
-        display: [`flex`, null, null, `grid`],
+        display: [`flex`, null, null, null, `grid`],
         flexDirection: `column-reverse`,
-        gridTemplateColumns: [null, null, null, `1fr 1fr`]
+        gridTemplateColumns: [null, null, null, `1fr 1fr`],
+        [mediaQueries.xl]: {
+          maxWidth: breakpoints.xxxl,
+          margin: `0 auto`,
+        }
       }}
     >
       <div
@@ -45,7 +51,8 @@ const DefaultHero = ({ hero }) => {
         <div
           sx={{
             display: `flex`,
-            flexDirection: `column`
+            flexDirection: `column`,
+            maxWidth: breakpoints.md,
           }}
         >
           <h1
