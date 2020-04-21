@@ -6,10 +6,10 @@ import { customSerializers } from '../serializers/custom-serializers'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 
 export const TextColumn = props => {
-  console.log(props)
   return (
     <div
       sx={{
+        mb: 4,
         [mediaQueries.lg]: {
           columnCount: props?.columnCount,
           columnGap: 4

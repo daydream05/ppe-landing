@@ -4,6 +4,8 @@ import Slideshow from '../block-content/slideshow'
 /** @jsx jsx */
 import { jsx, Text, Styled } from 'theme-ui'
 import { TextColumn } from '../block-content/text-column'
+import ButtonLink from '../button-link'
+import { getPagePath } from '../../lib/helpers'
 
 export const customSerializers = {
   marks: {
@@ -19,7 +21,7 @@ export const customSerializers = {
     )
   },
   types: {
-    block (props) {
+    block(props) {
       switch (props.node.style) {
         case 'h2': {
           return <Styled.h2 sx={{ color: 'inherit' }}>{props.children}</Styled.h2>
@@ -29,7 +31,7 @@ export const customSerializers = {
         }
         case 'large': {
           return (
-            <Text variant='body.large' as='p'>
+            <Text variant="body.large" as="p">
               {props.children}
             </Text>
           )
@@ -38,15 +40,25 @@ export const customSerializers = {
           return <Styled.p sx={{ color: 'inherit', mt: 0 }}>{props.children}</Styled.p>
       }
     },
-    figure (props) {
+    figure(props) {
       return <Figure {...props.node} />
     },
-    slideshow (props) {
+    slideshow(props) {
       return <Slideshow {...props.node} />
     },
-    textColumn (props) {
+    textColumn(props) {
       console.log(props.node)
       return <TextColumn {...props.node} />
+    },
+    button(props) {
+      const { node } = props
+
+      const pagePath = getPagePath(node?.internalLink?._type, node?.internalLink?.slug)
+      return (
+        <ButtonLink variant={node?.color} shape={node?.variant} to={pagePath}>
+          {node?.label}
+        </ButtonLink>
+      )
     }
   }
 }

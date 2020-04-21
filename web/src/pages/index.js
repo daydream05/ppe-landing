@@ -20,7 +20,7 @@ export const query = graphql`
 
     page: sanityPage(slug: { current: { eq: "home" } }) {
       _rawHero(resolveReferences: { maxDepth: 3 })
-      _rawSections(resolveReferences: { maxDepth: 3 })
+      _rawSections(resolveReferences: { maxDepth: 4 })
       title
       path
       seo {

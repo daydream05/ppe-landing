@@ -4,6 +4,7 @@ import { jsx, Styled, css } from 'theme-ui'
 import { Link } from 'gatsby'
 
 import theme from '../gatsby-plugin-theme-ui'
+import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 
 const ButtonLink = ({ children, variant, shape, ...rest }) => {
   const getShapeStyle = shape => {
@@ -13,7 +14,7 @@ const ButtonLink = ({ children, variant, shape, ...rest }) => {
           boxSizing: 'border-box',
           boxShadow: `inset 0px 0px 0px 2px`,
           backgroundColor: 'unset !important',
-          color: theme?.buttons?.[variant]?.bg,
+          color: theme?.buttons?.[variant]?.bg
         }
       case 'pill':
         return {
@@ -29,7 +30,7 @@ const ButtonLink = ({ children, variant, shape, ...rest }) => {
     <Link
       sx={{
         appearance: 'none',
-        display: 'inline-block',
+        display: 'block',
         textAlign: 'center',
         lineHeight: 'inherit',
         textDecoration: 'none',
@@ -41,7 +42,10 @@ const ButtonLink = ({ children, variant, shape, ...rest }) => {
         bg: 'primary',
         border: 0,
         borderRadius: 4,
-        variant: `buttons.${variant}`
+        variant: `buttons.${variant}`,
+        [mediaQueries.lg]: {
+          display: 'inline-block'
+        }
       }}
       css={css({
         ...shapeStyle
