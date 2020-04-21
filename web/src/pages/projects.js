@@ -8,9 +8,21 @@ import Layout from '../containers/layout'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
 
 import { responsiveTitle1 } from '../components/typography.module.css'
+import PageSEO from '../components/page-seo'
+import DefaultHero from '../components/hero/default-hero'
 
 export const query = graphql`
   query ProjectsPageQuery {
+    page: sanityPage(slug: { current: { eq: "projects" } }) {
+      title
+      path
+      seo {
+        metaTitle
+        metaDescription
+      }
+      _rawBody
+      _rawHero
+    }
     projects: allSanityProject(limit: 12, sort: { fields: [publishedAt], order: DESC }) {
       edges {
         node {
@@ -19,7 +31,7 @@ export const query = graphql`
           mainImage {
             asset {
               _id
-              fluid(maxWidth: 600 maxHeight: 400) {
+              fluid(maxWidth: 600, maxHeight: 400) {
                 ...GatsbySanityImageFluid_noBase64
               }
             }
@@ -47,9 +59,14 @@ const ProjectsPage = props => {
   }
   const projectNodes =
     data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
+
+  const page = data.page
+  const seo = page && page.seo
+  const title = seo ? seo.metaTitle : page?.title
   return (
     <Layout>
-      <SEO title='Projects' />
+      {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
+      {page?._rawHero && <DefaultHero hero={page._rawHero} />}
       <Container>
         {projectNodes && projectNodes.length > 0 && <ProjectPreviewGrid nodes={projectNodes} />}
       </Container>

@@ -10,6 +10,7 @@ import Container from './container'
 import RoleList from './role-list'
 
 import styles from './blog-post.module.css'
+import { constants } from '../gatsby-plugin-theme-ui'
 
 function BlogPost (props) {
   const { _rawBody, authors, categories, title, mainImage, publishedAt } = props
@@ -22,7 +23,8 @@ function BlogPost (props) {
             gridTemplateColumns: '256px 1fr',
             color: 'primary',
             maxWidth: '1200px',
-            m: '0 auto'
+            m: '0 auto',
+            pt: constants.headerHeight,
           }}
         >
           <div />

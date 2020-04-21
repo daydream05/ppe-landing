@@ -34,7 +34,7 @@ function BlogPostPreview (props) {
           sx={{
             position: 'relative',
             pb: '66.666%',
-            bg: 'muted'
+            bg: 'text'
           }}
         />
       )}

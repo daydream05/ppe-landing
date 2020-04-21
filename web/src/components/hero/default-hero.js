@@ -10,6 +10,7 @@ import { getPagePath } from '../../lib/helpers'
 
 import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
+import { constants } from '../../gatsby-plugin-theme-ui'
 
 const serializers = {
   types: {
@@ -36,6 +37,7 @@ const DefaultHero = ({ hero }) => {
         [mediaQueries.xl]: {
           maxWidth: breakpoints.xxxl,
           margin: `0 auto`,
+          pt: constants.headerHeight
         }
       }}
     >
@@ -43,16 +45,15 @@ const DefaultHero = ({ hero }) => {
         sx={{
           display: [null, null, null, `flex`],
           flexDirection: `column`,
-          alignItems: `center`,
           pt: [4, 4, 4, 6],
-          px: [3]
+          pl: [3, 3, 3, 6, 6, 6, 7]
         }}
       >
         <div
           sx={{
             display: `flex`,
             flexDirection: `column`,
-            maxWidth: breakpoints.md,
+            maxWidth: breakpoints.md
           }}
         >
           <h1
@@ -66,32 +67,35 @@ const DefaultHero = ({ hero }) => {
             {hero.title}
           </h1>
           <HeroSubTitle blocks={hero.subTitle} />
-          {hero.buttons?.length > 0
-            ? hero.buttons.map(button => {
-                const pagePath = getPagePath(button.internalLink?._type, button.internalLink?.slug)
-                return (
-                  <ButtonLink
-                    to={pagePath}
-                    key={button._key}
-                    variant={button.color}
-                    shape={button.variant}
-                    sx={{
-                      mb: 2,
-                    }}
-                  >
-                    {button.label}
-                  </ButtonLink>
-                )
-              })
-            : null}
+          <div
+            sx={{
+              maxWidth: breakpoints.xs,
+              display: `grid`,
+              gridGap: 2,
+            }}
+          >
+            {hero.buttons?.length > 0
+              ? hero.buttons.map(button => {
+                  const pagePath = getPagePath(
+                    button.internalLink?._type,
+                    button.internalLink?.slug
+                  )
+                  return (
+                    <ButtonLink
+                      to={pagePath}
+                      key={button._key}
+                      variant={button.color}
+                      shape={button.variant}
+                    >
+                      {button.label}
+                    </ButtonLink>
+                  )
+                })
+              : null}
+          </div>
         </div>
       </div>
-      {fluidProps && (
-        <GatsbyImage
-          fluid={fluidProps}
-          alt={hero?.mainImage?.alt}
-        />
-      )}
+      {fluidProps && <GatsbyImage fluid={fluidProps} alt={hero?.mainImage?.alt} />}
     </section>
   )
 }

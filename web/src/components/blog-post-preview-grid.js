@@ -17,7 +17,10 @@ function BlogPostPreviewGrid (props) {
         <h2
           sx={{
             fontSize: 2,
-            my: 4
+            fontWeight: `normal`,
+            textTransform: `uppercase`,
+            letterSpacing: `4px`,
+            my: 4,
           }}
         >
           {props.browseMoreHref ? (

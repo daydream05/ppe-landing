@@ -11,6 +11,7 @@ import Container from './container'
 import RoleList from './role-list'
 
 import styles from './project.module.css'
+import { constants } from '../gatsby-plugin-theme-ui'
 
 function Project (props) {
   const { _rawBody, title, categories, mainImage, members, publishedAt, relatedProjects } = props
@@ -24,6 +25,7 @@ function Project (props) {
             color: 'primary',
             maxWidth: `1200px`,
             m: `0 auto`,
+            pt: constants.headerHeight,
           }}
         >
           <div />
