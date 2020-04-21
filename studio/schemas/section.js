@@ -12,6 +12,17 @@ export default {
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+    },
+    {
+      name: 'theme',
+      title: 'Theme',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Dark', value: 'dark'},
+          { title: 'Light', value: 'light'},
+        ]
+      }
     }
   ],
   preview: {

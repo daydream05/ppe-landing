@@ -7,8 +7,8 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
 import Layout from '../containers/layout'
 import DefaultHero from '../components/hero/default-hero'
-import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import PageSEO from '../components/page-seo'
+import { BasicSection } from '../components/sections/basic-section'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -20,6 +20,7 @@ export const query = graphql`
 
     page: sanityPage(slug: { current: { eq: "home" } }) {
       _rawHero(resolveReferences: { maxDepth: 3 })
+      _rawSections(resolveReferences: { maxDepth: 3 })
       title
       path
       seo {
@@ -125,21 +126,24 @@ const IndexPage = props => {
 
   return (
     <Layout>
-      {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path}/>}
+      {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
       {page && page._rawHero && <DefaultHero hero={page._rawHero} />}
+      {page?._rawSections?.map(section => {
+        return <BasicSection key={section._key} section={section} />
+      })}
       <Container>
         {projectNodes && (
           <ProjectPreviewGrid
-            title='Latest projects'
+            title="Latest projects"
             nodes={projectNodes}
-            browseMoreHref='/projects/'
+            browseMoreHref="/projects/"
           />
         )}
         {postNodes && (
           <BlogPostPreviewGrid
-            title='Latest blog posts'
+            title="Latest blog posts"
             nodes={postNodes}
-            browseMoreHref='/blog/'
+            browseMoreHref="/blog/"
           />
         )}
       </Container>

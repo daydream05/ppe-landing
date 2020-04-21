@@ -5,19 +5,17 @@ import { breakpoints } from './breakpoints'
 export const colors = {
   white: '#fff',
   black: '#0A0A0A',
-  primary: '#2C7A7B',
-  secondary: '#6B46C1',
+  accent: '#DBEDF3',
   danger: '#C53030',
   modes: {
     dark: {
-      white: '#0A0A0A',
-      black: '#fff'
+      background: '#0A0A0A'
     }
   }
 }
 
 export const constants = {
-  headerHeight: `90px`,
+  headerHeight: '90px'
 }
 
 const baseTheme = merge(future, {
@@ -29,8 +27,8 @@ const baseTheme = merge(future, {
   },
   buttons: {
     white: {
-      color: 'black',
-      bg: 'white'
+      color: 'text',
+      bg: 'background'
     },
     primary: {
       color: 'white',
@@ -41,12 +39,59 @@ const baseTheme = merge(future, {
       bg: 'secondary'
     },
     black: {
-      color: 'white',
-      bg: 'black'
+      color: 'background',
+      bg: 'text'
     },
     danger: {
       color: 'white',
       bg: 'danger'
+    }
+  },
+  layout: {
+    container: {
+      large: {
+        maxWidth: breakpoints.xxxl
+      },
+      text: {
+        maxWidth: breakpoints.lg,
+        margin: `0 auto`,
+      }
+    }
+  },
+  text: {
+    heading: {
+      normal: {
+        fontSize: 'inherit'
+      },
+      large: {
+        fontWeight: 600,
+        fontSize: [5, 5, 5, 5, 7]
+      },
+      small: {
+        fontWeight: 'normal',
+        fontSize: 1,
+        textTransform: 'uppercase',
+        letterSpacing: '4px'
+      }
+    },
+    body: {
+      large: {
+        fontSize: 5,
+      },
+    }
+  },
+  section: {
+    dark: {
+      bg: 'black',
+      color: 'white'
+    },
+    light: {
+      bg: 'white',
+      color: 'black'
+    },
+    pale: {
+      bg: 'accent',
+      color: 'black',
     }
   },
   styles: {
