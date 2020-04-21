@@ -113,6 +113,9 @@ export default {
     },
     {
       type: 'slideshow'
+    },
+    {
+      type: 'textColumn'
     }
   ]
 }

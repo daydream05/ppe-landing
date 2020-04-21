@@ -25,6 +25,7 @@ import heading from './heading'
 import hero from './hero'
 import pageSettings from './objects/pageSettings'
 import button from './objects/button'
+import textColumn from './objects/textColumn'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -54,7 +55,8 @@ export default createSchema({
     seo,
     section,
     siteSettings,
-    slideshow
+    slideshow,
+    textColumn,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
