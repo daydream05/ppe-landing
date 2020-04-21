@@ -13,7 +13,7 @@ const ButtonLink = ({ children, variant, shape, ...rest }) => {
           boxSizing: 'border-box',
           boxShadow: `inset 0px 0px 0px 2px`,
           backgroundColor: 'unset !important',
-          color: variant
+          color: theme?.buttons?.[variant]?.bg,
         }
       case 'pill':
         return {

@@ -24,7 +24,6 @@ const linkItemStyle = {
   }
 }
 const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => {
-
   return (
     <div
       sx={{
@@ -61,9 +60,12 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => {
         </div>
         <nav
           sx={{
-            display: `flex`,
-            alignItems: `center`,
-            justifyContent: `flex-end`,
+            display: `none`,
+            [mediaQueries.lg]: {
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-end'
+            }
           }}
         >
           <ul
@@ -93,8 +95,7 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => {
                 Contact
               </Link>
             </li>
-            <li
-            >
+            <li>
               <ColorModeToggle />
             </li>
           </ul>

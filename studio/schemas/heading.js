@@ -32,6 +32,35 @@ export default {
           { title: 'H6', value: 'h6' },
         ]
       }
+    },
+    {
+      name: 'size',
+      title: 'Size',
+      type: 'string',
+      description: 'Defaults to normal size',
+      options: {
+        list: [
+          { title: 'normal', value: 'normal' },
+          { title: 'small', value: 'small' },
+          { title: 'large', value: 'large' }
+        ]
+      }
+    },
+    {
+      name: 'textAlignment',
+      title: 'Text alignment',
+      type: 'string',
+      description: 'Defaults to left',
+      options: {
+        list: [
+          { title: 'left', value: 'left' },
+          { title: 'right', value: 'right' },
+          { title: 'center', value: 'center' }
+        ]
+      }
     }
-  ]
+  ],
+  options: {
+    collapsible: true
+  }
 }

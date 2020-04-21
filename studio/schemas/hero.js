@@ -6,17 +6,17 @@ export default {
     {
       name: 'title',
       title: 'Title',
-      type: 'string',
+      type: 'string'
     },
     {
       name: 'subTitle',
       title: 'Subtitle',
-      type: 'blockText',
+      type: 'blockText'
     },
     {
       name: 'mainImage',
       title: 'Main Image',
-      type: 'mainImage',
+      type: 'mainImage'
     },
     {
       name: 'buttons',
@@ -24,5 +24,8 @@ export default {
       type: 'array',
       of: [{ type: 'button' }]
     }
-  ]
+  ],
+  options: {
+    collapsible: true
+  }
 }

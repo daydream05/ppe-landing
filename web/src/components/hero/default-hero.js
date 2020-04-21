@@ -45,8 +45,15 @@ const DefaultHero = ({ hero }) => {
         sx={{
           display: [null, null, null, `flex`],
           flexDirection: `column`,
-          pt: [4, 4, 4, 6],
-          pl: [3, 3, 3, 6, 6, 6, 7]
+          pt: [5, 5, 5, 6],
+          pb: [5, 5, 5, 5, 5, 0],
+          px: [4],
+          [mediaQueries.xl]: {
+            pl: 6,
+          },
+          [mediaQueries.xxl]: {
+            pl: 7
+          }
         }}
       >
         <div
