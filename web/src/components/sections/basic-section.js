@@ -14,7 +14,7 @@ export const BasicSection = ({ section }) => {
       <Container
         variant="container.large"
         sx={{
-          px: 5,
+          px: 4,
           py: 5,
           margin: `0 auto`,
           [mediaQueries.xl]: {
@@ -37,7 +37,6 @@ export const BasicSection = ({ section }) => {
               }}
             >
               <Text
-                as="h2"
                 variant={`heading.${section?.heading?.size}`}
                 sx={{
                   color: `inherit`,

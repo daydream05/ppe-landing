@@ -1,4 +1,8 @@
 import { FaExternalLinkAlt } from 'react-icons/fa'
+import { CenterAlignRender } from '../src/renderers/decorators/center-align-render'
+import { LeftAlignRender } from '../src/renderers/decorators/left-align-render'
+import { RightAlignRender } from '../src/renderers/decorators/right-align-render'
+import { MdFormatAlignLeft, MdFormatAlignRight, MdFormatAlignCenter } from 'react-icons/md'
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -10,6 +14,7 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
  *    type: 'blockContent'
  *  }
  */
+
 export default {
   title: 'Block Content',
   name: 'blockContent',
@@ -27,14 +32,42 @@ export default {
         { title: 'H2', value: 'h2' },
         { title: 'H3', value: 'h3' },
         { title: 'H4', value: 'h4' },
-        { title: 'Quote', value: 'blockquote' }
+        { title: 'Quote', value: 'blockquote' },
+        { title: 'Large', value: 'large' }
       ],
       lists: [{ title: 'Bullet', value: 'bullet' }],
       // Marks let you mark up inline text in the block editor.
       marks: {
         // Decorators usually describe a single property – e.g. a typographic
         // preference or highlighting by editors.
-        decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
+        decorators: [
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
+          {
+            title: 'Left Align',
+            value: 'leftAlign',
+            blockEditor: {
+              icon: MdFormatAlignLeft,
+              render: LeftAlignRender
+            }
+          },
+          {
+            title: 'Center Align',
+            value: 'centerAlign',
+            blockEditor: {
+              icon: MdFormatAlignCenter,
+              render: CenterAlignRender
+            }
+          },
+          {
+            title: 'Right Align',
+            value: 'rightAlign',
+            blockEditor: {
+              icon: MdFormatAlignRight,
+              render: RightAlignRender
+            }
+          }
+        ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
@@ -80,6 +113,6 @@ export default {
     },
     {
       type: 'slideshow'
-    },
+    }
   ]
 }

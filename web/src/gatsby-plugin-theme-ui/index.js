@@ -64,7 +64,7 @@ const baseTheme = merge(future, {
         fontSize: 'inherit'
       },
       large: {
-        fontWeight: 600,
+        fontWeight: '600',
         fontSize: [5, 5, 5, 5, 7]
       },
       small: {
@@ -77,6 +77,7 @@ const baseTheme = merge(future, {
     body: {
       large: {
         fontSize: 5,
+        fontWeight: `600`,
       },
     }
   },
