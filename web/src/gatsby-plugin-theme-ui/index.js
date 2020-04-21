@@ -2,12 +2,22 @@ import { future } from '@theme-ui/presets'
 import merge from 'deepmerge'
 import { breakpoints } from './breakpoints'
 
-const colors = {
+export const colors = {
   white: '#fff',
   black: '#0A0A0A',
   primary: '#2C7A7B',
   secondary: '#6B46C1',
-  danger: '#C53030'
+  danger: '#C53030',
+  modes: {
+    dark: {
+      white: '#0A0A0A',
+      black: '#fff'
+    }
+  }
+}
+
+export const constants = {
+  headerHeight: `90px`,
 }
 
 const baseTheme = merge(future, {
@@ -39,8 +49,16 @@ const baseTheme = merge(future, {
       bg: 'danger'
     }
   },
+  styles: {
+    root: {
+      transition: 'color 0.2s ease-out, background 0.2s ease-out'
+    }
+  },
   colors,
-  breakpoints
+  breakpoints,
+  constants
 })
+
+console.log(baseTheme)
 
 export default baseTheme
