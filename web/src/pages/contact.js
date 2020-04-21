@@ -7,6 +7,7 @@ import Layout from '../containers/layout'
 
 import { responsiveTitle1 } from '../components/typography.module.css'
 import PageSEO from '../components/page-seo'
+import DefaultHero from '../components/hero/default-hero'
 
 export const query = graphql`
   query ContactPageQuery {
@@ -18,6 +19,7 @@ export const query = graphql`
         metaDescription
       }
       _rawBody
+      _rawHero
     }
   }
 `
@@ -47,8 +49,8 @@ const ContactPage = props => {
   return (
     <Layout>
       {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
+      {page?._rawHero && <DefaultHero hero={page._rawHero} />}
       <Container>
-        <h1 className={responsiveTitle1}>{page.title}</h1>
         <BlockContent blocks={page._rawBody || []} />
       </Container>
     </Layout>

@@ -86,7 +86,12 @@ const DefaultHero = ({ hero }) => {
             : null}
         </div>
       </div>
-      {fluidProps && <GatsbyImage fluid={fluidProps} alt={hero?.mainImage?.alt} />}
+      {fluidProps && (
+        <GatsbyImage
+          fluid={fluidProps}
+          alt={hero?.mainImage?.alt}
+        />
+      )}
     </section>
   )
 }

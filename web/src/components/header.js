@@ -1,34 +1,87 @@
 import { Link } from 'gatsby'
 import React from 'react'
-import Icon from './icons'
-import { cn } from '../lib/helpers'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 
-import styles from './header.module.css'
+import { breakpoints } from '../gatsby-plugin-theme-ui/breakpoints'
+import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 
+const linkItemStyle = {
+  padding: [3],
+  textDecoration: 'none',
+  fontWeight: '600',
+  textTransform: 'lowercase',
+  color: 'inherit',
+  fontSize: 4,
+  '&.active': {
+    color: 'primary'
+  },
+  ':hover': {
+    color: 'primary'
+  }
+}
 const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
-  <div className={styles.root}>
-    <div className={styles.wrapper}>
-      <h1 className={styles.branding}>
-        <Link to='/'>{siteTitle}</Link>
-      </h1>
-
-      <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
-        <Icon symbol='hamburger' />
-      </button>
-
-      <nav className={cn(styles.nav, showNav && styles.showNav)}>
-        <ul>
+  <div
+    sx={{
+      height: '80px',
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'column',
+      position: 'absolute',
+      width: '100%',
+      zIndex: 1
+    }}
+  >
+    <div
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        height: '100%',
+        width: '100%',
+        maxWidth: breakpoints.xxxl,
+        [mediaQueries.xl]: {
+          px: 5
+        }
+      }}
+    >
+      <div
+        sx={{
+          display: 'flex',
+          alignItems: 'center'
+        }}
+      >
+        <Link to='/' sx={{ ...linkItemStyle }}>
+          {siteTitle}
+        </Link>
+      </div>
+      <nav>
+        <ul
+          sx={{
+            listStyle: 'none',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            padding: 0
+          }}
+        >
           <li>
-            <Link to='/about/'>About</Link>
+            <Link to='/about/' sx={linkItemStyle} activeClassName='active'>
+              About
+            </Link>
           </li>
           <li>
-            <Link to='/projects/'>Projects</Link>
+            <Link to='/projects/' sx={linkItemStyle} activeClassName='active'>
+              Projects
+            </Link>
           </li>
           <li>
-            <Link to='/blog/'>Blog</Link>
+            <Link to='/blog/' sx={linkItemStyle} activeClassName='active'>
+              Blog
+            </Link>
           </li>
           <li>
-            <Link to='/contact/'>Contact</Link>
+            <Link to='/contact/' sx={linkItemStyle} activeClassName='active'>
+              Contact
+            </Link>
           </li>
         </ul>
       </nav>

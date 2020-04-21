@@ -3,6 +3,7 @@ import Header from './header'
 
 import '../styles/layout.css'
 import styles from './layout.module.css'
+import Helmet from 'react-helmet'
 
 const Layout = ({ children, companyInfo, onHideNav, onShowNav, showNav, siteTitle }) => (
   <>
@@ -12,6 +13,9 @@ const Layout = ({ children, companyInfo, onHideNav, onShowNav, showNav, siteTitl
           onShowNav={onShowNav}
           showNav={showNav}
         />
+        <Helmet>
+          <link rel="stylesheet" href="https://use.typekit.net/woj5zqc.css" />
+        </Helmet>
         <div className={styles.content}>{children}</div>
         <footer className={styles.footer}>
           <div className={styles.footerWrapper}>

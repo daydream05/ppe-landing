@@ -9,6 +9,7 @@ import Layout from '../containers/layout'
 
 import { responsiveTitle1 } from '../components/typography.module.css'
 import PageSEO from '../components/page-seo'
+import DefaultHero from '../components/hero/default-hero'
 
 export const query = graphql`
   query BlogPageQuery {
@@ -30,6 +31,7 @@ export const query = graphql`
     page: sanityPage(slug: { current: { eq: "blog" } }) {
       title
       path
+      _rawHero
       seo {
         metaTitle
         metaDescription
@@ -101,8 +103,8 @@ const BlogPage = props => {
           description={seo?.metaDescription}
         />
       )}
+      {page?._rawHero && <DefaultHero hero={page._rawHero} />}
       <Container>
-        <h1 className={responsiveTitle1}>Blog</h1>
         {postNodes && postNodes.length > 0 && <BlogPostPreviewGrid nodes={postNodes} />}
       </Container>
     </Layout>

@@ -10,6 +10,7 @@ import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
 
 import { responsiveTitle1 } from '../components/typography.module.css'
 import PageSEO from '../components/page-seo'
+import DefaultHero from '../components/hero/default-hero'
 
 export const query = graphql`
   query AboutPageQuery {
@@ -17,6 +18,7 @@ export const query = graphql`
       id
       title
       _rawBody
+      _rawHero
     }
     people: allSanityPerson {
       edges {
@@ -62,8 +64,8 @@ const AboutPage = props => {
   return (
     <Layout>
       {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
+      {page?._rawHero && <DefaultHero hero={page._rawHero} />}
       <Container>
-        <h1 className={responsiveTitle1}>{page.title}</h1>
         <BlockContent blocks={page._rawBody || []} />
         {personNodes && personNodes.length > 0 && <PeopleGrid items={personNodes} title="People" />}
       </Container>
