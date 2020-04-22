@@ -3,6 +3,9 @@ import { CenterAlignRender } from '../src/renderers/decorators/center-align-rend
 import { LeftAlignRender } from '../src/renderers/decorators/left-align-render'
 import { RightAlignRender } from '../src/renderers/decorators/right-align-render'
 import { MdFormatAlignLeft, MdFormatAlignRight, MdFormatAlignCenter } from 'react-icons/md'
+import { SmallH2 } from '../src/renderers/styles/small-h2'
+import { LargeH2 } from '../src/renderers/styles/large-h2'
+import { Large } from '../src/renderers/styles/large'
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -33,7 +36,11 @@ export default {
         { title: 'H3', value: 'h3' },
         { title: 'H4', value: 'h4' },
         { title: 'Quote', value: 'blockquote' },
-        { title: 'Large', value: 'large' },
+        { title: 'Large', value: 'large', blockEditor: { render: Large } },
+        { title: 'Small - H2', value: 'small.h2', blockEditor: { render: SmallH2 } },
+        { title: 'Small - H3', value: 'small.h3' },
+        { title: 'Large - H2', value: 'large.h2', blockEditor: { render: LargeH2 } },
+        { title: 'Large - H3', value: 'large.h3' }
       ],
       lists: [{ title: 'Bullet', value: 'bullet' }],
       // Marks let you mark up inline text in the block editor.

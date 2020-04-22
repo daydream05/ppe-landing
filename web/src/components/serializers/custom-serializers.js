@@ -6,6 +6,7 @@ import { jsx, Text, Styled } from 'theme-ui'
 import { TextColumn } from '../block-content/text-column'
 import ButtonLink from '../button-link'
 import { getPagePath } from '../../lib/helpers'
+import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 
 export const customSerializers = {
   marks: {
@@ -22,12 +23,71 @@ export const customSerializers = {
   },
   types: {
     block(props) {
+      const { node } = props
+      const [size, heading] = node?.style?.split('.')
+
       switch (props.node.style) {
         case 'h2': {
           return <Styled.h2 sx={{ color: 'inherit' }}>{props.children}</Styled.h2>
         }
         case 'h3': {
           return <Styled.h3 sx={{ color: 'inherit' }}>{props.children}</Styled.h3>
+        }
+        case 'small.h2': {
+          return (
+            <Text
+              as="h2"
+              variant="heading.small"
+              sx={{
+                color: `inherit`,
+                m: 0
+              }}
+            >
+              {props.children}
+            </Text>
+          )
+        }
+        case 'large.h2': {
+          return (
+            <Text
+              as="h2"
+              variant="heading.large"
+              sx={{
+                color: `inherit`,
+                m: 0
+              }}
+            >
+              {props.children}
+            </Text>
+          )
+        }
+        case 'small.h3': {
+          return (
+            <Text
+              as="h3"
+              variant="heading.small"
+              sx={{
+                color: `inherit`,
+                m: 0
+              }}
+            >
+              {props.children}
+            </Text>
+          )
+        }
+        case 'large.h3': {
+          return (
+            <Text
+              as="h3"
+              variant="heading.large"
+              sx={{
+                color: `inherit`,
+                m: 0
+              }}
+            >
+              {props.children}
+            </Text>
+          )
         }
         case 'large': {
           return (
@@ -37,7 +97,16 @@ export const customSerializers = {
           )
         }
         default:
-          return <Styled.p sx={{ color: 'inherit', mt: 0 }}>{props.children}</Styled.p>
+          return (
+            <Styled.p
+              sx={{
+                color: 'inherit',
+                mt: 0
+              }}
+            >
+              {props.children}
+            </Styled.p>
+          )
       }
     },
     figure(props) {
@@ -54,7 +123,18 @@ export const customSerializers = {
 
       const pagePath = getPagePath(node?.internalLink?._type, node?.internalLink?.slug)
       return (
-        <ButtonLink variant={node?.color} shape={node?.variant} to={pagePath}>
+        <ButtonLink
+          variant={node?.color}
+          shape={node?.variant}
+          to={pagePath}
+          sx={{
+            mt: 4,
+            mb: 3,
+            [mediaQueries.lg]: {
+              mr: 2,
+            }
+          }}
+        >
           {node?.label}
         </ButtonLink>
       )

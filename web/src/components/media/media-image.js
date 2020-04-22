@@ -5,7 +5,7 @@ import { jsx } from 'theme-ui'
 import { api as sanityConfig } from '../../../../studio/sanity.json'
 import { getFluidGatsbyImage } from 'gatsby-source-sanity/lib-es5'
 
-export const MediaImage = ({ media }) => {
+export const MediaImage = ({ media, overlay }) => {
   const { file } = media
   if (!file) {
     return null
@@ -30,7 +30,16 @@ export const MediaImage = ({ media }) => {
           top: 0,
           left: 0,
           width: `100%`,
-          height: `100%`
+          height: `100%`,
+          '&::after': {
+            content: `""`,
+            position: `absolute`,
+            top: 0,
+            left: 0,
+            width: `100%`,
+            height: `100%`,
+            variant: `overlay.${overlay}`,
+          },
         }}
       />
     </div>

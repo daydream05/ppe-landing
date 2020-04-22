@@ -43,6 +43,12 @@ const ButtonLink = ({ children, variant, shape, ...rest }) => {
         border: 0,
         borderRadius: 4,
         variant: `buttons.${variant}`,
+        '~ button, ~ a': {
+          mt: `0 !important`,
+        },
+        '~ p, ~ div': {
+          mt: 5,
+        },
         [mediaQueries.lg]: {
           display: 'inline-block'
         }

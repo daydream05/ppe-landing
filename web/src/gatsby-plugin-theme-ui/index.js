@@ -1,6 +1,7 @@
 import { future } from '@theme-ui/presets'
 import merge from 'deepmerge'
 import { breakpoints } from './breakpoints'
+import { mediaQueries } from './media-queries'
 
 export const colors = {
   white: '#fff',
@@ -54,14 +55,20 @@ const baseTheme = merge(future, {
       },
       text: {
         maxWidth: breakpoints.lg,
-        margin: `0 auto`,
+        margin: '0 auto'
       }
+    }
+  },
+  overlay: {
+    dark: {
+      background: 'black',
+      opacity: '0.75'
     }
   },
   text: {
     heading: {
       normal: {
-        fontSize: 'inherit'
+        fontSize: [5, 5, 5, 5, 6]
       },
       large: {
         fontWeight: '600',
@@ -76,23 +83,26 @@ const baseTheme = merge(future, {
     },
     body: {
       large: {
-        fontSize: 5,
-        fontWeight: `600`,
-      },
+        fontSize: 4,
+        fontWeight: '600',
+        [mediaQueries.lg]: {
+          fontSize: 5
+        }
+      }
     }
   },
   section: {
     dark: {
-      bg: 'black',
-      color: 'white'
+      bg: 'text',
+      color: 'background'
     },
     light: {
-      bg: 'white',
-      color: 'black'
+      bg: 'background',
+      color: 'text'
     },
     pale: {
       bg: 'accent',
-      color: 'black',
+      color: 'black'
     }
   },
   styles: {

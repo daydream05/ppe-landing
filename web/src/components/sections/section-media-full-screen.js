@@ -8,52 +8,64 @@ import { MediaSelector } from '../media/media-selector'
 import { BasicSectionBody } from './basic-section-body'
 import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 
-export const SectionContentHalfWithMedia = ({ section, reverseDirection }) => {
+export const SectionMediaFullScreen = ({ section }) => {
   const { theme, heading, body, media } = section
 
   if (!section) {
     return 'No section provided!'
   }
 
+  let color
+
+  if (theme === `dark`) {
+    color = `black`
+  } else if (theme === `light`) {
+    color = `white`
+  } else {
+    color = `white`
+  }
+
   return (
-    <Section variant={theme}>
+    <Section>
       <Container
         variant="container.large"
         sx={{
-          [mediaQueries.lg]: {
-            display: 'flex',
-            flexDirection: reverseDirection ? 'row-reverse' : 'row'
+          position: `relative`,
+          minHeight: `100vh`,
+          [mediaQueries.xxxl]: {
+            height: `auto`
           }
         }}
       >
         <div
           sx={{
-            [mediaQueries.lg]: {
-              width: '55%',
-              display: `flex`,
-              alignItems: `center`
-            }
+            position: `relative`,
+            zIndex: 1,
+            minHeight: `100vh`,
+            display: `flex`,
+            alignItems: `center`
           }}
         >
           <Container
             sx={{
               px: 4,
               py: 5,
+              color: `${color} !important`,
               [mediaQueries.lg]: {
-                maxWidth: breakpoints.sm,
+                maxWidth: breakpoints.lg,
                 py: 6
-              }
+              },
             }}
           >
             {heading && (
               <Text
                 variant={`heading.${heading?.size}`}
                 sx={{
-                  color: `inherit`,
-                  lineHeight: 1,
+                  color: color,
                   m: 0,
                   mb: 4,
                   textAlign: heading?.textAlignment,
+                  lineHeight: 1,
                 }}
                 as={heading?.headingType || 'h2'}
               >
@@ -65,9 +77,11 @@ export const SectionContentHalfWithMedia = ({ section, reverseDirection }) => {
         </div>
         <div
           sx={{
-            [mediaQueries.lg]: {
-              width: '45%'
-            }
+            position: `absolute`,
+            top: 0,
+            left: 0,
+            height: `100%`,
+            width: `100%`
           }}
         >
           {media && <MediaSelector media={media} />}

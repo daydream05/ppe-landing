@@ -1,6 +1,7 @@
 import React from 'react'
 import { BasicSection } from './basic-section'
 import { SectionContentHalfWithMedia } from './section-content-half-with-media'
+import { SectionMediaFullScreen } from './section-media-full-screen'
 
 export const SectionSelector = ({ section }) => {
   switch (section?.layout) {
@@ -11,7 +12,7 @@ export const SectionSelector = ({ section }) => {
       return <SectionContentHalfWithMedia section={section} reverseDirection={true} />
     }
     case 'contentWithFullScreenMedia': {
-      return <section />
+      return <SectionMediaFullScreen section={section} />
     }
     default:
       return <BasicSection section={section} />
