@@ -8,6 +8,7 @@ import { TextColumn } from '../block-content/text-column'
 import ButtonLink from '../button-link'
 import { getPagePath } from '../../lib/helpers'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
+import { TextBlockContainer } from '../text-block-container'
 
 export const customSerializers = {
   marks: {
@@ -22,58 +23,76 @@ export const customSerializers = {
       <span sx={{ textAlign: 'center', display: 'block' }}>{props.children}</span>
     )
   },
+  list: props => (
+    <TextBlockContainer>
+      <ul>{props.children}</ul>
+    </TextBlockContainer>
+  ),
   types: {
     block(props) {
       const { node } = props
-      const [size, heading] = node?.style?.split('.')
 
       switch (props.node.style) {
         case 'h2': {
-          return <Styled.h2 sx={{ color: 'inherit' }}>{props.children}</Styled.h2>
+          return (
+            <TextBlockContainer>
+              <Styled.h2 sx={{ color: 'inherit' }}>{props.children}</Styled.h2>
+            </TextBlockContainer>
+          )
         }
         case 'h3': {
-          return <Styled.h3 sx={{ color: 'inherit' }}>{props.children}</Styled.h3>
+          return (
+            <TextBlockContainer>
+              <Styled.h3 sx={{ color: 'inherit' }}>{props.children}</Styled.h3>
+            </TextBlockContainer>
+          )
         }
         case 'small.h2': {
           return (
-            <Text
-              as="h2"
-              variant="heading.small"
-              sx={{
-                color: `inherit`,
-                m: 0
-              }}
-            >
-              {props.children}
-            </Text>
+            <TextBlockContainer>
+              <Text
+                as="h2"
+                variant="heading.small"
+                sx={{
+                  color: `inherit`,
+                  m: 0
+                }}
+              >
+                {props.children}
+              </Text>
+            </TextBlockContainer>
           )
         }
         case 'large.h2': {
           return (
-            <Text
-              as="h2"
-              variant="heading.large"
-              sx={{
-                color: `inherit`,
-                m: 0
-              }}
-            >
-              {props.children}
-            </Text>
+            <TextBlockContainer>
+              <Text
+                as="h2"
+                variant="heading.large"
+                sx={{
+                  color: `inherit`,
+                  m: 0
+                }}
+              >
+                {props.children}
+              </Text>
+            </TextBlockContainer>
           )
         }
         case 'small.h3': {
           return (
-            <Text
-              as="h3"
-              variant="heading.small"
-              sx={{
-                color: `inherit`,
-                m: 0
-              }}
-            >
-              {props.children}
-            </Text>
+            <TextBlockContainer>
+              <Text
+                as="h3"
+                variant="heading.small"
+                sx={{
+                  color: `inherit`,
+                  m: 0
+                }}
+              >
+                {props.children}
+              </Text>
+            </TextBlockContainer>
           )
         }
         case 'large.h3': {
@@ -99,48 +118,52 @@ export const customSerializers = {
         }
         case 'blockquote': {
           return (
-            <div
-              sx={{
-                position: `relative`
-              }}
-            >
-              <IoMdQuote
+            <TextBlockContainer>
+              <blockquote
                 sx={{
-                  variant: `body.large`,
-                  opacity: 0.15,
-                  fontSize: 7,
-                  position: `absolute`,
-                  top: -3,
-                  left: -3,
-                  [mediaQueries.lg]: {
-                    fontSize: `128px`,
-                    top: -4,
-                    left: -5
-                  }
-                }}
-              />
-              <Text
-                variant="body.large"
-                as="p"
-                sx={{
-                  display: `inline`
+                  position: `relative`
                 }}
               >
-                {props.children}
-              </Text>
-            </div>
+                <IoMdQuote
+                  sx={{
+                    variant: `body.large`,
+                    opacity: 0.15,
+                    fontSize: 7,
+                    position: `absolute`,
+                    top: -3,
+                    left: -3,
+                    [mediaQueries.lg]: {
+                      fontSize: `128px`,
+                      top: -4,
+                      left: -5
+                    }
+                  }}
+                />
+                <Text
+                  variant="body.large"
+                  as="p"
+                  sx={{
+                    display: `inline`
+                  }}
+                >
+                  {props.children}
+                </Text>
+              </blockquote>
+            </TextBlockContainer>
           )
         }
         default:
           return (
-            <Styled.p
-              sx={{
-                color: 'inherit',
-                mt: 0
-              }}
-            >
-              {props.children}
-            </Styled.p>
+            <TextBlockContainer>
+              <Styled.p
+                sx={{
+                  color: 'inherit',
+                  mt: 0
+                }}
+              >
+                {props.children}
+              </Styled.p>
+            </TextBlockContainer>
           )
       }
     },

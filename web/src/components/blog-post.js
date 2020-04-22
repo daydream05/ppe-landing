@@ -10,6 +10,7 @@ import Container from './container'
 import RoleList from './role-list'
 
 import { constants } from '../gatsby-plugin-theme-ui'
+import { TextBlockContainer } from './text-block-container'
 
 function BlogPost (props) {
   const { _rawBody, authors, categories, title, mainImage, publishedAt } = props
@@ -23,7 +24,7 @@ function BlogPost (props) {
             color: 'primary',
             maxWidth: '1200px',
             m: '0 auto',
-            pt: constants.headerHeight,
+            pt: constants.headerHeight
           }}
         >
           <div />
@@ -32,9 +33,11 @@ function BlogPost (props) {
       )}
       <Container>
         <div>
-          <div>
-            <Styled.h1 sx={{ fontWeight: `bold` }}>{title}</Styled.h1>
-            {_rawBody && <BlockContent blocks={_rawBody} />}
+          <div sx={{ px: [3, 3, 3, 0] }}>
+            <TextBlockContainer>
+              <Styled.h1 sx={{ fontWeight: `bold`}}>{title}</Styled.h1>
+            </TextBlockContainer>
+            {_rawBody && <BlockContent blocks={_rawBody || []} />}
           </div>
           <aside>
             {publishedAt && (

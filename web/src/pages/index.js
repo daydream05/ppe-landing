@@ -131,22 +131,6 @@ const IndexPage = props => {
       {page?._rawSections?.map(section => {
         return <SectionSelector key={section._key} section={section} />
       })}
-      <Container>
-        {projectNodes && (
-          <ProjectPreviewGrid
-            title="Latest projects"
-            nodes={projectNodes}
-            browseMoreHref="/projects/"
-          />
-        )}
-        {postNodes && (
-          <BlogPostPreviewGrid
-            title="Latest blog posts"
-            nodes={postNodes}
-            browseMoreHref="/blog/"
-          />
-        )}
-      </Container>
     </Layout>
   )
 }

@@ -11,6 +11,7 @@ import Container from './container'
 import RoleList from './role-list'
 
 import { constants } from '../gatsby-plugin-theme-ui'
+import { TextBlockContainer } from './text-block-container'
 
 function Project (props) {
   const { _rawBody, title, categories, mainImage, members, publishedAt, relatedProjects } = props
@@ -20,11 +21,11 @@ function Project (props) {
         <div
           sx={{
             display: 'grid',
-            gridTemplateColumns: `256px 1fr`,
+            gridTemplateColumns: '256px 1fr',
             color: 'primary',
-            maxWidth: `1200px`,
-            m: `0 auto`,
-            pt: constants.headerHeight,
+            maxWidth: '1200px',
+            m: '0 auto',
+            pt: constants.headerHeight
           }}
         >
           <div />
@@ -33,13 +34,15 @@ function Project (props) {
       )}
       <Container>
         <div>
-          <div>
-            <Styled.h1>{title}</Styled.h1>
+          <div sx={{ px: [3, 3, 3, 0] }}>
+            <TextBlockContainer>
+              <Styled.h1 sx={{ fontWeight: 'bold' }}>{title}</Styled.h1>
+            </TextBlockContainer>
             {_rawBody && <BlockContent blocks={_rawBody || []} />}
           </div>
           <aside>
             {publishedAt && (
-              <div className={styles.publishedAt}>
+              <div>
                 {differenceInDays(new Date(publishedAt), new Date()) > 3
                   ? distanceInWords(new Date(publishedAt), new Date())
                   : format(new Date(publishedAt), 'MMMM Do YYYY')}
