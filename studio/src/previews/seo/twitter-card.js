@@ -32,7 +32,7 @@ class TwitterCard extends React.PureComponent {
 
   render() {
     const { document, width, options } = this.props
-    console.log(document)
+
     const { title, excerpt, mainImage, seo } = document
     const url = assemblePageUrl({ document, options })
     const websiteUrlWithoutProtocol = url.split('://')[1]

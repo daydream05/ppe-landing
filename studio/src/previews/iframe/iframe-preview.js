@@ -25,8 +25,6 @@ class IframePreview extends React.PureComponent {
 
     const url = assemblePageUrl({ document: displayed, options })
 
-    console.log(document)
-
     if (!url) {
       return (
         <div className={styles.componentWrapper}>

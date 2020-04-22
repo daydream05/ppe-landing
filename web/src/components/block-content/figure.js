@@ -8,7 +8,6 @@ import { jsx } from 'theme-ui'
 import { api as sanityConfig } from '../../../../studio/sanity.json'
 
 function Figure (props) {
-  console.log(props)
 
   const imageAssetId = props.asset && props.asset._ref
   const fluidProps = getFluidGatsbyImage(imageAssetId, {}, sanityConfig)

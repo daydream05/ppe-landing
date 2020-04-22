@@ -47,7 +47,6 @@ export const customSerializers = {
       return <Slideshow {...props.node} />
     },
     textColumn(props) {
-      console.log(props.node)
       return <TextColumn {...props.node} />
     },
     button(props) {

@@ -11,10 +11,8 @@ export const MediaImage = ({ media }) => {
     return null
   }
 
-  console.log(file)
-
   const imageAssetId = file?.asset?._ref
-  console.log(imageAssetId)
+
   const fluidProps = getFluidGatsbyImage(imageAssetId, {}, sanityConfig)
   return fluidProps ? (
     <div
