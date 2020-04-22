@@ -1,4 +1,5 @@
 import React from 'react'
+import { IoMdQuote } from 'react-icons/io'
 import Figure from '../block-content/figure'
 import Slideshow from '../block-content/slideshow'
 /** @jsx jsx */
@@ -96,6 +97,40 @@ export const customSerializers = {
             </Text>
           )
         }
+        case 'blockquote': {
+          return (
+            <div
+              sx={{
+                position: `relative`
+              }}
+            >
+              <IoMdQuote
+                sx={{
+                  variant: `body.large`,
+                  opacity: 0.15,
+                  fontSize: 7,
+                  position: `absolute`,
+                  top: -3,
+                  left: -3,
+                  [mediaQueries.lg]: {
+                    fontSize: `128px`,
+                    top: -4,
+                    left: -5
+                  }
+                }}
+              />
+              <Text
+                variant="body.large"
+                as="p"
+                sx={{
+                  display: `inline`
+                }}
+              >
+                {props.children}
+              </Text>
+            </div>
+          )
+        }
         default:
           return (
             <Styled.p
@@ -131,7 +166,7 @@ export const customSerializers = {
             mt: 4,
             mb: 3,
             [mediaQueries.lg]: {
-              mr: 2,
+              mr: 2
             }
           }}
         >

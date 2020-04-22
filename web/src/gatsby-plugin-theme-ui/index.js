@@ -8,6 +8,7 @@ export const colors = {
   black: '#0A0A0A',
   accent: '#DBEDF3',
   danger: '#C53030',
+  mute: '#F8F8F8',
   modes: {
     dark: {
       background: '#0A0A0A'

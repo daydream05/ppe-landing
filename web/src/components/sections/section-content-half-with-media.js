@@ -22,7 +22,7 @@ export const SectionContentHalfWithMedia = ({ section, reverseDirection }) => {
         sx={{
           [mediaQueries.lg]: {
             display: 'flex',
-            flexDirection: reverseDirection ? 'row-reverse' : 'row'
+            flexDirection: reverseDirection ? 'row-reverse' : 'row',
           }
         }}
       >
