@@ -8,7 +8,6 @@ import SEO from '../components/seo'
 import Layout from '../containers/layout'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
 
-import { responsiveTitle1 } from '../components/typography.module.css'
 import PageSEO from '../components/page-seo'
 import DefaultHero from '../components/hero/default-hero'
 

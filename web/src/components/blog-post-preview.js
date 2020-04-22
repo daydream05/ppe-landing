@@ -2,13 +2,9 @@ import { Link } from 'gatsby'
 import React from 'react'
 import Img from 'gatsby-image'
 /** @jsx jsx */
-import { jsx, css } from 'theme-ui'
+import { jsx, css, Styled } from 'theme-ui'
 
-import { cn, getBlogUrl } from '../lib/helpers'
 import BlockText from './block-text'
-
-import styles from './blog-post-preview.module.css'
-import { responsiveTitle3 } from './typography.module.css'
 
 function BlogPostPreview (props) {
   return (
@@ -38,9 +34,9 @@ function BlogPostPreview (props) {
           }}
         />
       )}
-      <h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
+      <Styled.h3>{props.title}</Styled.h3>
       {props._rawExcerpt && (
-        <div className={styles.excerpt}>
+        <div>
           <BlockText blocks={props._rawExcerpt} />
         </div>
       )}

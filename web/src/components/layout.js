@@ -1,8 +1,5 @@
 import React from 'react'
 import Header from './header'
-
-import '../styles/layout.css'
-import styles from './layout.module.css'
 import Helmet from 'react-helmet'
 
 const Layout = ({ children, companyInfo, onHideNav, onShowNav, showNav, siteTitle }) => (
@@ -16,10 +13,10 @@ const Layout = ({ children, companyInfo, onHideNav, onShowNav, showNav, siteTitl
         <Helmet>
           <link rel="stylesheet" href="https://use.typekit.net/woj5zqc.css" />
         </Helmet>
-        <div className={styles.content}>{children}</div>
-        <footer className={styles.footer}>
-          <div className={styles.footerWrapper}>
-            <div className={styles.companyAddress}>
+        <div>{children}</div>
+        <footer>
+          <div>
+            <div>
               {companyInfo && (
                 <div>
                   {companyInfo.name}
@@ -38,7 +35,7 @@ const Layout = ({ children, companyInfo, onHideNav, onShowNav, showNav, siteTitl
               )}
             </div>
 
-            <div className={styles.siteInfo}>
+            <div>
               © {new Date().getFullYear()}, Built with <a href='https://www.sanity.io'>Sanity</a>{' '}
               &amp; <a href='https://www.gatsbyjs.org'>Gatsby</a>
             </div>

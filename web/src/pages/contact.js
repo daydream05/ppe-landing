@@ -5,7 +5,6 @@ import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import Layout from '../containers/layout'
 
-import { responsiveTitle1 } from '../components/typography.module.css'
 import PageSEO from '../components/page-seo'
 import DefaultHero from '../components/hero/default-hero'
 

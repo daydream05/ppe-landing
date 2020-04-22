@@ -4,8 +4,7 @@ import { Styled } from 'theme-ui'
 
 import Figure from './figure'
 import Slideshow from './slideshow'
-
-import typography from '../typography.module.css'
+import { customSerializers } from '../serializers/custom-serializers'
 
 const serializers = {
   types: {
@@ -24,7 +23,7 @@ const serializers = {
           return <Styled.h4>{props.children}</Styled.h4>
 
         case 'blockquote':
-          return <blockquote className={typography.blockQuote}>{props.children}</blockquote>
+          return <blockquote>{props.children}</blockquote>
 
         default:
           return <Styled.p>{props.children}</Styled.p>
@@ -39,6 +38,6 @@ const serializers = {
   }
 }
 
-const BlockContent = ({ blocks }) => <BaseBlockContent blocks={blocks} serializers={serializers} />
+const BlockContent = ({ blocks }) => <BaseBlockContent blocks={blocks} serializers={customSerializers} />
 
 export default BlockContent

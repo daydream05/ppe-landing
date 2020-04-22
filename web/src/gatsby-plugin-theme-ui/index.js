@@ -21,6 +21,9 @@ export const constants = {
 }
 
 const baseTheme = merge(future, {
+  lineHeights: {
+    body: 1.625
+  },
   fonts: {
     body:
       'sofia-pro, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
@@ -108,12 +111,59 @@ const baseTheme = merge(future, {
   },
   styles: {
     root: {
-      transition: 'color 0.2s ease-out, background 0.2s ease-out'
+      transition: 'color 0.2s ease-out, background 0.2s ease-out',
+      li: {
+        fontSize: 3,
+      }
+    },
+    h1: {
+      fontSize: 6,
+      [mediaQueries.lg]: {
+        fontSize: 7
+      }
+    },
+    h2: {
+      fontSize: 5,
+      [mediaQueries.lg]: {
+        fontSize: 6
+      }
+    },
+    h3: {
+      fontSize: 4,
+      [mediaQueries.lg]: {
+        fontSize: 5
+      }
+    },
+    h4: {
+      fontSize: 3,
+      [mediaQueries.lg]: {
+        fontSize: 4
+      }
+    },
+    h5: {
+      fontSize: 3,
+      [mediaQueries.lg]: {
+        fontSize: 4
+      }
+    },
+    p: {
+      fontSize: 3,
+      [mediaQueries.lg]: {
+        fontSize: 3
+      }
+    },
+    li: {
+      fontSize: 3,
+      [mediaQueries.lg]: {
+        fontSize: 4
+      }
     }
   },
   colors,
   breakpoints,
   constants
 })
+
+console.log(baseTheme)
 
 export default baseTheme
