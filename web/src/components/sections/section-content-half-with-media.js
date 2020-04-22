@@ -1,0 +1,77 @@
+import React from 'react'
+import { Section } from './Section'
+/** @jsx jsx */
+import { Container, jsx, Styled, Text } from 'theme-ui'
+import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
+import GatsbyImage from 'gatsby-image'
+import { MediaSelector } from '../media/media-selector'
+import { BasicSectionBody } from './basic-section-body'
+import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
+
+export const SectionContentHalfWithMedia = ({ section, reverseDirection }) => {
+  const { theme, heading, body, media } = section
+
+  if (!section) {
+    return 'No section provided!'
+  }
+
+  return (
+    <Section variant={theme}>
+      <Container
+        variant="container.large"
+        sx={{
+          [mediaQueries.lg]: {
+            display: 'flex',
+            flexDirection: reverseDirection ? 'row-reverse' : 'row'
+          }
+        }}
+      >
+        <div
+          sx={{
+            [mediaQueries.lg]: {
+              width: '50%',
+              display: `flex`,
+              alignItems: `center`
+            }
+          }}
+        >
+          <Container
+            sx={{
+              px: 4,
+              py: 5,
+              [mediaQueries.lg]: {
+                maxWidth: breakpoints.sm,
+                py: 6,
+              }
+            }}
+          >
+            {heading && (
+              <Text
+                variant={`heading.${heading?.size}`}
+                sx={{
+                  color: `inherit`,
+                  m: 0,
+                  mb: 4,
+                  textAlign: heading?.textAlignment
+                }}
+                as={heading?.headingType || 'h2'}
+              >
+                {heading?.text}
+              </Text>
+            )}
+            {body && <BasicSectionBody blocks={body} />}
+          </Container>
+        </div>
+        <div
+          sx={{
+            [mediaQueries.lg]: {
+              width: '50%'
+            }
+          }}
+        >
+          {media && <MediaSelector media={media} />}
+        </div>
+      </Container>
+    </Section>
+  )
+}

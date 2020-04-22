@@ -26,6 +26,9 @@ import hero from './hero'
 import pageSettings from './objects/pageSettings'
 import button from './objects/button'
 import textColumn from './objects/textColumn'
+import media from './objects/media'
+import video from './documents/video'
+import image from './documents/image'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -43,7 +46,9 @@ export default createSchema({
     companyInfo,
     figure,
     heading,
+    image,
     hero,
+    media,
     mainImage,
     page,
     pageSettings,
@@ -57,7 +62,7 @@ export default createSchema({
     siteSettings,
     slideshow,
     textColumn,
-
+    video
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
   ])

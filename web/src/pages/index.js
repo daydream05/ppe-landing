@@ -8,7 +8,7 @@ import ProjectPreviewGrid from '../components/project-preview-grid'
 import Layout from '../containers/layout'
 import DefaultHero from '../components/hero/default-hero'
 import PageSEO from '../components/page-seo'
-import { BasicSection } from '../components/sections/basic-section'
+import { SectionSelector } from '../components/sections/section-selector'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -129,7 +129,7 @@ const IndexPage = props => {
       {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
       {page && page._rawHero && <DefaultHero hero={page._rawHero} />}
       {page?._rawSections?.map(section => {
-        return <BasicSection key={section._key} section={section} />
+        return <SectionSelector key={section._key} section={section} />
       })}
       <Container>
         {projectNodes && (

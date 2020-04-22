@@ -28,7 +28,7 @@ export const BasicSection = ({ section }) => {
         }}
       >
         <TextBlockContainer>
-          {section?.heading && (
+          {section?.heading?.text && (
             <Styled.h2
               sx={{
                 color: `inherit`,
