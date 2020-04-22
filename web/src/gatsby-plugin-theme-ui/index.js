@@ -8,10 +8,11 @@ export const colors = {
   black: '#0A0A0A',
   accent: '#DBEDF3',
   danger: '#C53030',
-  mute: '#F8F8F8',
+  mute: 'hsla(0, 0%, 13%, 0.2)',
   modes: {
     dark: {
-      background: '#0A0A0A'
+      background: '#0A0A0A',
+      mute: 'hsla(0, 0%, 87%, 0.2)'
     }
   }
 }
@@ -58,7 +59,7 @@ const baseTheme = merge(future, {
         maxWidth: breakpoints.xxxl
       },
       text: {
-        maxWidth: breakpoints.lg,
+        maxWidth: `900px`,
         margin: '0 auto'
       }
     }
@@ -82,7 +83,8 @@ const baseTheme = merge(future, {
         fontWeight: 'normal',
         fontSize: 1,
         textTransform: 'uppercase',
-        letterSpacing: '4px'
+        letterSpacing: '4px',
+        opacity: 0.75
       }
     },
     body: {
@@ -113,7 +115,7 @@ const baseTheme = merge(future, {
     root: {
       transition: 'color 0.2s ease-out, background 0.2s ease-out',
       li: {
-        fontSize: 3,
+        fontSize: 3
       }
     },
     h1: {
