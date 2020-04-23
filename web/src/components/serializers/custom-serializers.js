@@ -8,8 +8,6 @@ import { TextColumn } from '../block-content/text-column'
 import ButtonLink from '../button-link'
 import { getPagePath } from '../../lib/helpers'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
-import theme from '../../gatsby-plugin-theme-ui'
-import { TextBlockContainer } from '../text-block-container'
 
 export const customSerializers = {
   marks: {
