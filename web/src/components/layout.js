@@ -8,25 +8,23 @@ import { constants } from '../gatsby-plugin-theme-ui'
 import Header from './header'
 
 const Layout = ({ children, pageSettings }) => {
-
   return (
     <div
       sx={{
-        position: 'relative',
-        minHeight: '100vh'
+        position: 'relative'
       }}
     >
       <Helmet>
-        <link rel='stylesheet' href='https://use.typekit.net/woj5zqc.css' />
+        <link rel="stylesheet" href="https://use.typekit.net/woj5zqc.css" />
       </Helmet>
       <Header linkTheme={pageSettings?.headerLinkColor} />
-      <div
+      <main
         sx={{
-          pb: constants.footerHeight
+          minHeight: '100vh'
         }}
       >
         {children}
-      </div>
+      </main>
       <Footer />
     </div>
   )

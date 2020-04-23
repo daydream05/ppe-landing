@@ -1,6 +1,7 @@
 import React from 'react'
 /** @jsx jsx */
 import { Container, jsx, Styled, Text } from 'theme-ui'
+import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 
 export const Footer = props => {
   return (
@@ -10,10 +11,8 @@ export const Footer = props => {
         variant: 'footer.iceberg',
         py: 6,
         px: 6,
-        position: 'absolute',
         bottom: 0,
         width: '100%',
-        height: '450px'
       }}
     >
       <Container
@@ -22,7 +21,7 @@ export const Footer = props => {
       >
         <p
           sx={{
-            fontSize: 7,
+            fontSize: [5, 5, 5, 5, 5, 7],
             fontWeight: 'bold',
             m: 0,
             lineHeight: 1,
@@ -34,7 +33,7 @@ export const Footer = props => {
         </p>
         <p
           sx={{
-            fontSize: 7,
+            fontSize: [5, 5, 5, 5, 5, 7],
             fontWeight: 'bold',
             m: 0,
             lineHeight: 1,
