@@ -11,6 +11,7 @@ export const MediaSelector = ({ media, isFullScreen }) => {
           isHeightEnabled={media?.isMediaHeightEnabled}
           isFullScreen={isFullScreen}
           position={media?.position}
+          addYPadding={media?.addYPadding}
         />
       )
     }

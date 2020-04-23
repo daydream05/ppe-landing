@@ -6,7 +6,14 @@ import { api as sanityConfig } from '../../../../studio/sanity.json'
 import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity/lib-es5'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 
-export const MediaImage = ({ media, overlay, isHeightEnabled, isFullScreen, position }) => {
+export const MediaImage = ({
+  media,
+  overlay,
+  isHeightEnabled,
+  isFullScreen,
+  position,
+  addYPadding
+}) => {
   const { file } = media
   if (!file) {
     return null
@@ -34,46 +41,54 @@ export const MediaImage = ({ media, overlay, isHeightEnabled, isFullScreen, posi
     positionStyle = { marginRight: `auto` }
   } else if (position === `right`) {
     positionStyle = { marginLeft: `auto` }
-  } else { 
-    positionStyle = { margin: `0 auto` }
+  } else {
+    positionStyle = { marginLeft: `auto`, marginRight: `auto` }
   }
 
   return fluidProps ? (
     <div
       sx={{
-        position: `relative`,
-        height: `100%`,
-        width: `100%`,
-        [mediaQueries.lg]: {
-          height: isHeightEnabled ? `${height}px` : `100%`,
-          width: isHeightEnabled ? `${width}px` : `100%`,
-          ...positionStyle,
-        }
+        py: addYPadding ? 6: null
       }}
     >
-      <GatsbyImage
-        fluid={fluidProps}
-        alt={media?.title}
+      <div
         sx={{
-          ...fullScreenStyle,
-          '&::after': {
-            content: `""`,
-            position: `absolute`,
-            top: 0,
-            left: 0,
-            width: `100%`,
-            height: `100%`,
-            variant: `overlay.${overlay}`
-          },
+          position: `relative`,
+          height: `100%`,
+          width: `100%`,
+          my: 6,
+          bg: 'inherit',
           [mediaQueries.lg]: {
-            position: `absolute !important`,
-            top: 0,
-            left: 0,
-            width: `100%`,
-            height: `100%`
+            height: isHeightEnabled ? `${height}px` : `100%`,
+            width: isHeightEnabled ? `${width}px` : `100%`,
+            ...positionStyle
           }
         }}
-      />
+      >
+        <GatsbyImage
+          fluid={fluidProps}
+          alt={media?.title}
+          sx={{
+            ...fullScreenStyle,
+            '&::after': {
+              content: `""`,
+              position: `absolute`,
+              top: 0,
+              left: 0,
+              width: `100%`,
+              height: `100%`,
+              variant: `overlay.${overlay}`
+            },
+            [mediaQueries.lg]: {
+              position: `absolute !important`,
+              top: 0,
+              left: 0,
+              width: `100%`,
+              height: `100%`
+            }
+          }}
+        />
+      </div>
     </div>
   ) : null
 }

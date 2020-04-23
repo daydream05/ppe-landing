@@ -39,6 +39,12 @@ export default {
           { title: 'Center', value: 'center' }
         ]
       }
+    },
+    {
+      name: 'addYPadding',
+      title: 'Add Y padding',
+      type: 'boolean',
+      description: "Turn this on if you want to add top and bottom padding to your media."
     }
   ]
 }
