@@ -6,7 +6,7 @@ import { api as sanityConfig } from '../../../../studio/sanity.json'
 import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity/lib-es5'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 
-export const MediaImage = ({ media, overlay, isHeightEnabled, isFullScreen }) => {
+export const MediaImage = ({ media, overlay, isHeightEnabled, isFullScreen, position }) => {
   const { file } = media
   if (!file) {
     return null
@@ -28,6 +28,16 @@ export const MediaImage = ({ media, overlay, isHeightEnabled, isFullScreen }) =>
       }
     : {}
 
+  let positionStyle
+
+  if (position === `left`) {
+    positionStyle = { marginRight: `auto` }
+  } else if (position === `right`) {
+    positionStyle = { marginLeft: `auto` }
+  } else { 
+    positionStyle = { margin: `0 auto` }
+  }
+
   return fluidProps ? (
     <div
       sx={{
@@ -37,7 +47,7 @@ export const MediaImage = ({ media, overlay, isHeightEnabled, isFullScreen }) =>
         [mediaQueries.lg]: {
           height: isHeightEnabled ? `${height}px` : `100%`,
           width: isHeightEnabled ? `${width}px` : `100%`,
-          margin: `0 auto`,
+          ...positionStyle,
         }
       }}
     >

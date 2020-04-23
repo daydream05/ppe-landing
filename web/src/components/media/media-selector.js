@@ -10,6 +10,7 @@ export const MediaSelector = ({ media, isFullScreen }) => {
           overlay={media?.overlay}
           isHeightEnabled={media?.isMediaHeightEnabled}
           isFullScreen={isFullScreen}
+          position={media?.position}
         />
       )
     }
