@@ -9,8 +9,10 @@ export const colors = {
   accent: '#DBEDF3',
   danger: '#C53030',
   mute: 'hsla(0, 0%, 13%, 0.2)',
+  iceberg: '#DBEDF3',
   paragraphColor: '#0A0A0A',
   lightGray: 'hsla(0, 0%, 100%, 0.8)',
+  shadowGreen: 'hsla(172, 23%, 69%, 0.2)',
   modes: {
     dark: {
       background: '#0A0A0A',
@@ -118,6 +120,24 @@ const baseTheme = merge(future, {
     pale: {
       bg: 'accent',
       color: 'black'
+    },
+    iceberg: {
+      bg: 'iceberg',
+      color: 'black'
+    },
+    shadowGreen: {
+      bg: 'shadowGreen',
+      color: 'black'
+    }
+  },
+  footer: {
+    dark: {
+      bg: 'text',
+      color: 'background'
+    },
+    light: {
+      bg: 'background',
+      color: 'text'
     }
   },
   styles: {

@@ -20,7 +20,8 @@ export default {
       options: {
         list: [
           { title: 'Dark', value: 'dark' },
-          { title: 'Light', value: 'light' }
+          { title: 'Light', value: 'light' },
+          { title: 'Shadow Green', value: 'shadowGreen' }
         ]
       }
     },

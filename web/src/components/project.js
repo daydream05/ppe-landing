@@ -132,38 +132,6 @@ function Project (props) {
               {_rawBody && <BlockContent blocks={_rawBody || []} />}
             </TextBlockContainer>
           </div>
-          <aside>
-            {publishedAt && (
-              <div>
-                {differenceInDays(new Date(publishedAt), new Date()) > 3
-                  ? distanceInWords(new Date(publishedAt), new Date())
-                  : format(new Date(publishedAt), 'MMMM Do YYYY')}
-              </div>
-            )}
-            {members && <RoleList items={members} title='Authors' />}
-            {categories && (
-              <div>
-                <h3>Categories</h3>
-                <ul>
-                  {categories.map(category => (
-                    <li key={category._id}>{category.title}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {relatedProjects && (
-              <div>
-                <h3>Related projects</h3>
-                <ul>
-                  {relatedProjects.map(project => (
-                    <li key={`related_${project._id}`}>
-                      <Link to={`/project/${project.slug.current}`}>{project.title}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </aside>
         </div>
       </Container>
     </article>
