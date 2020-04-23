@@ -48,7 +48,9 @@ export const MediaImage = ({
   return fluidProps ? (
     <div
       sx={{
-        py: addYPadding ? 6: null
+        py: addYPadding ? 6 : null,
+        height: `100%`,
+        width: `100%`
       }}
     >
       <div
@@ -56,8 +58,6 @@ export const MediaImage = ({
           position: `relative`,
           height: `100%`,
           width: `100%`,
-          my: 6,
-          bg: 'inherit',
           [mediaQueries.lg]: {
             height: isHeightEnabled ? `${height}px` : `100%`,
             width: isHeightEnabled ? `${width}px` : `100%`,
