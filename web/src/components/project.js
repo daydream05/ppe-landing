@@ -30,29 +30,29 @@ function Project (props) {
       {props.mainImage && mainImage.asset && (
         <div
           sx={{
-            display: 'grid',
-            gridTemplateColumns: '256px 1fr',
-            color: 'primary',
-            maxWidth: '1200px',
-            m: '0 auto',
-            pt: constants.headerHeight
+            position: 'relative'
           }}
         >
-          <div />
-          <Img fluid={mainImage.asset.fluid} alt={mainImage.alt} />
+          <Img
+            fluid={mainImage.asset.fluid}
+            alt={mainImage.alt}
+            sx={{
+              width: '100%',
+              height: '50vh'
+            }}
+          />
         </div>
       )}
       <Container>
         <div>
-          <div sx={{ px: [3, 3, 3, 4, 4, 0] }}>
+          <div sx={{ px: [4, 4, 4, 4, 4, 0] }}>
             <TextBlockContainer>
               <Styled.h1 sx={{ fontWeight: 'bold', textAlign: 'center' }}>{title}</Styled.h1>
-            </TextBlockContainer>
-            <aside>
-              <TextBlockContainer>
+              <aside>
                 <table
                   sx={{
                     borderSpacing: 0,
+                    mb: 5,
                     [mediaQueries.lg]: {
                       float: 'right',
                       pb: 4,
@@ -78,7 +78,7 @@ function Project (props) {
                         </Text>
                       </td>
                       <td sx={tableDetailStyle}>
-                        <Text as='span'>Semister Darwin Darwin Darwin</Text>
+                        <Text as='span'>Semister Darwin</Text>
                       </td>
                     </tr>
                     <tr>
@@ -123,9 +123,9 @@ function Project (props) {
                     </tr>
                   </tbody>
                 </table>
-              </TextBlockContainer>
-            </aside>
-            {_rawBody && <BlockContent blocks={_rawBody || []} />}
+              </aside>
+              {_rawBody && <BlockContent blocks={_rawBody || []} />}
+            </TextBlockContainer>
           </div>
           <aside>
             {publishedAt && (

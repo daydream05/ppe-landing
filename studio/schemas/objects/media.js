@@ -20,6 +20,11 @@ export default {
           { title: 'Gradient', value: 'gradient' }
         ]
       }
+    },
+    {
+      name: 'isMediaHeightEnabled',
+      title: 'Use media height',
+      type: 'boolean',
     }
   ]
 }

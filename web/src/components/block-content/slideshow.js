@@ -1,48 +1,46 @@
 import React, { useState } from 'react'
-import { buildImageObj } from '../../lib/helpers'
-import { imageUrlFor } from '../../lib/image-url'
+import Img from 'gatsby-image'
+import { getFluidGatsbyImage } from 'gatsby-source-sanity'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 
-function Slideshow (props) {
-  if (!props.slides) return null
-  const len = props.slides.length
-  const [index, setIndex] = useState(0)
-  function handlePrev () {
-    setIndex(Math.max(index - 1, 0))
-  }
-  function handleNext () {
-    setIndex(Math.min(index + 1, len - 1))
-  }
+import { api as sanityConfig } from '../../../../studio/sanity.json'
+import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
+
+function Slideshow(props) {
+  const { slides } = props
+
   return (
-    <div>
-      <div>
-        <button onClick={handlePrev} disabled={index === 0}>
-          Prev
-        </button>
-        <span>
-          {index + 1} of {len}
-        </span>
-        <button onClick={handleNext} disabled={index === len - 1}>
-          Next
-        </button>
-      </div>
-      <ul
-        data-index={index}
-        style={{ transform: `translate3d(${index * -100}%, 0, 0)` }}
-      >
-        {props.slides.map(slide => (
-          <li key={slide._key}>
-            {slide.asset && (
-              <img
-                src={imageUrlFor(buildImageObj(slide))
-                  .width(1200)
-                  .height(Math.floor((9 / 16) * 1200))
-                  .fit('crop')
-                  .url()}
-              />
-            )}
-          </li>
-        ))}
-      </ul>
+    <div
+      sx={{
+        my: 5,
+        display: `grid`,
+        gridGap: 3,
+        [mediaQueries.lg]: {
+          gridTemplateColumns: `1fr 1fr 1fr`,
+        }
+      }}
+    >
+      {slides &&
+        slides.map(slide => {
+          if (!slide?.asset) {
+            return null
+          }
+
+          const imageAssetId = slide.asset && slide.asset._ref
+          const fluidProps = getFluidGatsbyImage(imageAssetId, {}, sanityConfig)
+
+          return (
+            <Img
+              key={slide._key}
+              fluid={fluidProps}
+              alt={props.alt}
+              sx={{
+                width: '100%'
+              }}
+            />
+          )
+        })}
     </div>
   )
 }

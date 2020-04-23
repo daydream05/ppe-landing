@@ -50,7 +50,7 @@ const ButtonLink = ({ children, variant, shape, ...rest }) => {
           mt: 5,
         },
         [mediaQueries.lg]: {
-          display: 'inline-block'
+          display: 'inline-block',
         }
       }}
       css={css({

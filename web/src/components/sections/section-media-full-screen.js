@@ -84,7 +84,7 @@ export const SectionMediaFullScreen = ({ section }) => {
             width: `100%`
           }}
         >
-          {media && <MediaSelector media={media} />}
+          {media && <MediaSelector media={media} isFullScreen={true} />}
         </div>
       </Container>
     </Section>
