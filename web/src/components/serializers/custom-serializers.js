@@ -165,7 +165,8 @@ export const customSerializers = {
           sx={{
             mx: -4,
             '+ p, + div': {
-              mt: 6
+              mt: 6,
+              mb: 3,
             },
             [mediaQueries.lg]: {
               ml: 'calc(-100vw / 2 + 900px / 2)',
