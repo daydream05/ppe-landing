@@ -18,8 +18,6 @@ export const MediaImage = ({ media, overlay, isHeightEnabled, isFullScreen }) =>
   const height = file?.asset?.metadata?.dimensions?.height
   const width = file?.asset?.metadata?.dimensions?.width
 
-  console.log(file?.asset?.metadata?.dimensions)
-
   const fullScreenStyle = isFullScreen
     ? {
         position: `absolute !important`,

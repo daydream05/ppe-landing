@@ -24,7 +24,8 @@ export const colors = {
 }
 
 export const constants = {
-  headerHeight: '90px'
+  headerHeight: '90px',
+  footerHeight: `450px`,
 }
 
 const baseTheme = merge(future, {

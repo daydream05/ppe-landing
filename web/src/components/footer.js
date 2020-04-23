@@ -9,7 +9,11 @@ export const Footer = props => {
         bg: 'iceberg',
         variant: 'footer.iceberg',
         py: 6,
-        px: 6
+        px: 6,
+        position: `absolute`,
+        bottom: 0,
+        width: `100%`,
+        height: `450px`,
       }}
     >
       <Container variant='layout.container.large' sx={{ display: `flex`, flexDirection: `column`, alignItems: `center` }}>
