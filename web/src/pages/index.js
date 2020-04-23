@@ -9,6 +9,8 @@ import Layout from '../containers/layout'
 import DefaultHero from '../components/hero/default-hero'
 import PageSEO from '../components/page-seo'
 import { SectionSelector } from '../components/sections/section-selector'
+import Header from '../components/header'
+import pageSettings from '../../../studio/schemas/objects/pageSettings'
 
 export const query = graphql`
   query IndexPageQuery {

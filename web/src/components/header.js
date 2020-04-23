@@ -1,5 +1,6 @@
-import { Link } from 'gatsby'
 import React from 'react'
+import PropTypes from 'prop-types'
+import { Link, useStaticQuery } from 'gatsby'
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
@@ -8,24 +9,35 @@ import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 import ColorModeToggle from './color-mode-toggle'
 import { constants } from '../gatsby-plugin-theme-ui'
 
-const linkItemStyle = {
-  padding: [3],
-  textDecoration: 'none',
-  fontWeight: '600',
-  textTransform: 'lowercase',
-  lineHeight: 0,
-  color: 'inherit',
-  fontSize: 4,
-  '&.active': {
-    color: 'primary'
-  },
-  ':hover': {
-    color: 'primary'
+const siteQuery = graphql`
+  query {
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+      title
+    }
   }
-}
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => {
+`
+
+const Header = ({ linkTheme }) => {
+  const linkItemStyle = {
+    padding: [3],
+    textDecoration: 'none',
+    fontWeight: '600',
+    textTransform: 'lowercase',
+    lineHeight: 0,
+    variant: `header.link.${linkTheme}`,
+    fontSize: 4,
+    '&.active': {
+      color: 'primary'
+    },
+    ':hover': {
+      color: 'primary'
+    }
+  }
+
+  const data = useStaticQuery(siteQuery)
+
   return (
-    <div
+    <header
       sx={{
         height: constants.headerHeight,
         display: 'flex',
@@ -55,12 +67,12 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => {
           }}
         >
           <Link to='/' sx={{ ...linkItemStyle }}>
-            {siteTitle}
+            {data?.site?.title}
           </Link>
         </div>
         <nav
           sx={{
-            display: `none`,
+            display: 'none',
             [mediaQueries.lg]: {
               display: 'flex',
               alignItems: 'center',
@@ -101,8 +113,16 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => {
           </ul>
         </nav>
       </div>
-    </div>
+    </header>
   )
+}
+
+Header.propTypes = {
+  linkTheme: PropTypes.oneOf(['dark', 'light', 'default'])
+}
+
+Header.defaultProps = {
+  linkTheme: 'default'
 }
 
 export default Header

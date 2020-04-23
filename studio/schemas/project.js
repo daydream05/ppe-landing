@@ -66,6 +66,11 @@ export default {
       title: 'Related projects',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'project' } }]
+    },
+    {
+      name: 'pageSettings',
+      title: 'Page settings',
+      type: 'pageSettings'
     }
   ],
   preview: {

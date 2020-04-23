@@ -1,32 +1,35 @@
 import React from 'react'
-import Header from './header'
 import Helmet from 'react-helmet'
 import { Footer } from './footer'
 
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { constants } from '../gatsby-plugin-theme-ui'
+import Header from './header'
 
-const Layout = ({ children, companyInfo, onHideNav, onShowNav, showNav, siteTitle }) => (
-  <div
-    sx={{
-      position: 'relative',
-      minHeight: '100vh'
-    }}
-  >
-    <Header siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} />
-    <Helmet>
-      <link rel='stylesheet' href='https://use.typekit.net/woj5zqc.css' />
-    </Helmet>
+const Layout = ({ children, pageSettings }) => {
+
+  return (
     <div
       sx={{
-        pb: constants.footerHeight
+        position: 'relative',
+        minHeight: '100vh'
       }}
     >
-      {children}
+      <Helmet>
+        <link rel='stylesheet' href='https://use.typekit.net/woj5zqc.css' />
+      </Helmet>
+      <Header linkTheme={pageSettings?.headerLinkColor} />
+      <div
+        sx={{
+          pb: constants.footerHeight
+        }}
+      >
+        {children}
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
-)
+  )
+}
 
 export default Layout

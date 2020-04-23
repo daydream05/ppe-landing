@@ -123,10 +123,25 @@ const baseTheme = merge(future, {
       color: 'black'
     },
     shadowGreen: {
+      // this theme does not get affected by night mode
       background: `linear-gradient(${colors.shadowGreen}, ${colors.shadowGreen}), linear-gradient(${colors.white}, ${colors.white})`,
       color: 'black',
       p: {
         color: 'black'
+      }
+    }
+  },
+  header: {
+    // we want them unaffected by night mode if specified other than default
+    link: {
+      default: {
+        color: 'text',
+      },
+      dark: {
+        color: 'black'
+      },
+      light: {
+        color: 'white'
       }
     }
   },

@@ -5,12 +5,17 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import Project from '../components/project'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
+import Header from '../components/header'
 
 export const query = graphql`
   query ProjectTemplateQuery($id: String!) {
     project: sanityProject(id: { eq: $id }) {
       id
       publishedAt
+      pageSettings {
+        hideHeader
+        headerLinkColor
+      }
       categories {
         _id
         title
@@ -73,8 +78,8 @@ const ProjectTemplate = props => {
   const project = data && data.project
 
   return (
-    <Layout>
-      {errors && <SEO title='GraphQL Error' />}
+    <Layout pageSettings={project?.pageSettings}>
+      {errors && <SEO title="GraphQL Error" />}
       {project && <SEO title={project.title || 'Untitled'} />}
 
       {errors && (
