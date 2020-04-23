@@ -16,7 +16,7 @@ export const SectionContentHalfWithMedia = ({ section, reverseDirection, ...rest
   }
 
   return (
-    <Section variant={theme} {...rest}>
+    <Section variant={theme} {...rest} sx={{ py: 5}}>
       <Container
         variant="container.large"
         sx={{
@@ -66,7 +66,7 @@ export const SectionContentHalfWithMedia = ({ section, reverseDirection, ...rest
         <div
           sx={{
             [mediaQueries.lg]: {
-              width: '45%'
+              flex: 1,
             }
           }}
         >

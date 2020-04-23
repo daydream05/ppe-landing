@@ -10,7 +10,6 @@ import BlockContent from './block-content'
 import Container from './container'
 import RoleList from './role-list'
 
-import { constants } from '../gatsby-plugin-theme-ui'
 import { TextBlockContainer } from './text-block-container'
 import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 
@@ -45,9 +44,15 @@ function Project (props) {
       )}
       <Container>
         <div>
-          <div sx={{ px: [4, 4, 4, 4, 4, 0] }}>
+          <div
+            sx={{
+              px: [4, 4, 4, 4, 4, 0],
+              py: [5, 5, 5, 5, 5, 6],
+              pb: [6]
+            }}
+          >
             <TextBlockContainer>
-              <Styled.h1 sx={{ fontWeight: 'bold', textAlign: 'center', mt: [5,5,5,5,5,6] }}>{title}</Styled.h1>
+              <Styled.h1 sx={{ fontWeight: 'bold', textAlign: 'center', mt: 0 }}>{title}</Styled.h1>
               <aside>
                 <table
                   sx={{

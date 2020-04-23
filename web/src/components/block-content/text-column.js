@@ -5,18 +5,23 @@ import { jsx } from 'theme-ui'
 import { customSerializers } from '../serializers/custom-serializers'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 
-export const TextColumn = props => {
+export const TextColumn = ({ body, columnCount, ...rest}) => {
   return (
     <div
       sx={{
         mb: 4,
         [mediaQueries.lg]: {
-          columnCount: props?.columnCount,
+          columnCount: columnCount,
           columnGap: 4
         }
       }}
+      {...rest}
     >
-      {props?.body && <BaseBlockContent blocks={props.body} serializers={customSerializers} />}
+      {body && <BaseBlockContent blocks={body} serializers={customSerializers} sx={{
+        ':last-child': {
+          mb: 0
+        }
+      }} />}
     </div>
   )
 }

@@ -7,7 +7,8 @@ import { jsx } from 'theme-ui'
 import { customSerializers } from '../serializers/custom-serializers'
 
 const BlockContent = ({ blocks }) => (
-  <div>
+  <div
+  >
     <BaseBlockContent blocks={blocks} serializers={customSerializers} />
   </div>
 )

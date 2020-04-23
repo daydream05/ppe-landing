@@ -16,14 +16,19 @@ export const MediaImage = ({ media, overlay, isHeightEnabled, isFullScreen }) =>
 
   const fluidProps = getFluidGatsbyImage(imageAssetId, {}, sanityConfig)
   const height = file?.asset?.metadata?.dimensions?.height
+  const width = file?.asset?.metadata?.dimensions?.width
 
-  const fullScreenStyle = isFullScreen ? {
-    position: `absolute !important`,
-    top: 0,
-    left: 0,
-    width: `100%`,
-    height: `100%`
-  } : {}
+  console.log(file?.asset?.metadata?.dimensions)
+
+  const fullScreenStyle = isFullScreen
+    ? {
+        position: `absolute !important`,
+        top: 0,
+        left: 0,
+        width: `100%`,
+        height: `100%`
+      }
+    : {}
 
   return fluidProps ? (
     <div
@@ -32,7 +37,9 @@ export const MediaImage = ({ media, overlay, isHeightEnabled, isFullScreen }) =>
         height: `100%`,
         width: `100%`,
         [mediaQueries.lg]: {
-          height: isHeightEnabled ? `${height}px` : `100%`
+          height: isHeightEnabled ? `${height}px` : `100%`,
+          width: isHeightEnabled ? `${width}px` : `100%`,
+          margin: `0 auto`,
         }
       }}
     >

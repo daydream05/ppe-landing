@@ -143,7 +143,10 @@ export const customSerializers = {
             <Styled.p
               sx={{
                 mt: 0,
-                mb: 3
+                mb: 3,
+                '+ section': {
+                  mt: 6
+                },
               }}
             >
               {props.children}
@@ -160,8 +163,10 @@ export const customSerializers = {
         <SectionSelector
           section={props.node}
           sx={{
-            mx: -3,
-            my: 6,
+            mx: -4,
+            '+ p, + div': {
+              mt: 6
+            },
             [mediaQueries.lg]: {
               ml: 'calc(-100vw / 2 + 900px / 2)',
               mr: 'calc(-100vw / 2 + 900px / 2)'
@@ -174,7 +179,14 @@ export const customSerializers = {
       return <Slideshow {...props.node} />
     },
     textColumn(props) {
-      return <TextColumn {...props.node} />
+      return (
+        <TextColumn
+          {...props.node}
+          sx={{
+            mb: 6
+          }}
+        />
+      )
     },
     button(props) {
       const { node } = props

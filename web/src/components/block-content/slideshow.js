@@ -13,9 +13,12 @@ function Slideshow(props) {
   return (
     <div
       sx={{
-        my: 5,
+        my: 6,
         display: `grid`,
         gridGap: 3,
+        ':last-child': {
+          mb: 0,
+        },
         [mediaQueries.lg]: {
           gridTemplateColumns: `1fr 1fr 1fr`,
         }
