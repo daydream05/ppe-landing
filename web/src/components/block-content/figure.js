@@ -9,8 +9,12 @@ import { api as sanityConfig } from '../../../../studio/sanity.json'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 
 function Figure (props) {
-  const imageAssetId = props.asset && props.asset._ref
+  const imageAssetId = props.asset && props.asset.id
   const fluidProps = getFluidGatsbyImage(imageAssetId, {}, sanityConfig)
+
+  if(!fluidProps) {
+    return null
+  }
 
   return (
     <figure

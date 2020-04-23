@@ -8,9 +8,9 @@ import { BasicSectionBody } from './basic-section-body'
 import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 import { TextBlockContainer } from '../text-block-container'
 
-export const BasicSection = ({ section }) => {
+export const BasicSection = ({ section, ...rest }) => {
   return (
-    <Section variant={section?.theme}>
+    <Section variant={section?.theme} {...rest}>
       <Container
         variant="container.large"
         sx={{

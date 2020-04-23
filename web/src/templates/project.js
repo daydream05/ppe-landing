@@ -25,7 +25,7 @@ export const query = graphql`
       mainImage {
         asset {
           _id
-          fluid(maxHeight: 1000 maxWidth: 2000) {
+          fluid(maxHeight: 1000, maxWidth: 2000) {
             ...GatsbySanityImageFluid_noBase64
           }
         }
@@ -35,7 +35,7 @@ export const query = graphql`
       slug {
         current
       }
-      _rawBody
+      _rawBody(resolveReferences: { maxDepth: 1000 })
       members {
         _key
         person {

@@ -8,6 +8,7 @@ import { TextColumn } from '../block-content/text-column'
 import ButtonLink from '../button-link'
 import { getPagePath } from '../../lib/helpers'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
+import { SectionSelector } from '../sections/section-selector'
 
 export const customSerializers = {
   marks: {
@@ -93,7 +94,7 @@ export const customSerializers = {
         }
         case 'large': {
           return (
-            <Text variant="body.large" as="p">
+            <Text variant="body.large" as="p" sx={{ '&&&': { color: 'text' } }}>
               {props.children}
             </Text>
           )
@@ -104,7 +105,7 @@ export const customSerializers = {
               sx={{
                 position: `relative`,
                 my: 6,
-                mx: 3,
+                mx: 3
               }}
             >
               <IoMdQuote
@@ -126,7 +127,10 @@ export const customSerializers = {
                 variant="body.large"
                 as="p"
                 sx={{
-                  display: `inline`
+                  display: `inline`,
+                  '&&&': {
+                    color: `text`
+                  }
                 }}
               >
                 {props.children}
@@ -149,6 +153,22 @@ export const customSerializers = {
     },
     figure(props) {
       return <Figure {...props.node} />
+    },
+    section(props) {
+      console.log(props)
+      return (
+        <SectionSelector
+          section={props.node}
+          sx={{
+            mx: -3,
+            my: 6,
+            [mediaQueries.lg]: {
+              ml: 'calc(-100vw / 2 + 900px / 2)',
+              mr: 'calc(-100vw / 2 + 900px / 2)'
+            }
+          }}
+        />
+      )
     },
     slideshow(props) {
       return <Slideshow {...props.node} />

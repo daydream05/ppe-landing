@@ -27,8 +27,12 @@ function Slideshow(props) {
             return null
           }
 
-          const imageAssetId = slide.asset && slide.asset._ref
+          const imageAssetId = slide.asset && slide.asset.id
           const fluidProps = getFluidGatsbyImage(imageAssetId, {}, sanityConfig)
+
+          if(!fluidProps) {
+            return null
+          }
 
           return (
             <Img

@@ -8,7 +8,7 @@ import { MediaSelector } from '../media/media-selector'
 import { BasicSectionBody } from './basic-section-body'
 import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 
-export const SectionMediaFullScreen = ({ section }) => {
+export const SectionMediaFullScreen = ({ section, ...rest }) => {
   const { theme, heading, body, media } = section
 
   if (!section) {
@@ -26,7 +26,7 @@ export const SectionMediaFullScreen = ({ section }) => {
   }
 
   return (
-    <Section>
+    <Section {...rest}>
       <Container
         variant="container.large"
         sx={{
@@ -51,10 +51,13 @@ export const SectionMediaFullScreen = ({ section }) => {
               px: 4,
               py: 5,
               color: `${color} !important`,
+              '> p': {
+                color: color
+              },
               [mediaQueries.lg]: {
                 maxWidth: breakpoints.lg,
                 py: 6
-              },
+              }
             }}
           >
             {heading && (
@@ -65,7 +68,7 @@ export const SectionMediaFullScreen = ({ section }) => {
                   m: 0,
                   mb: 4,
                   textAlign: heading?.textAlignment,
-                  lineHeight: 1,
+                  lineHeight: 1
                 }}
                 as={heading?.headingType || 'h2'}
               >

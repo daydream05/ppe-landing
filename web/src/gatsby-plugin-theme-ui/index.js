@@ -10,11 +10,13 @@ export const colors = {
   danger: '#C53030',
   mute: 'hsla(0, 0%, 13%, 0.2)',
   paragraphColor: '#0A0A0A',
+  lightGray: 'hsla(0, 0%, 100%, 0.8)',
   modes: {
     dark: {
       background: '#0A0A0A',
       mute: 'hsla(0, 0%, 87%, 0.2)',
-      paragraphColor: 'hsla(0, 0%, 100%, 0.7)'
+      paragraphColor: 'hsla(0, 0%, 100%, 0.8)',
+      lightGray: '#0A0A0A'
     }
   }
 }
@@ -101,11 +103,17 @@ const baseTheme = merge(future, {
   section: {
     dark: {
       bg: 'text',
-      color: 'background'
+      color: 'background',
+      p: {
+        color: 'lightGray'
+      }
     },
     light: {
       bg: 'background',
-      color: 'text'
+      color: 'text',
+      p: {
+        color: 'paragraphColor'
+      }
     },
     pale: {
       bg: 'accent',

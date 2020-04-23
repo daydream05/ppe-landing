@@ -8,7 +8,7 @@ import { MediaSelector } from '../media/media-selector'
 import { BasicSectionBody } from './basic-section-body'
 import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 
-export const SectionContentHalfWithMedia = ({ section, reverseDirection }) => {
+export const SectionContentHalfWithMedia = ({ section, reverseDirection, ...rest }) => {
   const { theme, heading, body, media } = section
 
   if (!section) {
@@ -16,7 +16,7 @@ export const SectionContentHalfWithMedia = ({ section, reverseDirection }) => {
   }
 
   return (
-    <Section variant={theme}>
+    <Section variant={theme} {...rest}>
       <Container
         variant="container.large"
         sx={{

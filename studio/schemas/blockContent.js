@@ -126,6 +126,9 @@ export default {
     },
     {
       type: 'button'
+    },
+    {
+      type: 'section'
     }
   ]
 }
