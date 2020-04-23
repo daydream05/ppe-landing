@@ -25,7 +25,7 @@ export const colors = {
 
 export const constants = {
   headerHeight: '90px',
-  footerHeight: `450px`,
+  footerHeight: '450px'
 }
 
 const baseTheme = merge(future, {
@@ -122,13 +122,12 @@ const baseTheme = merge(future, {
       bg: 'accent',
       color: 'black'
     },
-    iceberg: {
-      bg: 'iceberg',
-      color: 'black'
-    },
     shadowGreen: {
-      bg: 'shadowGreen',
-      color: 'black'
+      background: `linear-gradient(${colors.shadowGreen}, ${colors.shadowGreen}), linear-gradient(${colors.white}, ${colors.white})`,
+      color: 'black',
+      p: {
+        color: 'black'
+      }
     }
   },
   footer: {
@@ -139,6 +138,10 @@ const baseTheme = merge(future, {
     light: {
       bg: 'background',
       color: 'text'
+    },
+    iceberg: {
+      bg: 'iceberg',
+      color: 'black'
     }
   },
   styles: {

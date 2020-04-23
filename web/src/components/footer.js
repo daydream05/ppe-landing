@@ -10,20 +10,24 @@ export const Footer = props => {
         variant: 'footer.iceberg',
         py: 6,
         px: 6,
-        position: `absolute`,
+        position: 'absolute',
         bottom: 0,
-        width: `100%`,
-        height: `450px`,
+        width: '100%',
+        height: '450px'
       }}
     >
-      <Container variant='layout.container.large' sx={{ display: `flex`, flexDirection: `column`, alignItems: `center` }}>
+      <Container
+        variant='layout.container.large'
+        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      >
         <p
           sx={{
             fontSize: 7,
             fontWeight: 'bold',
             m: 0,
             lineHeight: 1,
-            textAlign: 'center'
+            textAlign: 'center',
+            color: 'inherit'
           }}
         >
           Let’s work together.
@@ -35,15 +39,16 @@ export const Footer = props => {
             m: 0,
             lineHeight: 1,
             textAlign: 'center',
-            mb: 5
+            mb: 5,
+            color: 'inherit'
           }}
         >
           hello@laura.com
         </p>
         <div
           sx={{
-            fontWeight: `600`,
-            fontSize: 4,
+            fontWeight: '600',
+            fontSize: 4
           }}
         >
           © {new Date().getFullYear()}, Built with <a href='https://www.sanity.io'>Sanity</a> &amp;{' '}
