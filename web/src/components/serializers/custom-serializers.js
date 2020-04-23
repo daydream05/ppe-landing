@@ -104,7 +104,9 @@ export const customSerializers = {
           return (
             <blockquote
               sx={{
-                position: `relative`
+                position: `relative`,
+                my: 6,
+                mx: 3,
               }}
             >
               <IoMdQuote

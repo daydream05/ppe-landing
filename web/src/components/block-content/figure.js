@@ -15,9 +15,8 @@ function Figure (props) {
   return (
     <figure
       sx={{
-        my: 0,
+        my: 6,
         mx: -3,
-        py: [5, 5, 5, 5, 5, 6],
         [mediaQueries.lg]: {
           ml: 'calc(-100vw / 2 + 900px / 2)',
           mr: 'calc(-100vw / 2 + 900px / 2)'

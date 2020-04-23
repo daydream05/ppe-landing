@@ -47,7 +47,7 @@ function Project (props) {
         <div>
           <div sx={{ px: [4, 4, 4, 4, 4, 0] }}>
             <TextBlockContainer>
-              <Styled.h1 sx={{ fontWeight: 'bold', textAlign: 'center' }}>{title}</Styled.h1>
+              <Styled.h1 sx={{ fontWeight: 'bold', textAlign: 'center', mt: [5,5,5,5,5,6] }}>{title}</Styled.h1>
               <aside>
                 <table
                   sx={{
