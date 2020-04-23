@@ -1,9 +1,12 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+/** @jsx jsx */
+import { jsx, Container } from 'theme-ui'
+
 import { BlogJsonLd } from 'gatsby-plugin-next-seo'
 import { mapEdgesToNodes } from '../lib/helpers'
 import BlogPostPreviewGrid from '../components/blog-post-preview-grid'
-import Container from '../components/container'
+
 import GraphQLErrorList from '../components/graphql-error-list'
 import Layout from '../containers/layout'
 

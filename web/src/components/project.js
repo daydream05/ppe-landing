@@ -4,10 +4,9 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 /** @jsx jsx */
-import { jsx, Styled, Text } from 'theme-ui'
+import { jsx, Styled, Text, Container } from 'theme-ui'
 
 import BlockContent from './block-content'
-import Container from './container'
 import RoleList from './role-list'
 
 import { TextBlockContainer } from './text-block-container'

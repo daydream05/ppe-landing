@@ -1,11 +1,12 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Container from '../components/container'
+/** @jsx jsx */
+import { jsx, Container } from 'theme-ui'
+
 import GraphQLErrorList from '../components/graphql-error-list'
 import Project from '../components/project'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
-import Header from '../components/header'
 
 export const query = graphql`
   query ProjectTemplateQuery($id: String!) {

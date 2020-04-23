@@ -2,7 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbySeo, BlogPostJsonLd, BreadcrumbJsonLd } from 'gatsby-plugin-next-seo'
 
-import Container from '../components/container'
+/** @jsx jsx */
+import { jsx, Container } from 'theme-ui'
+
 import GraphQLErrorList from '../components/graphql-error-list'
 import BlogPost from '../components/blog-post'
 import SEO from '../components/seo'
@@ -131,12 +133,12 @@ const BlogPostTemplate = props => {
             {
               position: 1,
               name: site?.title,
-              item: site?.url,
+              item: site?.url
             },
             {
               position: 2,
               name: 'Blog',
-              item: `${site?.url}/blog/`,
+              item: `${site?.url}/blog/`
             },
             {
               position: 3,

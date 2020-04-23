@@ -3,10 +3,9 @@ import React from 'react'
 import Img from 'gatsby-image'
 
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, Container } from 'theme-ui'
 
 import BlockContent from './block-content'
-import Container from './container'
 import RoleList from './role-list'
 
 import { constants } from '../gatsby-plugin-theme-ui'

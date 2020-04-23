@@ -1,7 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import BlockContent from '../components/block-content'
-import Container from '../components/container'
+/** @jsx jsx */
+import { jsx, Container } from 'theme-ui'
+
 import GraphQLErrorList from '../components/graphql-error-list'
 import Layout from '../containers/layout'
 

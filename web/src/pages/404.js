@@ -1,6 +1,8 @@
 import React from 'react'
 import SEO from '../components/seo'
-import Container from '../components/layout'
+/** @jsx jsx */
+import { jsx, Container } from 'theme-ui'
+
 import Layout from '../containers/layout'
 import { Styled } from 'theme-ui'
 

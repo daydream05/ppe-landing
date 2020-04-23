@@ -2,15 +2,12 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
 import BlogPostPreviewGrid from '../components/blog-post-preview-grid'
-import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
 import Layout from '../containers/layout'
 import DefaultHero from '../components/hero/default-hero'
 import PageSEO from '../components/page-seo'
 import { SectionSelector } from '../components/sections/section-selector'
-import Header from '../components/header'
-import pageSettings from '../../../studio/schemas/objects/pageSettings'
 
 export const query = graphql`
   query IndexPageQuery {
