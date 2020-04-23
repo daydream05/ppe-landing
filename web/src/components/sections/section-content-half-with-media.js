@@ -16,13 +16,13 @@ export const SectionContentHalfWithMedia = ({ section, reverseDirection, ...rest
   }
 
   return (
-    <Section variant={theme} {...rest} sx={{ py: 5}}>
+    <Section variant={theme} {...rest}>
       <Container
         variant="container.large"
         sx={{
           [mediaQueries.lg]: {
             display: 'flex',
-            flexDirection: reverseDirection ? 'row-reverse' : 'row',
+            flexDirection: reverseDirection ? 'row-reverse' : 'row'
           }
         }}
       >
@@ -31,7 +31,8 @@ export const SectionContentHalfWithMedia = ({ section, reverseDirection, ...rest
             [mediaQueries.lg]: {
               width: '55%',
               display: `flex`,
-              alignItems: `center`
+              alignItems: `center`,
+              py: 5
             }
           }}
         >
@@ -53,7 +54,7 @@ export const SectionContentHalfWithMedia = ({ section, reverseDirection, ...rest
                   lineHeight: 1,
                   m: 0,
                   mb: 4,
-                  textAlign: heading?.textAlignment,
+                  textAlign: heading?.textAlignment
                 }}
                 as={heading?.headingType || 'h2'}
               >
@@ -66,7 +67,7 @@ export const SectionContentHalfWithMedia = ({ section, reverseDirection, ...rest
         <div
           sx={{
             [mediaQueries.lg]: {
-              flex: 1,
+              flex: 1
             }
           }}
         >
