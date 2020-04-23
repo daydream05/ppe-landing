@@ -42,7 +42,7 @@ export const customSerializers = {
               as="h2"
               variant="heading.small"
               sx={{
-                color: `inherit`,
+                color: 'inherit',
                 mb: 3,
                 mt: 5
               }}
@@ -138,7 +138,6 @@ export const customSerializers = {
           return (
             <Styled.p
               sx={{
-                color: 'inherit',
                 mt: 0,
                 mb: 3
               }}
