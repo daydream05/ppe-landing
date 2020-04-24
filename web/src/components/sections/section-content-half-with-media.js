@@ -1,5 +1,5 @@
 import React from 'react'
-import { Section } from './Section'
+import { Section } from './section'
 /** @jsx jsx */
 import { Container, jsx, Styled, Text } from 'theme-ui'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'

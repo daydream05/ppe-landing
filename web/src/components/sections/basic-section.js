@@ -3,7 +3,7 @@ import React from 'react'
 /** @jsx jsx */
 import { jsx, Styled, Container, Text } from 'theme-ui'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
-import { Section } from './Section'
+import { Section } from './section'
 import { BasicSectionBody } from './basic-section-body'
 import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 import { TextBlockContainer } from '../text-block-container'
