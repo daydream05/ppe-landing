@@ -39,6 +39,16 @@ export const query = graphql`
               fluid(maxWidth: 600, maxHeight: 400) {
                 ...GatsbySanityImageFluid_noBase64
               }
+              metadata {
+                palette {
+                  darkMuted {
+                    background
+                    foreground
+                    population
+                    title
+                  }
+                }
+              }
             }
             alt
           }

@@ -5,34 +5,82 @@ import Img from 'gatsby-image'
 import { jsx, css, Styled } from 'theme-ui'
 
 import BlockText from './block-text'
+import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 
-function ProjectPreview (props) {
+function ProjectPreview(props) {
+  console.log(props.mainImage)
+  console.log(props.mainImage?.asset?.metadata?.palette?.darkMuted?.background)
   return (
-    <Link to={props.path}>
+    <Link
+      to={props.path}
+      sx={{
+        display: 'block',
+        height: '100%',
+        position: 'relative',
+        textDecoration: `none`
+      }}
+    >
       {props.mainImage && props.mainImage.asset ? (
         <Img
           fluid={props.mainImage.asset.fluid}
           alt={props.mainImage.alt}
           css={css({
             width: '100%',
-            height: '100%'
+            height: '100%',
+            position: 'absolute !important',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              variant: `overlay.dark`,
+              backgroundColor: props.mainImage?.asset?.metadata?.palette?.darkMuted?.background,
+              opacity: 0.75
+            },
+            [mediaQueries.lg]: {
+              position: 'absolute !important',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%'
+            }
           })}
         />
       ) : (
         <div
           sx={{
-            position: 'relative',
-            pb: '66.666%',
-            bg: 'muted'
+            width: '100%',
+            height: '100%',
+            position: 'absolute !important',
+            bg: 'black',
+            border: `1px solid`,
+            borderColor: `text`
           }}
         />
       )}
-      <Styled.h3>{props.title}</Styled.h3>
-      {props._rawExcerpt && (
-        <div>
-          <BlockText blocks={props._rawExcerpt} />
-        </div>
-      )}
+      <div
+        sx={{
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: `center`,
+          padding: 4,
+          height: `100%`,
+          width: `100%`
+        }}
+      >
+        <Styled.h3
+          sx={{
+            m: 0,
+            color: 'white'
+          }}
+        >
+          {props.title}
+        </Styled.h3>
+      </div>
     </Link>
   )
 }

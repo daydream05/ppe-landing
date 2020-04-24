@@ -8,14 +8,17 @@ import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 
 function ProjectPreviewGrid (props) {
   return (
-    <section>
+    <section
+      sx={{
+        px: 4,
+        [mediaQueries.lg]: {
+          px: 0
+        }
+      }}
+    >
       <Container
-        variant="container.large"
         sx ={{
-          px: [4],
-          [mediaQueries.lg]: {
-            px: 6,
-          }
+          maxWidth: `1082px`,
         }}
       >
         {props.title && (
@@ -30,12 +33,13 @@ function ProjectPreviewGrid (props) {
         <ul
           sx={{
             display: 'grid',
+            gridGap: 3,
             listStyle: `none`,
             margin: 0,
             p: 0,
-            [mediaQueries.lg]: {
-              gridTemplateColumns: '1fr 1fr 1fr'
-            }
+            gridTemplateColumns: `repeat(auto-fit, minmax(350px, 1fr))`,
+            gridTemplateRows: `repeat(9, 300px)`,
+            overflow: `hidden`,
           }}
         >
           {props.nodes &&
