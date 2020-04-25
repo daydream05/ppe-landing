@@ -148,6 +148,9 @@ export const customSerializers = {
                 '+ section': {
                   mt: 6
                 },
+                ':last-child': {
+                  mb: 6,
+                }
               }}
             >
               {props.children}
@@ -185,7 +188,9 @@ export const customSerializers = {
         <TextColumn
           {...props.node}
           sx={{
-            mb: 6
+            '+ section': {
+              mt: 6,
+            }
           }}
         />
       )

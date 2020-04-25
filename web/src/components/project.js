@@ -46,8 +46,7 @@ function Project (props) {
           <div
             sx={{
               px: [4, 4, 4, 4, 4, 0],
-              py: [5, 5, 5, 5, 5, 6],
-              pb: [6]
+              pt: [5,5,5,5,5,6],
             }}
           >
             <TextBlockContainer>
