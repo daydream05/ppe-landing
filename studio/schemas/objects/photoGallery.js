@@ -10,7 +10,7 @@ export default {
       title: 'Photos',
       type: 'array',
       of: [{
-        type: 'mainImage',
+        type: 'figure',
       }]
     },
     {

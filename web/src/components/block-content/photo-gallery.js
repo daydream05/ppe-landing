@@ -22,12 +22,19 @@ const Photo = ({ photo, margin, index, top, left }) => {
       }}
     >
       <GatsbyImage fluid={photo.fluidProps} />
-      <figcaption
-        sx={{
-          position: `relative`,
-          height: captionHeight,
-        }}
-      >{photo.alt}</figcaption>
+      {photo.caption && (
+        <figcaption
+          sx={{
+            position: `relative`,
+            height: captionHeight,
+            display: `flex`,
+            alignItems: `center`,
+            justifyContent: `center`
+          }}
+        >
+          {photo.caption}
+        </figcaption>
+      )}
     </figure>
   )
 }
@@ -35,7 +42,7 @@ const Photo = ({ photo, margin, index, top, left }) => {
 export const PhotoGallery = ({ photos, className, margin, targetRowHeight }) => {
   let galleryPhotos = []
 
-  if(!photos) {
+  if (!photos) {
     return null
   }
 
@@ -50,7 +57,7 @@ export const PhotoGallery = ({ photos, className, margin, targetRowHeight }) => 
     const imageAssetId = image.asset?._id || image.asset?._ref
     const fluidProps = imageAssetId && getFluidGatsbyImage(imageAssetId, {}, sanityConfig)
 
-    if(!fluidProps) {
+    if (!fluidProps) {
       break
     }
 
@@ -84,7 +91,9 @@ export const PhotoGallery = ({ photos, className, margin, targetRowHeight }) => 
             )
           }}
         />
-      ) : <span>No photos provided</span>}
+      ) : (
+        <span>No photos provided</span>
+      )}
     </div>
   )
 }
