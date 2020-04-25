@@ -132,6 +132,9 @@ export default {
     },
     {
       type: 'specsTable'
+    },
+    {
+      type: 'photoGallery',
     }
   ]
 }

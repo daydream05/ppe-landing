@@ -10,6 +10,7 @@ import { getPagePath } from '../../lib/helpers'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 import { SectionSelector } from '../sections/section-selector'
 import { SpecsTable } from '../block-content/specsTable'
+import { PhotoGallery } from '../block-content/photo-gallery'
 
 export const customSerializers = {
   marks: {
@@ -220,6 +221,18 @@ export const customSerializers = {
       console.log(props.node)
       return (
         <SpecsTable rows={props.node?.table?.rows} />
+      )
+    },
+    photoGallery(props) {
+      return (
+        <PhotoGallery
+          photos={props.node?.photos}
+          targetRowHeight={props.node?.targetRowHeight}
+          margin={props.node?.margin}
+          sx={{
+            my: 5,
+          }}
+        />
       )
     }
   }

@@ -30,6 +30,7 @@ import media from './objects/media'
 import video from './documents/video'
 import image from './documents/image'
 import specsTable from './objects/specsTable'
+import photoGallery from './objects/photoGallery'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -55,6 +56,7 @@ export default createSchema({
     pageSettings,
     person,
     post,
+    photoGallery,
     postAuthor,
     project,
     projectMember,
