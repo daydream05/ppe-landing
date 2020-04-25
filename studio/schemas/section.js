@@ -1,3 +1,5 @@
+import { SectionPreview } from "../src/previews/portable-text-blocks/section"
+
 export default {
   title: 'Section',
   name: 'section',
@@ -46,12 +48,15 @@ export default {
   ],
   preview: {
     select: {
-      heading: 'heading'
+      heading: 'heading',
+      body: 'body',
     },
-    prepare ({ heading = {} }) {
+    prepare ({ heading = {}, body }) {
       return {
-        title: heading.text || 'No title'
+        title: heading.text || 'No title',
+        body: body,
       }
-    }
+    },
+    component: SectionPreview,
   }
 }
