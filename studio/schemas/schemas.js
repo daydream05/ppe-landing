@@ -29,6 +29,7 @@ import textColumn from './objects/textColumn'
 import media from './objects/media'
 import video from './documents/video'
 import image from './documents/image'
+import specsTable from './objects/specsTable'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -61,6 +62,7 @@ export default createSchema({
     section,
     siteSettings,
     slideshow,
+    specsTable,
     textColumn,
     video
     // When added to this list, object types can be used as

@@ -129,6 +129,9 @@ export default {
     },
     {
       type: 'section'
+    },
+    {
+      type: 'specsTable'
     }
   ]
 }

@@ -5,6 +5,7 @@ import ProjectPreview from './project-preview'
 /** @jsx jsx */
 import { jsx, Container } from 'theme-ui'
 import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
+import { breakpoints } from '../gatsby-plugin-theme-ui/breakpoints'
 
 function ProjectPreviewGrid (props) {
   return (
@@ -18,7 +19,7 @@ function ProjectPreviewGrid (props) {
     >
       <Container
         sx ={{
-          maxWidth: `1082px`,
+          maxWidth: breakpoints.lg,
         }}
       >
         {props.title && (
@@ -37,15 +38,28 @@ function ProjectPreviewGrid (props) {
             listStyle: `none`,
             margin: 0,
             p: 0,
-            gridTemplateColumns: `repeat(auto-fit, minmax(350px, 1fr))`,
-            gridTemplateRows: `repeat(9, 300px)`,
+            gridTemplateColumns: `repeat(auto-fit, minmax(300px, 1fr))`,
             overflow: `hidden`,
           }}
         >
           {props.nodes &&
             props.nodes.map(node => (
-              <li key={node.id}>
-                <ProjectPreview {...node} />
+              <li key={node.id}
+                sx={{
+                  position: `relative`,
+                  paddingTop: `100%`,
+                }}
+              >
+                <div
+                  sx={{
+                    position: `absolute`,
+                    width: `100%`,
+                    height: `100%`,
+                    top: 0,
+                  }}
+                >
+                  <ProjectPreview {...node} />
+                </div>
               </li>
             ))}
         </ul>

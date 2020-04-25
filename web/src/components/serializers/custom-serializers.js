@@ -9,6 +9,7 @@ import ButtonLink from '../button-link'
 import { getPagePath } from '../../lib/helpers'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 import { SectionSelector } from '../sections/section-selector'
+import { SpecsTable } from '../block-content/specsTable'
 
 export const customSerializers = {
   marks: {
@@ -208,6 +209,12 @@ export const customSerializers = {
         >
           {node?.label}
         </ButtonLink>
+      )
+    },
+    specsTable(props) {
+      console.log(props.node)
+      return (
+        <SpecsTable rows={props.node?.table?.rows} />
       )
     }
   }

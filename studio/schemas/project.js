@@ -71,7 +71,7 @@ export default {
       name: 'pageSettings',
       title: 'Page settings',
       type: 'pageSettings'
-    }
+    },
   ],
   preview: {
     select: {
