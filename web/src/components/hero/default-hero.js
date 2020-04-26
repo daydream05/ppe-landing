@@ -36,6 +36,7 @@ const DefaultHero = ({ hero }) => {
         gridTemplateColumns: [null, null, null, `1fr 1fr`],
         [mediaQueries.xl]: {
           maxWidth: breakpoints.xxxl,
+          width: `100%`,
           margin: `0 auto`,
           pt: constants.headerHeight
         }

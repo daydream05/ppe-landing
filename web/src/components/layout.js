@@ -4,10 +4,10 @@ import { Footer } from './footer'
 
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { constants } from '../gatsby-plugin-theme-ui'
 import Header from './header'
 
 const Layout = ({ children, pageSettings }) => {
+
   return (
     <div
       sx={{
@@ -20,7 +20,9 @@ const Layout = ({ children, pageSettings }) => {
       <Header linkTheme={pageSettings?.headerLinkColor} />
       <main
         sx={{
-          minHeight: '100vh'
+          minHeight: '100vh',
+          display: `flex`,
+          flexDirection: `column`
         }}
       >
         {children}
