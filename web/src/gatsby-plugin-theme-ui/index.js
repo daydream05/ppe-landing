@@ -112,7 +112,7 @@ const baseTheme = merge(future, {
       }
     },
     light: {
-      bg: 'background',
+      bg: 'transparent',
       color: 'text',
       p: {
         color: 'paragraphColor'
