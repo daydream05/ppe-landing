@@ -20,7 +20,6 @@ export const query = graphql`
         metaDescription
       }
       _rawBody
-      _rawHero
     }
   }
 `

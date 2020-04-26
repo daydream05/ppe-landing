@@ -12,7 +12,7 @@ import { SectionSelector } from '../sections/section-selector'
 import { SpecsTable } from '../block-content/specsTable'
 import { PhotoGallery } from '../block-content/photo-gallery'
 
-export const customSerializers = {
+export const heroSerializers = {
   marks: {
     bold: props => {
       return <span sx={{ fontWeight: '600' }}>{props.children}</span>
@@ -31,11 +31,29 @@ export const customSerializers = {
       const { node } = props
 
       switch (props.node.style) {
+        case 'h1': {
+          return <Styled.h1 sx={{ color: 'inherit' }}>{props.children}</Styled.h1>
+        }
         case 'h2': {
           return <Styled.h2 sx={{ color: 'inherit' }}>{props.children}</Styled.h2>
         }
         case 'h3': {
           return <Styled.h3 sx={{ color: 'inherit' }}>{props.children}</Styled.h3>
+        }
+        case 'small.h1': {
+          return (
+            <Text
+              as="h1"
+              variant="heading.small"
+              sx={{
+                color: 'inherit',
+                mb: 4,
+                mt: 5
+              }}
+            >
+              {props.children}
+            </Text>
+          )
         }
         case 'small.h2': {
           return (
@@ -96,7 +114,7 @@ export const customSerializers = {
         }
         case 'large': {
           return (
-            <Text variant="body.large" as="p" sx={{ '&&&': { color: 'text' } }}>
+            <Text variant="body.large" as="p" sx={{ mb: 3, '&&&': { color: 'text' } }}>
               {props.children}
             </Text>
           )
@@ -148,7 +166,7 @@ export const customSerializers = {
                 mb: 3,
                 '+ section': {
                   mt: 6
-                },
+                }
               }}
             >
               {props.children}
@@ -157,37 +175,15 @@ export const customSerializers = {
       }
     },
     figure(props) {
-      return <Figure {...props.node} />
-    },
-    section(props) {
-      console.log(props)
       return (
-        <SectionSelector
-          section={props.node}
-          sx={{
-            mx: -4,
-            '+ p, + div': {
-              mt: 6,
-              mb: 3,
-            },
-            [mediaQueries.lg]: {
-              ml: 'calc(-100vw / 2 + 900px / 2)',
-              mr: 'calc(-100vw / 2 + 900px / 2)'
-            }
-          }}
-        />
-      )
-    },
-    slideshow(props) {
-      return <Slideshow {...props.node} />
-    },
-    textColumn(props) {
-      return (
-        <TextColumn
+        <Figure
           {...props.node}
           sx={{
-            '+ section': {
-              mt: 6,
+            ':first-child': {
+              mt: -6
+            },
+            ':last-child': {
+              mb: 0
             }
           }}
         />
@@ -212,24 +208,6 @@ export const customSerializers = {
         >
           {node?.label}
         </ButtonLink>
-      )
-    },
-    specsTable(props) {
-      console.log(props.node)
-      return (
-        <SpecsTable rows={props.node?.table?.rows} />
-      )
-    },
-    photoGallery(props) {
-      return (
-        <PhotoGallery
-          photos={props.node?.photos}
-          targetRowHeight={props.node?.targetRowHeight}
-          margin={props.node?.margin}
-          sx={{
-            my: 5,
-          }}
-        />
       )
     }
   }

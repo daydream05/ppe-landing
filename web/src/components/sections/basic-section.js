@@ -33,7 +33,7 @@ export const BasicSection = ({ section, ...rest }) => {
               sx={{
                 color: `inherit`,
                 m: 0,
-                mb: 3,
+                mb: 4,
               }}
             >
               <Text

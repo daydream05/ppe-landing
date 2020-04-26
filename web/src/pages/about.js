@@ -12,14 +12,14 @@ import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
 
 import PageSEO from '../components/page-seo'
 import DefaultHero from '../components/hero/default-hero'
+import { SectionSelector } from '../components/sections/section-selector'
 
 export const query = graphql`
   query AboutPageQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)about/" }) {
       id
       title
-      _rawBody
-      _rawHero
+      _rawSections(resolveReferences: { maxDepth: 1000 })
     }
     people: allSanityPerson {
       edges {
@@ -65,11 +65,9 @@ const AboutPage = props => {
   return (
     <Layout>
       {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
-      {page?._rawHero && <DefaultHero hero={page._rawHero} />}
-      <Container>
-        <BlockContent blocks={page._rawBody || []} />
-        {personNodes && personNodes.length > 0 && <PeopleGrid items={personNodes} title="People" />}
-      </Container>
+      {page?._rawSections?.map(section => {
+        return <SectionSelector key={section._key} section={section} />
+      })}
     </Layout>
   )
 }

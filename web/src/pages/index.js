@@ -18,7 +18,6 @@ export const query = graphql`
     }
 
     page: sanityPage(slug: { current: { eq: "home" } }) {
-      _rawHero(resolveReferences: { maxDepth: 3 })
       _rawSections(resolveReferences: { maxDepth: 1000 })
       title
       path

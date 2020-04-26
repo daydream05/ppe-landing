@@ -12,7 +12,7 @@ function Figure (props) {
   const imageAssetId = props.asset && props.asset.id
   const fluidProps = getFluidGatsbyImage(imageAssetId, {}, sanityConfig)
 
-  if(!fluidProps) {
+  if (!fluidProps) {
     return null
   }
 
@@ -26,6 +26,7 @@ function Figure (props) {
           mr: 'calc(-100vw / 2 + 900px / 2)'
         }
       }}
+      className={props.className}
     >
       {props.asset && (
         <Img
@@ -36,14 +37,16 @@ function Figure (props) {
           }}
         />
       )}
-      <figcaption
-        sx={{
-          textAlign: 'center',
-          mt: 3
-        }}
-      >
-        {props.caption}
-      </figcaption>
+      {props.caption && (
+        <figcaption
+          sx={{
+            textAlign: 'center',
+            mt: 3
+          }}
+        >
+          {props.caption}
+        </figcaption>
+      )}
     </figure>
   )
 }

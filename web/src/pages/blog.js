@@ -33,7 +33,6 @@ export const query = graphql`
     page: sanityPage(slug: { current: { eq: "blog" } }) {
       title
       path
-      _rawHero
       seo {
         metaTitle
         metaDescription

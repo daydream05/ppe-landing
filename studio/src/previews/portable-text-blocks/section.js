@@ -10,9 +10,11 @@ export const SectionPreview = ({ value }) => {
       }}
     >
       <h2>{value.title}</h2>
-      <div>
-        <p>{blocksToText(value.body)}</p>
-      </div>
+      {value.body && (
+        <div>
+          <p>{blocksToText(value.body)}</p>
+        </div>
+      )}
     </section>
   )
 }

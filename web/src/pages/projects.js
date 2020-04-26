@@ -11,18 +11,19 @@ import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
 
 import PageSEO from '../components/page-seo'
 import DefaultHero from '../components/hero/default-hero'
+import { SectionSelector } from '../components/sections/section-selector'
 
 export const query = graphql`
   query ProjectsPageQuery {
     page: sanityPage(slug: { current: { eq: "projects" } }) {
       title
       path
+      _rawSections(resolveReferences: { maxDepth: 1000 })
       seo {
         metaTitle
         metaDescription
       }
       _rawBody
-      _rawHero
     }
     projects: allSanityProject(limit: 12, sort: { fields: [publishedAt], order: DESC }) {
       edges {
@@ -77,7 +78,9 @@ const ProjectsPage = props => {
   return (
     <Layout>
       {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
-      {page?._rawHero && <DefaultHero hero={page._rawHero} />}
+      {page?._rawSections?.map(section => {
+        return <SectionSelector key={section._key} section={section} />
+      })}
       <Container>
         {projectNodes && projectNodes.length > 0 && <ProjectPreviewGrid nodes={projectNodes} />}
       </Container>

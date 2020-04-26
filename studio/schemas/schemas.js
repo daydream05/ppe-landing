@@ -31,6 +31,8 @@ import video from './documents/video'
 import image from './documents/image'
 import specsTable from './objects/specsTable'
 import photoGallery from './objects/photoGallery'
+import heroWithJustBlock from './objects/heroWithJustBlock'
+import blockHero from './blocks/blockHero'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -43,6 +45,7 @@ export default createSchema({
     // in the studio.
     blockContent,
     blockText,
+    blockHero,
     button,
     category,
     companyInfo,
@@ -50,6 +53,7 @@ export default createSchema({
     heading,
     image,
     hero,
+    heroWithJustBlock,
     media,
     mainImage,
     page,

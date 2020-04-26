@@ -21,15 +21,10 @@ export default {
       }
     },
     {
-      name: 'hero',
-      title: 'Hero',
-      type: 'hero'
-    },
-    {
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{ type: 'section' }]
+      of: [{ type: 'section' }, { type: 'heroWithJustBlock'} ]
     },
     {
       name: 'body',
