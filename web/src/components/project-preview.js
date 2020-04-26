@@ -8,8 +8,7 @@ import BlockText from './block-text'
 import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 
 function ProjectPreview(props) {
-  console.log(props.mainImage)
-  console.log(props.mainImage?.asset?.metadata?.palette?.darkMuted?.background)
+
   return (
     <Link
       to={props.path}
