@@ -149,9 +149,6 @@ export const customSerializers = {
                 '+ section': {
                   mt: 6
                 },
-                ':last-child': {
-                  mb: 6,
-                }
               }}
             >
               {props.children}

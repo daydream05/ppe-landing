@@ -127,7 +127,7 @@ function Project (props) {
                   </tbody>
                 </table>
               </aside>
-              {_rawBody && <BlockContent blocks={_rawBody || []} />}
+              {_rawBody && <BlockContent blocks={_rawBody || []} sx={{ '> p:last-child': { mb: 6 } }} />}
             </TextBlockContainer>
           </div>
         </div>

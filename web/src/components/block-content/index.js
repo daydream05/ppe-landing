@@ -6,11 +6,8 @@ import { jsx } from 'theme-ui'
 
 import { customSerializers } from '../serializers/custom-serializers'
 
-const BlockContent = ({ blocks }) => (
-  <div
-  >
-    <BaseBlockContent blocks={blocks} serializers={customSerializers} />
-  </div>
+const BlockContent = ({ blocks, ...rest }) => (
+  <BaseBlockContent blocks={blocks} serializers={customSerializers} {...rest} />
 )
 
 export default BlockContent
