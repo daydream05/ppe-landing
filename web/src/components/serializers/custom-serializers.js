@@ -97,7 +97,7 @@ export const customSerializers = {
         }
         case 'large': {
           return (
-            <Text variant="body.large" as="p" sx={{ '&&&': { color: 'text' } }}>
+            <Text variant="body.large" as="p">
               {props.children}
             </Text>
           )
