@@ -47,11 +47,11 @@ export const HeroBasic = ({ blocks, mainImage, ...rest }) => {
             flexDirection: `column-reverse`,
             [mediaQueries.lg]: {
               flexDirection: `row`,
-              '> :first-child': {
+              '> :first-of-type': {
                 flex: `50%`,
                 mr: 5
               },
-              '> :nth-child(2)': {
+              '> :nth-of-type(2)': {
                 flex: `50%`
               }
             }
