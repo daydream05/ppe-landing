@@ -38,8 +38,8 @@ exports.createResolvers = ({ createResolvers }) => {
         type: 'String',
         resolve (source, args, context, info) {
           const { slug } = source
-          if(slug.current === `home`) {
-            return `/`
+          if (slug.current === 'home') {
+            return '/'
           }
           return `/${slug.current}/`
         }
@@ -116,7 +116,52 @@ async function createProjectPages (graphql, actions, reporter) {
   })
 }
 
+async function createDefaultPages (graphql, actions, reporter) {
+  const { createPage } = actions
+  const result = await graphql(`
+    {
+      allSanityPage(filter: { slug: { current: { ne: null } } }) {
+        edges {
+          node {
+            id
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) throw result.errors
+
+  const pageEdges = (result.data.allSanityPage || {}).edges || []
+
+  pageEdges.forEach(edge => {
+    const id = edge.node.id
+    const slug = edge.node.slug.current
+    let path
+
+    if (slug === 'home') {
+      path = '/'
+    } else {
+      path = `/${slug}/`
+    }
+
+    reporter.info(`Creating page: ${path}`)
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/page.js'),
+      context: { id }
+    })
+  })
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  await createBlogPostPages(graphql, actions, reporter)
-  await createProjectPages(graphql, actions, reporter)
+  return Promise.all([
+    createBlogPostPages(graphql, actions, reporter),
+    createProjectPages(graphql, actions, reporter),
+    createDefaultPages(graphql, actions, reporter)
+  ])
 }
