@@ -3,6 +3,8 @@ const {
   api: { projectId, dataset }
 } = requireConfig('../studio/sanity.json')
 
+const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
+
 module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -26,7 +28,7 @@ module.exports = {
         // To enable preview of drafts, copy .env-example into .env,
         // and add a token with read permissions
         token: process.env.SANITY_TOKEN,
-        watchMode: true,
+        watchMode: activeEnv === "development" ,
         overlayDrafts: true
       }
     }
