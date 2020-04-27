@@ -12,7 +12,7 @@ import RoleList from './role-list'
 import { TextBlockContainer } from './text-block-container'
 import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 
-function Project (props) {
+function Project(props) {
   const { _rawBody, title, categories, mainImage, members, publishedAt, relatedProjects } = props
 
   const tableDetailStyle = {
@@ -25,7 +25,7 @@ function Project (props) {
 
   return (
     <article>
-      {props.mainImage && mainImage.asset && (
+      {props.mainImage && mainImage.asset?.fluid && (
         <div
           sx={{
             position: 'relative'
@@ -36,7 +36,17 @@ function Project (props) {
             alt={mainImage.alt}
             sx={{
               width: '100%',
-              height: '50vh'
+              height: '50vh',
+              '::after': {
+                content: `""`,
+                position: `absolute`,
+                top: 0,
+                left: 0,
+                width: `100%`,
+                height: `100%`,
+                backgroundColor: mainImage?.asset?.metadata?.palette?.darkMuted?.background,
+                opacity: 0.5
+              }
             }}
           />
         </div>
@@ -46,7 +56,7 @@ function Project (props) {
           <div
             sx={{
               px: [4, 4, 4, 4, 4, 0],
-              pt: [5,5,5,5,5,6],
+              pt: [5, 5, 5, 5, 5, 6]
             }}
           >
             <TextBlockContainer>
@@ -66,8 +76,8 @@ function Project (props) {
                 >
                   <thead>
                     <tr>
-                      <th sx={{ textAlign: 'left', pb: 4 }} colSpan='2'>
-                        <Text as='h2' variant='text.heading.small' sx={{ pt: 0 }}>
+                      <th sx={{ textAlign: 'left', pb: 4 }} colSpan="2">
+                        <Text as="h2" variant="text.heading.small" sx={{ pt: 0 }}>
                           Project details
                         </Text>
                       </th>
@@ -76,58 +86,60 @@ function Project (props) {
                   <tbody>
                     <tr>
                       <td sx={tableDetailStyle}>
-                        <Text as='h3' sx={{ fontSize: 3 }}>
+                        <Text as="h3" sx={{ fontSize: 3 }}>
                           Project:
                         </Text>
                       </td>
                       <td sx={tableDetailStyle}>
-                        <Text as='span'>Semister Darwin</Text>
+                        <Text as="span">Semister Darwin</Text>
                       </td>
                     </tr>
                     <tr>
                       <td sx={tableDetailStyle}>
-                        <Text as='h3' sx={{ fontSize: 3 }}>
+                        <Text as="h3" sx={{ fontSize: 3 }}>
                           Client:
                         </Text>
                       </td>
                       <td sx={tableDetailStyle}>
-                        <Text as='span'>Designmodo</Text>
+                        <Text as="span">Designmodo</Text>
                       </td>
                     </tr>
                     <tr>
                       <td sx={tableDetailStyle}>
-                        <Text as='h3' sx={{ fontSize: 3 }}>
+                        <Text as="h3" sx={{ fontSize: 3 }}>
                           Deliverable(s):
                         </Text>
                       </td>
                       <td sx={tableDetailStyle}>
-                        <Text as='span'>Website</Text>
+                        <Text as="span">Website</Text>
                       </td>
                     </tr>
                     <tr>
                       <td sx={tableDetailStyle}>
-                        <Text as='h3' sx={{ fontSize: 3 }}>
+                        <Text as="h3" sx={{ fontSize: 3 }}>
                           Year:
                         </Text>
                       </td>
                       <td sx={tableDetailStyle}>
-                        <Text as='span'>2020</Text>
+                        <Text as="span">2020</Text>
                       </td>
                     </tr>
                     <tr>
                       <td sx={tableDetailStyle}>
-                        <Text as='h3' sx={{ fontSize: 3 }}>
+                        <Text as="h3" sx={{ fontSize: 3 }}>
                           Field:
                         </Text>
                       </td>
                       <td sx={tableDetailStyle}>
-                        <Text as='span'>Web Development</Text>
+                        <Text as="span">Web Development</Text>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </aside>
-              {_rawBody && <BlockContent blocks={_rawBody || []} sx={{ '> p:last-child': { mb: 6 } }} />}
+              {_rawBody && (
+                <BlockContent blocks={_rawBody || []} sx={{ '> p:last-child': { mb: 6 } }} />
+              )}
             </TextBlockContainer>
           </div>
         </div>

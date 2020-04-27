@@ -34,6 +34,14 @@ export const query = graphql`
           fluid(maxHeight: 1000, maxWidth: 2000) {
             ...GatsbySanityImageFluid_noBase64
           }
+          metadata {
+            palette {
+              darkMuted {
+                background
+                title
+              }
+            }
+          }
         }
         alt
       }
@@ -98,8 +106,6 @@ const ProjectTemplate = props => {
   const { projects } = data
 
   const projectIndex = projects?.edges.find(({ node }) => node.id === project?.id)
-
-  console.log(projectIndex)
 
   return (
     <Layout pageSettings={project?.pageSettings}>
