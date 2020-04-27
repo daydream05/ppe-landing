@@ -7,6 +7,7 @@ const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'deve
 
 module.exports = {
   plugins: [
+    '@bumped-inc/gatsby-plugin-optional-chaining',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-theme-ui',
     {
