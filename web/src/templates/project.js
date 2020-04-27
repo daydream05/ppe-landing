@@ -45,6 +45,11 @@ export const query = graphql`
         }
         alt
       }
+      client {
+        name
+      }
+      endedAt(formatString: "YYYY")
+      deliverables
       title
       slug {
         current
@@ -164,7 +169,7 @@ const ProjectTemplate = props => {
                 transform: `translateX(-100%)`,
                 zIndex: -1,
                 transition: `0.5s ease-in-out`,
-                transitionProperty: `transform`,
+                transitionProperty: `transform`
               }
             }}
           >

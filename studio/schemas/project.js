@@ -46,9 +46,29 @@ export default {
       type: 'datetime'
     },
     {
+      name: 'client',
+      title: 'Client',
+      type: 'reference',
+      to: [{ type: 'company' }]
+    },
+    {
       name: 'mainImage',
       title: 'Main image',
       type: 'mainImage'
+    },
+    {
+      name: 'deliverables',
+      title: 'Deliverables',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: {
+        layout: 'radio',
+        list: [
+          { title: 'Website', value: 'website'},
+          { title: 'UX/Ui ', value: 'ux/ui'},
+          { title: 'Video', value: 'video'},
+        ]
+      }
     },
     {
       name: 'categories',

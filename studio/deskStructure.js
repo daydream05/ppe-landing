@@ -143,5 +143,9 @@ export default () =>
         .title('Categories')
         .schemaType('category')
         .child(S.documentTypeList('category').title('Categories')),
+      S.listItem()
+        .title('Companies')
+        .schemaType('company')
+        .child(S.documentTypeList('company').title('Companies')),
       ...S.documentTypeListItems().filter(listItem => !hiddenTypes.includes(listItem.getId()))
     ])
