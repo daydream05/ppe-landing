@@ -216,6 +216,4 @@ const baseTheme = merge(future, {
   constants
 })
 
-console.log(baseTheme)
-
 export default baseTheme

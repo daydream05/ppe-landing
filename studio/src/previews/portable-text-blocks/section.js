@@ -2,7 +2,7 @@ import React from 'react'
 import { blocksToText } from '../../lib/helpers'
 
 export const SectionPreview = ({ value }) => {
-  console.log(value)
+
   return (
     <section
       style={{

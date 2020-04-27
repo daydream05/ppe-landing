@@ -24,9 +24,6 @@ export const PhotoGallery = ({ value }) => {
 
     const [width, height] = imageUrl.split('/')[6].split('-')[1].split('?')[0].split('.')[0].split('x')
     
-    console.log(width, height)
-    
-
     galleryPhotos[i] = {
       src: imageUrl,
       width: parseInt(width),
@@ -34,8 +31,6 @@ export const PhotoGallery = ({ value }) => {
       height: parseInt(height),
     }
   }
-
-  console.log(galleryPhotos)
 
   return (
     <div

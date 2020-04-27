@@ -161,7 +161,7 @@ export const customSerializers = {
       return <Figure {...props.node} />
     },
     section(props) {
-      console.log(props)
+
       return (
         <SectionSelector
           section={props.node}
@@ -216,7 +216,7 @@ export const customSerializers = {
       )
     },
     specsTable(props) {
-      console.log(props.node)
+
       return (
         <SpecsTable rows={props.node?.table?.rows} />
       )
