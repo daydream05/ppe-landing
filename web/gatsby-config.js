@@ -6,6 +6,10 @@ const {
 const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
 
 module.exports = {
+  siteMetadata: {
+    title: 'Vince Parulan',
+    siteUrl: 'https://www.vinceparulan.com/'
+  },
   plugins: [
     '@bumped-inc/gatsby-plugin-optional-chaining',
     'gatsby-plugin-react-helmet',
@@ -16,8 +20,8 @@ module.exports = {
         openGraph: {
           type: 'website',
           locale: 'en_US',
-          url: 'https://www.hungrygatsbear.com/',
-          site_name: 'HungryGatsbear'
+          url: 'https://www.vinceparulan.com/',
+          site_name: 'Vince Parulan'
         }
       }
     },
@@ -29,8 +33,34 @@ module.exports = {
         // To enable preview of drafts, copy .env-example into .env,
         // and add a token with read permissions
         token: process.env.SANITY_TOKEN,
-        watchMode: activeEnv === "development" ,
+        watchMode: activeEnv === 'development',
         overlayDrafts: true
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        query: `
+          {
+            sanitySiteSettings {
+              url
+            }
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+        }`,
+        resolveSiteUrl: ({ sanitySiteSettings }) => {
+          // Alternativly, you may also pass in an environment variable (or any location) at the beginning of your `gatsby-config.js`.
+          return sanitySiteSettings.url
+        }
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }]
       }
     }
   ]
