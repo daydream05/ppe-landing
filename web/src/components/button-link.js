@@ -40,6 +40,7 @@ const ButtonLink = ({ children, variant, shape, ...rest }) => {
         py: 2,
         color: 'white',
         bg: 'primary',
+        minWidth: `128px`,
         border: 0,
         borderRadius: 4,
         variant: `buttons.${variant}`,

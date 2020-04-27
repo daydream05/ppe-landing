@@ -24,7 +24,7 @@ export default {
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{ type: 'section' }, { type: 'heroWithJustBlock'} ]
+      of: [{ type: 'section' }, { type: 'heroWithJustBlock'}, { type: 'heroBasic'} ]
     },
     {
       name: 'body',

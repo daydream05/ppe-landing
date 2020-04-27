@@ -33,6 +33,8 @@ import specsTable from './objects/specsTable'
 import photoGallery from './objects/photoGallery'
 import heroWithJustBlock from './objects/heroWithJustBlock'
 import blockHero from './blocks/blockHero'
+import blockForHeroBasic from './blocks/blockForHeroBasic'
+import heroBasic from './objects/heroBasic'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -46,6 +48,7 @@ export default createSchema({
     blockContent,
     blockText,
     blockHero,
+    blockForHeroBasic,
     button,
     category,
     companyInfo,
@@ -53,6 +56,7 @@ export default createSchema({
     heading,
     image,
     hero,
+    heroBasic,
     heroWithJustBlock,
     media,
     mainImage,

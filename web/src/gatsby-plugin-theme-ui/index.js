@@ -18,7 +18,7 @@ export const colors = {
       background: '#0A0A0A',
       mute: 'hsla(0, 0%, 87%, 0.2)',
       paragraphColor: 'hsla(0, 0%, 100%, 0.8)',
-      lightGray: '#0A0A0A'
+      lightGray: '#0A0A0A',
     }
   }
 }
@@ -135,7 +135,7 @@ const baseTheme = merge(future, {
     // we want them unaffected by night mode if specified other than default
     link: {
       default: {
-        color: 'text',
+        color: 'text'
       },
       dark: {
         color: 'black'
