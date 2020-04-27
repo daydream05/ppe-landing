@@ -135,6 +135,9 @@ export default {
     },
     {
       type: 'photoGallery',
+    },
+    {
+      type: 'dataTable',
     }
   ]
 }

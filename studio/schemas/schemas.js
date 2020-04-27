@@ -35,6 +35,7 @@ import heroWithJustBlock from './objects/heroWithJustBlock'
 import blockHero from './blocks/blockHero'
 import blockForHeroBasic from './blocks/blockForHeroBasic'
 import heroBasic from './objects/heroBasic'
+import dataTable from './objects/dataTable'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -52,6 +53,7 @@ export default createSchema({
     button,
     category,
     companyInfo,
+    dataTable,
     figure,
     heading,
     image,

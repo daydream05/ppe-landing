@@ -11,6 +11,7 @@ import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 import { SectionSelector } from '../sections/section-selector'
 import { SpecsTable } from '../block-content/specsTable'
 import { PhotoGallery } from '../block-content/photo-gallery'
+import { DataTable } from '../block-content/dataTable'
 
 export const customSerializers = {
   marks: {
@@ -230,6 +231,11 @@ export const customSerializers = {
             my: 5,
           }}
         />
+      )
+    },
+    dataTable(props) {
+      return (
+        <DataTable rows={props.node?.table?.rows} />
       )
     }
   }
