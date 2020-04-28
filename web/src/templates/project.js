@@ -7,12 +7,16 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import Project from '../components/project'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
+import { ProjectSEO } from '../components/project-seo'
+import { blocksToText } from '../lib/helpers'
 
 export const query = graphql`
   query ProjectTemplateQuery($id: String!) {
     project: sanityProject(id: { eq: $id }) {
       id
+      path
       publishedAt
+      _rawExcerpt
       pageSettings {
         hideHeader
         headerLinkColor
@@ -31,6 +35,9 @@ export const query = graphql`
       mainImage {
         asset {
           _id
+          ogimage: fixed(width: 1200, height: 630) {
+            src
+          }
           fluid(maxHeight: 1000, maxWidth: 2000) {
             ...GatsbySanityImageFluid_noBase64
           }
@@ -53,6 +60,10 @@ export const query = graphql`
       title
       slug {
         current
+      }
+      seo {
+        metaTitle
+        metaDescription
       }
       _rawBody(resolveReferences: { maxDepth: 1000 })
       members {
@@ -112,15 +123,31 @@ const ProjectTemplate = props => {
 
   const projectIndex = projects?.edges.find(({ node }) => node.id === project?.id)
 
+  const excerpt = project?._rawExcerpt && blocksToText(project._rawExcerpt)
+
+  const { seo } = project
+
+  const title = seo?.metaTitle || project?.title
+  const description = seo?.metaDescription || excerpt
+  console.log(project?.path)
+
   return (
     <Layout pageSettings={project?.pageSettings}>
       {errors && <SEO title="GraphQL Error" />}
-      {project && <SEO title={project.title || 'Untitled'} />}
 
       {errors && (
         <Container>
           <GraphQLErrorList errors={errors} />
         </Container>
+      )}
+      {project && (
+        <ProjectSEO
+          metaTitle={title}
+          metaDescription={description}
+          path={project?.path}
+          imageUrl={project?.mainImage?.asset?.ogimage?.src}
+          imageAlt={project?.mainImage?.alt}
+        />
       )}
       {project && <Project {...project} />}
       {projectIndex?.next && (

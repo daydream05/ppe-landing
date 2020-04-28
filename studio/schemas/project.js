@@ -92,6 +92,11 @@ export default {
       title: 'Page settings',
       type: 'pageSettings'
     },
+    {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    }
   ],
   preview: {
     select: {
