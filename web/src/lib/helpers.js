@@ -49,6 +49,8 @@ export function buildImageObj(source) {
   return imageObj
 }
 
+const defaults = { nonTextBehavior: 'remove' }
+
 export function blocksToText(blocks, opts = {}) {
   const options = Object.assign({}, defaults, opts)
   return blocks
