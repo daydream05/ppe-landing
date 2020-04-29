@@ -150,11 +150,19 @@ async function createDefaultPages (graphql, actions, reporter) {
 
     reporter.info(`Creating page: ${path}`)
 
-    createPage({
-      path,
-      component: require.resolve('./src/templates/page.js'),
-      context: { id }
-    })
+    const excludedPages = ['home', 'projects', 'blog', 'about', 'contact']
+
+    // exclude these pages since there's a bug that causes live
+    // preview not to work for duplicate pages. (i.e. pages on gatsby folder and
+    // pages created programmatically.)
+
+    if (!excludedPages.includes(slug)) {
+      createPage({
+        path,
+        component: require.resolve('./src/templates/page.js'),
+        context: { id }
+      })
+    }
   })
 }
 
