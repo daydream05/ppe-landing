@@ -31,7 +31,7 @@ const Header = ({ linkTheme }) => {
     },
     ':hover': {
       color: 'primary'
-    }
+    },
   }
 
   const data = useStaticQuery(siteQuery)

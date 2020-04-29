@@ -37,7 +37,7 @@ export const query = graphql`
           ogimage: fixed(width: 1200, height: 630) {
             src
           }
-          fluid(maxHeight: 600, maxWidth: 1200) {
+          fluid(maxHeight: 200, maxWidth: 300) {
             ...GatsbySanityImageFluid_noBase64
           }
         }
@@ -48,34 +48,6 @@ export const query = graphql`
         current
       }
       _rawBody
-      authors {
-        _key
-        person {
-          image {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-          }
-          name
-        }
-        roles
-      }
     }
   }
 `
@@ -124,7 +96,6 @@ const BlogPostTemplate = props => {
           images={[imageUrl]}
           datePublished={post?.datePublished}
           dateModified={post?.dateModified}
-          authorName={post?.authors[0]?.person?.name}
         />
       )}
       {post && (

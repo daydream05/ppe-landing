@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
-import BlogPostPreviewGrid from '../components/blog-post-preview-grid'
+import { BlogPostPreviewGrid } from '../components/blog-post-preview-grid'
 import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
 import Layout from '../containers/layout'
@@ -92,7 +92,7 @@ export const query = graphql`
             alt
           }
           title
-          _rawExcerpt
+          excerpt
           slug {
             current
           }
@@ -114,9 +114,6 @@ const IndexPage = props => {
   }
 
   const site = (data || {}).site
-  const postNodes = (data || {}).posts
-    ? mapEdgesToNodes(data.posts).filter(filterOutDocsWithoutSlugs)
-    : []
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
     : []
@@ -132,10 +129,15 @@ const IndexPage = props => {
 
   const title = seo ? seo.metaTitle : page.title
 
+  const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
+
+  console.log(data)
+
   return (
     <Layout>
       {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
       {page && page._rawHero && <DefaultHero hero={page._rawHero} />}
+      {postNodes && postNodes.length > 0 && <BlogPostPreviewGrid posts={postNodes} />}
       {page?._rawSections?.map(section => {
         return <SectionSelector key={section._key} section={section} />
       })}

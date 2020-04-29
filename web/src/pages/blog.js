@@ -5,13 +5,14 @@ import { jsx, Container } from 'theme-ui'
 
 import { BlogJsonLd } from 'gatsby-plugin-next-seo'
 import { mapEdgesToNodes } from '../lib/helpers'
-import BlogPostPreviewGrid from '../components/blog-post-preview-grid'
+import { BlogPostPreviewGrid } from '../components/blog-post-preview-grid'
 
 import GraphQLErrorList from '../components/graphql-error-list'
 import Layout from '../containers/layout'
 
 import PageSEO from '../components/page-seo'
 import DefaultHero from '../components/hero/default-hero'
+import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 
 export const query = graphql`
   query BlogPageQuery {
@@ -43,7 +44,7 @@ export const query = graphql`
         node {
           id
           path
-          publishedAt
+          publishedAt(formatString: "MMMM DD, YYYY")
           mainImage {
             asset {
               _id
@@ -54,12 +55,15 @@ export const query = graphql`
             alt
           }
           title
-          _rawExcerpt
+          excerpt
           slug {
             current
           }
         }
       }
+    }
+    post: sanityPost(slug: { current: { eq: "first-blog-post" } }) {
+      title
     }
   }
 `
@@ -82,12 +86,16 @@ const BlogPage = props => {
   const title = seo ? seo.metaTitle : page.title
   const pageUrl = `${site.url}${page?.path}`
 
+  console.log(data)
+
   const posts = data?.posts?.edges?.map(({ node }) => {
     return {
       headline: node.title,
       image: node?.mainImage?.asset?.fluid?.src
     }
   })
+
+  console.log(postNodes)
 
   return (
     <Layout>
@@ -98,15 +106,19 @@ const BlogPage = props => {
           headline="Blog headline"
           images={site?.socialShareImage?.asset?.ogimage?.src}
           posts={posts}
-          datePublished="2015-02-05T08:00:00+08:00"
-          dateModified="2015-02-05T09:00:00+08:00"
           authorName={site?.author}
           description={seo?.metaDescription}
         />
       )}
-      {page?._rawHero && <DefaultHero hero={page._rawHero} />}
-      <Container>
-        {postNodes && postNodes.length > 0 && <BlogPostPreviewGrid nodes={postNodes} />}
+      <Container
+        sx={{
+          pt: 5,
+          [mediaQueries.lg]: {
+            pt: 0
+          }
+        }}
+      >
+        {postNodes && postNodes.length > 0 && <BlogPostPreviewGrid posts={postNodes} />}
       </Container>
     </Layout>
   )

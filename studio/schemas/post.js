@@ -32,7 +32,7 @@ export default {
     {
       name: 'excerpt',
       title: 'Excerpt',
-      type: 'blockText'
+      type: 'text'
     },
     {
       name: 'authors',

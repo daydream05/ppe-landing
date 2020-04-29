@@ -13,12 +13,13 @@ export const colors = {
   paragraphColor: '#0A0A0A',
   lightGray: 'hsla(0, 0%, 100%, 0.8)',
   shadowGreen: 'hsla(172, 23%, 69%, 0.2)',
+  grey: '#d2d2d2',
   modes: {
     dark: {
       background: '#0A0A0A',
       mute: 'hsla(0, 0%, 87%, 0.2)',
       paragraphColor: 'hsla(0, 0%, 100%, 0.8)',
-      lightGray: '#0A0A0A',
+      lightGray: '#0A0A0A'
     }
   }
 }
@@ -135,13 +136,22 @@ const baseTheme = merge(future, {
     // we want them unaffected by night mode if specified other than default
     link: {
       default: {
-        color: 'text'
+        color: 'text',
+        ':visited': {
+          color: 'text'
+        }
       },
       dark: {
-        color: 'black'
+        color: 'black',
+        ':visited': {
+          color: 'black'
+        }
       },
       light: {
-        color: 'white'
+        color: 'white',
+        ':visited': {
+          color: 'white'
+        }
       }
     }
   },
