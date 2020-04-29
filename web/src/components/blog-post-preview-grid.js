@@ -81,7 +81,7 @@ export const BlogPostPreviewGrid = ({ posts }) => {
                         }}
                         to={post.path}
                       >
-                        {post.mainImage && (
+                        {post.mainImage?.asset?.fluid && (
                           <GatsbyImage
                             fluid={post.mainImage?.asset?.fluid}
                             alt={post.mainImage?.alt}
@@ -91,9 +91,19 @@ export const BlogPostPreviewGrid = ({ posts }) => {
                       <Text as="span" sx={{ fontSize: 2, color: 'text' }}>
                         {post.publishedAt}
                       </Text>
-                      <Link to={post.path} sx={{ textDecoration: `none`, color: `initial` }}>
+                      <Link
+                        to={post.path}
+                        sx={{
+                          textDecoration: `none`,
+                          ':hover': {
+                            '> *': {
+                              color: 'primary'
+                            }
+                          }
+                        }}
+                      >
                         <Styled.h3
-                          sx={{ mt: 2, mb: 2, fontWeight: `bold`, fontSize: [4, 4, 4, 4, 4] }}
+                          sx={{ mt: 2, mb: 2, fontWeight: `bold`, fontSize: [4, 4, 4, 4, 5] }}
                         >
                           {post.title}
                         </Styled.h3>
@@ -147,16 +157,36 @@ export const BlogPostPreviewGrid = ({ posts }) => {
                           <Text as="span" sx={{ fontSize: 2, color: 'text' }}>
                             {post.publishedAt}
                           </Text>
-                          <Styled.h3
-                            sx={{ mt: 2, mb: 2, fontWeight: `bold`, fontSize: [4, 4, 4, 4, 4] }}
+                          <Link
+                            to={post.path}
+                            sx={{
+                              textDecoration: `none`,
+                              ':hover': {
+                                '> *': {
+                                  color: 'primary'
+                                }
+                              }
+                            }}
                           >
-                            {post.title}
-                          </Styled.h3>
+                            <Styled.h3
+                              sx={{ mt: 2, mb: 2, fontWeight: `bold`, fontSize: [4, 4, 4, 4, 4] }}
+                            >
+                              {post.title}
+                            </Styled.h3>
+                          </Link>
                           <Styled.p sx={{ mt: 0, fontSize: [2, 2, 2, 2, 2, 2] }}>
                             {post.excerpt}
                           </Styled.p>
-                          <Link to={post.path} sx={{ mt: 0, fontSize: [2, 2, 2, 2, 2, 2] }}>
-                            Read more
+                          <Link
+                            to={post.path}
+                            sx={{
+                              mt: 0,
+                              fontSize: [2, 2, 2, 2, 2, 2],
+                              color: 'secondary',
+                              textDecoration: `none`
+                            }}
+                          >
+                            Read more »
                           </Link>
                         </div>
                       </div>
@@ -200,7 +230,7 @@ export const BlogPostPreviewGrid = ({ posts }) => {
                         }}
                       >
                         <Link to={post.path} sx={{ textDecoration: `none`, color: `initial` }}>
-                          {post.mainImage && (
+                          {post.mainImage?.asset?.fluid && (
                             <GatsbyImage
                               fluid={post.mainImage?.asset?.fluid}
                               alt={post.mainImage?.alt}
