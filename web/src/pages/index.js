@@ -137,7 +137,6 @@ const IndexPage = props => {
     <Layout>
       {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
       {page && page._rawHero && <DefaultHero hero={page._rawHero} />}
-      {postNodes && postNodes.length > 0 && <BlogPostPreviewGrid posts={postNodes} />}
       {page?._rawSections?.map(section => {
         return <SectionSelector key={section._key} section={section} />
       })}
