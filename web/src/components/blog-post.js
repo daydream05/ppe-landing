@@ -10,54 +10,54 @@ import RoleList from './role-list'
 
 import { constants } from '../gatsby-plugin-theme-ui'
 import { TextBlockContainer } from './text-block-container'
+import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 
-function BlogPost (props) {
+function BlogPost(props) {
   const { _rawBody, authors, categories, title, mainImage, publishedAt } = props
   return (
     <article>
-      {props.mainImage && mainImage.asset && (
+      {mainImage && mainImage.asset?.fluid && (
         <div
           sx={{
-            display: [null, null, 'grid'],
-            gridTemplateColumns: '256px 1fr',
-            color: 'primary',
-            maxWidth: '1200px',
-            m: '0 auto',
-            pt: constants.headerHeight
+            position: 'relative'
           }}
         >
-          <div />
-          <Img fluid={mainImage.asset.fluid} alt={mainImage.alt} />
+          <Img
+            fluid={mainImage.asset.fluid}
+            alt={mainImage.alt}
+            sx={{
+              width: '100%',
+              height: '50vh',
+              '::after': {
+                content: `""`,
+                position: `absolute`,
+                top: 0,
+                left: 0,
+                width: `100%`,
+                height: `100%`,
+                backgroundColor: mainImage?.asset?.metadata?.palette?.darkMuted?.background,
+                opacity: 0.5
+              }
+            }}
+          />
         </div>
       )}
       <Container>
-        <div>
-          <div sx={{ px: [3, 3, 3, 0] }}>
-            <TextBlockContainer>
-              <Styled.h1 sx={{ fontWeight: `bold`}}>{title}</Styled.h1>
-            </TextBlockContainer>
+        <div
+          sx={{
+            px: [3, 3, 3, 0],
+            py: [5, 5, 5, 5],
+            [mediaQueries.lg]: {
+              pb: 6
+            }
+          }}
+        >
+          <TextBlockContainer>
+            <Styled.h1 sx={{ fontWeight: 'bold', textAlign: `center`, mt: 0 }}>{title}</Styled.h1>
+          </TextBlockContainer>
+          <TextBlockContainer>
             {_rawBody && <BlockContent blocks={_rawBody || []} />}
-          </div>
-          <aside>
-            {publishedAt && (
-              <div>
-                {differenceInDays(new Date(publishedAt), new Date()) > 3
-                  ? distanceInWords(new Date(publishedAt), new Date())
-                  : format(new Date(publishedAt), 'MMMM Do YYYY')}
-              </div>
-            )}
-            {authors && <RoleList items={authors} title='Authors' />}
-            {categories && (
-              <div>
-                <h3>Categories</h3>
-                <ul>
-                  {categories.map(category => (
-                    <li key={category._id}>{category.title}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </aside>
+          </TextBlockContainer>
         </div>
       </Container>
     </article>

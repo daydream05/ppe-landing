@@ -8,7 +8,7 @@ import { jsx, Container } from 'theme-ui'
 import GraphQLErrorList from '../components/graphql-error-list'
 import BlogPost from '../components/blog-post'
 import SEO from '../components/seo'
-import Layout from '../containers/layout'
+import Layout from '../components/layout'
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -37,8 +37,16 @@ export const query = graphql`
           ogimage: fixed(width: 1200, height: 630) {
             src
           }
-          fluid(maxHeight: 200, maxWidth: 300) {
+          fluid(maxHeight: 1000, maxWidth: 2000) {
             ...GatsbySanityImageFluid_noBase64
+          }
+          metadata {
+            palette {
+              darkMuted {
+                background
+                title
+              }
+            }
           }
         }
         alt
@@ -78,7 +86,7 @@ const BlogPostTemplate = props => {
   }
 
   return (
-    <Layout>
+    <Layout pageSettings={post?.pageSettings || { headerLinkColor: 'light' }}>
       {errors && <SEO title="GraphQL Error" />}
       {post && (
         <GatsbySeo

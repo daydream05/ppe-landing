@@ -178,21 +178,21 @@ const baseTheme = merge(future, {
       }
     },
     h1: {
-      fontSize: 6,
-      [mediaQueries.lg]: {
-        fontSize: 7
-      }
-    },
-    h2: {
       fontSize: 5,
       [mediaQueries.lg]: {
         fontSize: 6
       }
     },
-    h3: {
+    h2: {
       fontSize: 4,
       [mediaQueries.lg]: {
         fontSize: 5
+      }
+    },
+    h3: {
+      fontSize: 3,
+      [mediaQueries.lg]: {
+        fontSize: 4
       }
     },
     h4: {
@@ -209,9 +209,9 @@ const baseTheme = merge(future, {
     },
     p: {
       color: 'paragraphColor',
-      fontSize: 2,
+      fontSize: 3,
       [mediaQueries.lg]: {
-        fontSize: 2
+        fontSize: 3
       }
     },
     li: {
