@@ -209,9 +209,9 @@ const baseTheme = merge(future, {
     },
     p: {
       color: 'paragraphColor',
-      fontSize: 3,
+      fontSize: 2,
       [mediaQueries.lg]: {
-        fontSize: 3
+        fontSize: 2
       }
     },
     li: {

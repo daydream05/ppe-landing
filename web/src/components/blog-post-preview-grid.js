@@ -10,7 +10,8 @@ import GatsbyImage from 'gatsby-image'
 
 export const BlogPostPreviewGrid = ({ posts }) => {
   console.log(posts)
-  const latestPosts = posts?.slice(0, 3)
+  const latestPosts = posts?.slice(0, 4)
+  const morePosts = posts?.slice(4, posts.length)
   console.log(latestPosts)
 
   return (
@@ -20,6 +21,7 @@ export const BlogPostPreviewGrid = ({ posts }) => {
         sx={{
           px: 4,
           py: 5,
+          pt: 0,
           margin: '0 auto',
           [mediaQueries.xl]: {
             px: 6,
@@ -31,7 +33,11 @@ export const BlogPostPreviewGrid = ({ posts }) => {
           }
         }}
       >
-        <div>
+        <div
+          sx={{
+            mb: 5
+          }}
+        >
           <div
             sx={{
               borderBottom: `1px solid`,
@@ -51,7 +57,6 @@ export const BlogPostPreviewGrid = ({ posts }) => {
               gridGap: 5,
               [mediaQueries.xl]: {
                 gridTemplateColumns: 'repeat(2, 1fr)',
-                gridTemplateRows: 'repeat(3, min(256px))',
                 gridColumnGap: 5,
                 gridRowGap: 4
               }
@@ -72,6 +77,7 @@ export const BlogPostPreviewGrid = ({ posts }) => {
                       <Link
                         sx={{
                           display: `block`,
+                          mb: 3
                         }}
                         to={post.path}
                       >
@@ -82,11 +88,15 @@ export const BlogPostPreviewGrid = ({ posts }) => {
                           />
                         )}
                       </Link>
-                      <Text as="span" sx={{ fontSize: 2 }}>
+                      <Text as="span" sx={{ fontSize: 2, color: 'text' }}>
                         {post.publishedAt}
                       </Text>
                       <Link to={post.path} sx={{ textDecoration: `none`, color: `initial` }}>
-                        <Styled.h3 sx={{ mt: 2, mb: 2 }}>{post.title}</Styled.h3>
+                        <Styled.h3
+                          sx={{ mt: 2, mb: 2, fontWeight: `bold`, fontSize: [4, 4, 4, 4, 4] }}
+                        >
+                          {post.title}
+                        </Styled.h3>
                       </Link>
                       <Styled.p sx={{ mt: 0 }}>{post.excerpt}</Styled.p>
                     </li>
@@ -101,50 +111,124 @@ export const BlogPostPreviewGrid = ({ posts }) => {
                         }
                       }}
                     >
-                      <Link to={post.path} sx={{ textDecoration: `none`, color: `initial` }}>
+                      <div
+                        sx={{
+                          display: `flex`,
+                          flexDirection: `column`,
+                          [mediaQueries.xl]: {
+                            flexDirection: `row`
+                          }
+                        }}
+                      >
                         <div
                           sx={{
-                            display: `flex`,
-                            flexDirection: `column`,
                             [mediaQueries.xl]: {
-                              flexDirection: `row`
+                              flex: 2,
+                              mr: 3
                             }
                           }}
                         >
-                          <div
-                            sx={{
-                              [mediaQueries.xl]: {
-                                flex: 2,
-                                mr: 3
-                              }
-                            }}
-                          >
+                          <Link to={post.path} sx={{ textDecoration: `none`, color: `initial` }}>
                             {post.mainImage && (
                               <GatsbyImage
                                 fluid={post.mainImage?.asset?.fluid}
                                 alt={post.mainImage?.alt}
                               />
                             )}
-                          </div>
-                          <div
-                            sx={{
-                              [mediaQueries.xl]: {
-                                flex: `3`
-                              }
-                            }}
-                          >
-                            <Text as="span" sx={{ fontSize: 2 }}>
-                              {post.publishedAt}
-                            </Text>
-                            <Styled.h3 sx={{ mt: 2, mb: 2 }}>{post.title}</Styled.h3>
-                            <Styled.p sx={{ mt: 0 }}>{post.excerpt}</Styled.p>
-                            <Link to={post.path}>Read more</Link>
-                          </div>
+                          </Link>
                         </div>
-                      </Link>
+                        <div
+                          sx={{
+                            [mediaQueries.xl]: {
+                              flex: `3`
+                            }
+                          }}
+                        >
+                          <Text as="span" sx={{ fontSize: 2, color: 'text' }}>
+                            {post.publishedAt}
+                          </Text>
+                          <Styled.h3
+                            sx={{ mt: 2, mb: 2, fontWeight: `bold`, fontSize: [4, 4, 4, 4, 4] }}
+                          >
+                            {post.title}
+                          </Styled.h3>
+                          <Styled.p sx={{ mt: 0, fontSize: [2, 2, 2, 2, 2, 2] }}>
+                            {post.excerpt}
+                          </Styled.p>
+                          <Link to={post.path} sx={{ mt: 0, fontSize: [2, 2, 2, 2, 2, 2] }}>
+                            Read more
+                          </Link>
+                        </div>
+                      </div>
                     </li>
                   )
                 }
+              })}
+          </ul>
+        </div>
+        <div>
+          <div
+            sx={{
+              borderBottom: `1px solid`,
+              borderColor: `grey`,
+              py: 3,
+              mb: 4
+            }}
+          >
+            <h2 sx={{ m: 0, variant: 'text.heading.small' }}>More blog posts</h2>
+          </div>
+          <ul>
+            {morePosts?.length > 0 &&
+              morePosts.map((post, id) => {
+                return (
+                  <li key={id}>
+                    <div
+                      sx={{
+                        display: `flex`,
+                        flexDirection: `column`,
+                        [mediaQueries.xl]: {
+                          flexDirection: `row`
+                        }
+                      }}
+                    >
+                      <div
+                        sx={{
+                          [mediaQueries.xl]: {
+                            flex: 2,
+                            mr: 3
+                          }
+                        }}
+                      >
+                        <Link to={post.path} sx={{ textDecoration: `none`, color: `initial` }}>
+                          {post.mainImage && (
+                            <GatsbyImage
+                              fluid={post.mainImage?.asset?.fluid}
+                              alt={post.mainImage?.alt}
+                            />
+                          )}
+                        </Link>
+                      </div>
+                      <div
+                        sx={{
+                          [mediaQueries.xl]: {
+                            flex: `3`
+                          }
+                        }}
+                      >
+                        <Text as="span" sx={{ fontSize: 2, color: 'text' }}>
+                          {post.publishedAt}
+                        </Text>
+                        <Styled.h3
+                          sx={{ mt: 2, mb: 2, fontWeight: `bold`, fontSize: [4, 4, 4, 4, 4] }}
+                        >
+                          {post.title}
+                        </Styled.h3>
+                        <Styled.p sx={{ mt: 0 }}>{post.excerpt}</Styled.p>
+                        <Link to={post.path}>Read more</Link>
+                      </div>
+                    </div>
+                  </li>
+                )
               })}
           </ul>
         </div>

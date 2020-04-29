@@ -18,9 +18,9 @@ export const HeroWithJustBlock = ({ blocks, ...rest }) => {
         variant='container.large'
         sx={{
           px: 4,
-          py: 5,
           margin: '0 auto',
           pt: `calc(${baseTheme.space[5]}px + ${constants.headerHeight})`,
+          pb: 0,
           [mediaQueries.xl]: {
             px: 6,
             py: 6,
