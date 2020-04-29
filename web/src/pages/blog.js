@@ -13,6 +13,7 @@ import Layout from '../containers/layout'
 import PageSEO from '../components/page-seo'
 import DefaultHero from '../components/hero/default-hero'
 import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
+import { SectionSelector } from '../components/sections/section-selector'
 
 export const query = graphql`
   query BlogPageQuery {
@@ -32,6 +33,7 @@ export const query = graphql`
       }
     }
     page: sanityPage(slug: { current: { eq: "blog" } }) {
+      _rawSections(resolveReferences: { maxDepth: 1000 })
       title
       path
       seo {
@@ -110,6 +112,9 @@ const BlogPage = props => {
           description={seo?.metaDescription}
         />
       )}
+      {page?._rawSections?.map(section => {
+        return <SectionSelector key={section._key} section={section} />
+      })}
       <Container
         sx={{
           pt: 5,

@@ -16,7 +16,7 @@ export const query = graphql`
       id
       path
       publishedAt
-      _rawExcerpt
+      excerpt
       pageSettings {
         hideHeader
         headerLinkColor

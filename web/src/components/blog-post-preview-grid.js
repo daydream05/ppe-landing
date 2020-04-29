@@ -37,10 +37,10 @@ export const BlogPostPreviewGrid = ({ posts }) => {
               borderBottom: `1px solid`,
               borderColor: `grey`,
               py: 3,
-              mb: 4,
+              mb: 4
             }}
           >
-            <h2 sx={{ m: 0, variant: "text.heading.small" }}>Latest blog posts</h2>
+            <h2 sx={{ m: 0, variant: 'text.heading.small' }}>Latest blog posts</h2>
           </div>
           <ul
             sx={{
@@ -69,15 +69,26 @@ export const BlogPostPreviewGrid = ({ posts }) => {
                         }
                       }}
                     >
-                      <div>
+                      <Link
+                        sx={{
+                          display: `block`,
+                        }}
+                        to={post.path}
+                      >
                         {post.mainImage && (
                           <GatsbyImage
                             fluid={post.mainImage?.asset?.fluid}
                             alt={post.mainImage?.alt}
                           />
                         )}
-                      </div>
-                      <Styled.h3 sx={{ mt: 2 }}>{post.title}</Styled.h3>
+                      </Link>
+                      <Text as="span" sx={{ fontSize: 2 }}>
+                        {post.publishedAt}
+                      </Text>
+                      <Link to={post.path} sx={{ textDecoration: `none`, color: `initial` }}>
+                        <Styled.h3 sx={{ mt: 2, mb: 2 }}>{post.title}</Styled.h3>
+                      </Link>
+                      <Styled.p sx={{ mt: 0 }}>{post.excerpt}</Styled.p>
                     </li>
                   )
                 } else {
@@ -127,6 +138,7 @@ export const BlogPostPreviewGrid = ({ posts }) => {
                             </Text>
                             <Styled.h3 sx={{ mt: 2, mb: 2 }}>{post.title}</Styled.h3>
                             <Styled.p sx={{ mt: 0 }}>{post.excerpt}</Styled.p>
+                            <Link to={post.path}>Read more</Link>
                           </div>
                         </div>
                       </Link>

@@ -13,7 +13,9 @@ function ProjectPreviewGrid (props) {
       sx={{
         px: 4,
         [mediaQueries.lg]: {
-          px: 0
+          px: 0,
+          pt: 5,
+          pb: 6,
         }
       }}
     >

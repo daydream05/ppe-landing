@@ -24,7 +24,8 @@ export const HeroWithJustBlock = ({ blocks, ...rest }) => {
           [mediaQueries.xl]: {
             px: 6,
             py: 6,
-            pt: `calc(${baseTheme.space[6]}px + ${constants.headerHeight})`
+            pt: `calc(${baseTheme.space[5]}px + ${constants.headerHeight})`,
+            pb: 0,
           },
           [mediaQueries.xxl]: {
             px: 7,

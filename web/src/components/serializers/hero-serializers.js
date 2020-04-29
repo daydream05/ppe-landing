@@ -32,7 +32,20 @@ export const heroSerializers = {
 
       switch (props.node.style) {
         case 'h1': {
-          return <Styled.h1 sx={{ color: 'inherit', mt: 0, mb: 3, }}>{props.children}</Styled.h1>
+          return (
+            <Styled.h1
+              sx={{
+                color: 'inherit',
+                mt: 0,
+                mb: 3,
+                [mediaQueries.lg]: {
+                  fontSize: 6
+                }
+              }}
+            >
+              {props.children}
+            </Styled.h1>
+          )
         }
         case 'h2': {
           return <Styled.h2 sx={{ color: 'inherit' }}>{props.children}</Styled.h2>
@@ -48,7 +61,7 @@ export const heroSerializers = {
               sx={{
                 color: 'inherit',
                 mb: 4,
-                mt: 0,
+                mt: 0
               }}
             >
               {props.children}
