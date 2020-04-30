@@ -62,18 +62,18 @@ export const HeroWithLargeTextAndImageStrip = ({ blocks, mainImage, ...rest }) =
             sx={{
               [mediaQueries.lg]: {
                 position: `absolute`,
+                width: `100%`,
+                left: 0,
+                right: 0,
                 zIndex: 1,
-                transform: `translate(${baseTheme.space[7]}px, -${baseTheme.space[6]}px)`,
-                maxWidth: 600,
+                transform: `translateY(-${baseTheme.space[6]}px)`,
                 h1: {
                   fontSize: 128,
                   fontWeight: `bold`,
-                  lineHeight: `1`
+                  lineHeight: `1`,
+                  maxWidth: 600
                 }
               },
-              [mediaQueries.xxl]: {
-                transform: `translate(75%, -${baseTheme.space[6]}px)`
-              }
             }}
           >
             <BaseBlockContent blocks={blocks} serializers={heroSerializers} {...rest} />
