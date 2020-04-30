@@ -27,7 +27,8 @@ export const SectionContact = ({ section, ...rest }) => {
     },
     '::placeholder': {
       color: 'text',
-      textTransform: `uppercase`
+      textTransform: `uppercase`,
+      opacity: 0.5,
     }
   }
 

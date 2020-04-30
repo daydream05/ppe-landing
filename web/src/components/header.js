@@ -65,18 +65,27 @@ const Header = ({ linkTheme }) => {
         <div
           sx={{
             display: 'flex',
-            alignItems: 'center',
+            alignItems: 'center'
           }}
         >
-          <GridIcon sx={{
-            fontSize: 4,
-            width: `24px`,
-            height: `24px`,
-            fill: `text`,
-          }}/>
-          <Link to="/" sx={{ ...linkItemStyle }}>
-            {data?.site?.title}
-          </Link>
+          <div
+            sx={{
+              display: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            <GridIcon
+              sx={{
+                fontSize: 4,
+                width: `24px`,
+                height: `24px`,
+                fill: `text`
+              }}
+            />
+            <Link to="/" sx={{ ...linkItemStyle, lineHeight: 1 }}>
+              {data?.site?.title}
+            </Link>
+          </div>
         </div>
         <nav
           sx={{

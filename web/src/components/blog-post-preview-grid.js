@@ -177,6 +177,7 @@ export const BlogPostPreviewGrid = ({ posts }) => {
                           <div
                             sx={{
                               display: `flex`,
+                              justifyContent: `space-between`,
                             }}
                           >
                             <Text as="span" sx={{ fontSize: 2, color: 'text', mr: 5, opacity: 0.5 }}>

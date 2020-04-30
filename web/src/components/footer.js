@@ -42,7 +42,7 @@ export const Footer = props => {
             color: 'inherit'
           }}
         >
-          hello@laura.com
+          hello@vinceparulan.com
         </p>
         <div
           sx={{

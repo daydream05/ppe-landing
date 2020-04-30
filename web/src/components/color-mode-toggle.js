@@ -8,7 +8,7 @@ import { colors } from '../gatsby-plugin-theme-ui'
 import 'react-toggle/style.css'
 
 const ColorModeToggle = () => {
-  const [colorMode, setColorMode] = useColorMode()
+  const [colorMode, setColorMode] = useColorMode('dark')
 
   return (
     <label
