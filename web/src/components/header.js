@@ -9,6 +9,8 @@ import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 import ColorModeToggle from './color-mode-toggle'
 import { constants } from '../gatsby-plugin-theme-ui'
 
+import GridIcon from '../assets/icons/grid.svg'
+
 const siteQuery = graphql`
   query {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -31,7 +33,7 @@ const Header = ({ linkTheme }) => {
     },
     ':hover': {
       color: 'primary'
-    },
+    }
   }
 
   const data = useStaticQuery(siteQuery)
@@ -63,10 +65,16 @@ const Header = ({ linkTheme }) => {
         <div
           sx={{
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
           }}
         >
-          <Link to='/' sx={{ ...linkItemStyle }}>
+          <GridIcon sx={{
+            fontSize: 4,
+            width: `24px`,
+            height: `24px`,
+            fill: `text`,
+          }}/>
+          <Link to="/" sx={{ ...linkItemStyle }}>
             {data?.site?.title}
           </Link>
         </div>
@@ -88,22 +96,22 @@ const Header = ({ linkTheme }) => {
             }}
           >
             <li>
-              <Link to='/about/' sx={linkItemStyle} activeClassName='active'>
+              <Link to="/about/" sx={linkItemStyle} activeClassName="active">
                 About
               </Link>
             </li>
             <li>
-              <Link to='/projects/' sx={linkItemStyle} activeClassName='active'>
+              <Link to="/projects/" sx={linkItemStyle} activeClassName="active">
                 Projects
               </Link>
             </li>
             <li>
-              <Link to='/blog/' sx={linkItemStyle} activeClassName='active'>
+              <Link to="/blog/" sx={linkItemStyle} activeClassName="active">
                 Blog
               </Link>
             </li>
             <li>
-              <Link to='/contact/' sx={linkItemStyle} activeClassName='active'>
+              <Link to="/contact/" sx={linkItemStyle} activeClassName="active">
                 Contact
               </Link>
             </li>

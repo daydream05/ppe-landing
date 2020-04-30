@@ -42,7 +42,6 @@ const ButtonLink = ({ children, variant, shape, ...rest }) => {
         bg: 'primary',
         minWidth: `128px`,
         border: 0,
-        borderRadius: 4,
         variant: `buttons.${variant}`,
         '~ button, ~ a': {
           mt: `0 !important`,

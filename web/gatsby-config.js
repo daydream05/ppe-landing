@@ -15,6 +15,14 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-theme-ui',
     {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/
+        }
+      }
+    },
+    {
       resolve: 'gatsby-plugin-next-seo',
       options: {
         openGraph: {

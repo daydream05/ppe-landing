@@ -8,7 +8,7 @@ export const Footer = props => {
     <footer
       sx={{
         bg: 'iceberg',
-        variant: 'footer.iceberg',
+        variant: 'footer.primary',
         py: 6,
         px: 6,
         bottom: 0,

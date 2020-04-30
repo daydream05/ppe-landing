@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import React from 'react'
-import BlogPostPreview from './blog-post-preview'
+import { FaLongArrowAltRight } from 'react-icons/fa'
 
 /** @jsx jsx */
 import { jsx, css, Container, Styled, Text } from 'theme-ui'
@@ -58,7 +58,7 @@ export const BlogPostPreviewGrid = ({ posts }) => {
               [mediaQueries.xl]: {
                 gridTemplateColumns: 'repeat(2, 1fr)',
                 gridColumnGap: 5,
-                gridRowGap: 4
+                gridRowGap: 5
               }
             }}
           >
@@ -154,9 +154,6 @@ export const BlogPostPreviewGrid = ({ posts }) => {
                             }
                           }}
                         >
-                          <Text as="span" sx={{ fontSize: 2, color: 'text' }}>
-                            {post.publishedAt}
-                          </Text>
                           <Link
                             to={post.path}
                             sx={{
@@ -177,17 +174,32 @@ export const BlogPostPreviewGrid = ({ posts }) => {
                           <Styled.p sx={{ mt: 0, fontSize: [2, 2, 2, 2, 2, 2] }}>
                             {post.excerpt}
                           </Styled.p>
-                          <Link
-                            to={post.path}
+                          <div
                             sx={{
-                              mt: 0,
-                              fontSize: [2, 2, 2, 2, 2, 2],
-                              color: 'secondary',
-                              textDecoration: `none`
+                              display: `flex`,
                             }}
                           >
-                            Read more »
-                          </Link>
+                            <Text as="span" sx={{ fontSize: 2, color: 'text', mr: 5, opacity: 0.5 }}>
+                              {post.publishedAt}
+                            </Text>
+                            <Link
+                              to={post.path}
+                              sx={{
+                                mt: 0,
+                                fontSize: [2, 2, 2, 2, 2, 2],
+                                color: 'text',
+                                textDecoration: `none`,
+                                display: `flex`,
+                                alignItems: `center`,
+                                ':hover': {
+                                  color: 'primary'
+                                }
+                              }}
+                            >
+                              Read more
+                              <FaLongArrowAltRight sx={{ ml: 3 }} />
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </li>
@@ -211,7 +223,7 @@ export const BlogPostPreviewGrid = ({ posts }) => {
             sx={{
               [mediaQueries.lg]: {
                 display: `grid`,
-                gridTemplateColumns: `3fr 1fr`,
+                gridTemplateColumns: `3fr 1fr`
               }
             }}
           >
@@ -219,7 +231,7 @@ export const BlogPostPreviewGrid = ({ posts }) => {
               sx={{
                 listStyle: `none`,
                 padding: 0,
-                margin: 0,
+                margin: 0
               }}
             >
               {morePosts?.length > 0 &&

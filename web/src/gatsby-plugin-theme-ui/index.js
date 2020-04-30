@@ -14,13 +14,15 @@ export const colors = {
   lightGray: '#F2F2F2',
   shadowGreen: 'hsla(172, 23%, 69%, 0.2)',
   grey: '#d2d2d2',
+  primary: '#FFC001',
   modes: {
     dark: {
       background: '#0A0A0A',
       mute: 'hsla(0, 0%, 87%, 0.2)',
       paragraphColor: 'hsla(0, 0%, 100%, 0.8)',
       lightGray: '#2b2626',
-      grey: '#2b2626'
+      grey: '#2b2626',
+      primary: '#FFC001'
     }
   }
 }
@@ -46,7 +48,7 @@ const baseTheme = merge(future, {
       bg: 'background'
     },
     primary: {
-      color: 'white',
+      color: 'black',
       bg: 'primary'
     },
     secondary: {
@@ -168,6 +170,10 @@ const baseTheme = merge(future, {
     iceberg: {
       bg: 'iceberg',
       color: 'black'
+    },
+    primary: {
+      bg: 'primary',
+      color: 'black',
     }
   },
   styles: {
