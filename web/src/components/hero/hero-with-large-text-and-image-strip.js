@@ -62,7 +62,7 @@ export const HeroWithLargeTextAndImageStrip = ({ blocks, mainImage, ...rest }) =
             sx={{
               [mediaQueries.lg]: {
                 position: `absolute`,
-                width: `100%`,
+                width: `100`,
                 left: 0,
                 right: 0,
                 zIndex: 1,

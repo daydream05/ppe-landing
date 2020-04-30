@@ -10,6 +10,7 @@ import Layout from '../containers/layout'
 import PageSEO from '../components/page-seo'
 import DefaultHero from '../components/hero/default-hero'
 import { SectionSelector } from '../components/sections/section-selector'
+import { SectionContact } from '../components/sections/section-contact'
 
 export const query = graphql`
   query ContactPageQuery {
@@ -54,6 +55,7 @@ const ContactPage = props => {
       {page?._rawSections?.map(section => {
         return <SectionSelector key={section._key} section={section} />
       })}
+      <SectionContact />
     </Layout>
   )
 }

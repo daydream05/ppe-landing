@@ -11,7 +11,7 @@ import { TextBlockContainer } from '../text-block-container'
 import baseTheme, { constants } from '../../gatsby-plugin-theme-ui'
 
 export const HeroWithJustBlock = ({ blocks, ...rest }) => {
-
+  console.log('hello')
   return (
     <Section>
       <Container

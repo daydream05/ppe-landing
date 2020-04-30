@@ -11,7 +11,7 @@ export const colors = {
   mute: 'hsla(0, 0%, 13%, 0.2)',
   iceberg: '#DBEDF3',
   paragraphColor: '#0A0A0A',
-  lightGray: 'hsla(0, 0%, 100%, 0.8)',
+  lightGray: '#F2F2F2',
   shadowGreen: 'hsla(172, 23%, 69%, 0.2)',
   grey: '#d2d2d2',
   modes: {
@@ -19,7 +19,8 @@ export const colors = {
       background: '#0A0A0A',
       mute: 'hsla(0, 0%, 87%, 0.2)',
       paragraphColor: 'hsla(0, 0%, 100%, 0.8)',
-      lightGray: '#0A0A0A'
+      lightGray: '#2b2626',
+      grey: '#2b2626'
     }
   }
 }
