@@ -9,6 +9,7 @@ import Layout from '../containers/layout'
 
 import PageSEO from '../components/page-seo'
 import DefaultHero from '../components/hero/default-hero'
+import { SectionSelector } from '../components/sections/section-selector'
 
 export const query = graphql`
   query ContactPageQuery {
@@ -19,7 +20,7 @@ export const query = graphql`
         metaTitle
         metaDescription
       }
-      _rawBody
+      _rawSections(resolveReferences: { maxDepth: 1000 })
     }
   }
 `
@@ -50,9 +51,9 @@ const ContactPage = props => {
     <Layout>
       {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
       {page?._rawHero && <DefaultHero hero={page._rawHero} />}
-      <Container>
-        <BlockContent blocks={page._rawBody || []} />
-      </Container>
+      {page?._rawSections?.map(section => {
+        return <SectionSelector key={section._key} section={section} />
+      })}
     </Layout>
   )
 }

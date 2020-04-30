@@ -48,7 +48,8 @@ function BlogPost(props) {
             px: [3, 3, 3, 0],
             py: [5, 5, 5, 5],
             [mediaQueries.lg]: {
-              pb: 6
+              pb: 6,
+              pt: 6,
             }
           }}
         >
