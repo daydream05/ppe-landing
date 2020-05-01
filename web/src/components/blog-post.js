@@ -45,7 +45,7 @@ function BlogPost(props) {
       <Container>
         <div
           sx={{
-            px: [3, 3, 3, 0],
+            px: [3, 3, 3, 4, 0],
             py: [5, 5, 5, 5],
             [mediaQueries.lg]: {
               pb: 6,

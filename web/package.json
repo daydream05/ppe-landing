@@ -22,6 +22,7 @@
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@bumped-inc/gatsby-plugin-optional-chaining": "^1.0.0",
+    "@reach/dialog": "^0.10.1",
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/image-url": "^0.140.18",
     "@theme-ui/presets": "^0.3.0",

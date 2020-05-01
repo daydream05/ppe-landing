@@ -8,8 +8,7 @@ import { breakpoints } from '../gatsby-plugin-theme-ui/breakpoints'
 import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 import ColorModeToggle from './color-mode-toggle'
 import { constants } from '../gatsby-plugin-theme-ui'
-
-import GridIcon from '../assets/icons/grid.svg'
+import Menu from './menu'
 
 const siteQuery = graphql`
   query {
@@ -74,14 +73,6 @@ const Header = ({ linkTheme }) => {
               alignItems: 'center'
             }}
           >
-            <GridIcon
-              sx={{
-                fontSize: 4,
-                width: `24px`,
-                height: `24px`,
-                fill: `text`
-              }}
-            />
             <Link to="/" sx={{ ...linkItemStyle, lineHeight: 1 }}>
               {data?.site?.title}
             </Link>
