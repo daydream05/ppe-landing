@@ -7,7 +7,7 @@ import { FaFile } from 'react-icons/fa'
 import SeoPreview from './src/previews/seo/seo-preview'
 import IframePreview from './src/previews/iframe/iframe-preview'
 
-const hiddenTypes = ['category', 'companyInfo', 'page', 'person', 'post', 'project', 'siteSettings']
+const hiddenTypes = ['category', 'companyInfo', 'page', 'person', 'post', 'project', 'siteSettings', 'menu']
 
 const localURL = 'http://localhost:8000'
 const previewURL = window.location.hostname === 'localhost' ? localURL : null
@@ -32,6 +32,15 @@ export default () =>
             .id('companyInfo')
             .schemaType('companyInfo')
             .documentId('companyInfo')
+        )
+        .icon(MdBusiness),
+      S.listItem()
+        .title('Menu')
+        .child(
+          S.editor()
+            .id('mainMenu')
+            .schemaType('menu')
+            .documentId('mainMenu')
         )
         .icon(MdBusiness),
       S.listItem()

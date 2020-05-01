@@ -38,6 +38,8 @@ import heroBasic from './objects/heroBasic'
 import dataTable from './objects/dataTable'
 import company from './documents/company'
 import heroWithImage from './objects/heroWithImage'
+import menu from './documents/menu'
+import menuItem from './objects/menuItem'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -66,6 +68,8 @@ export default createSchema({
     heroWithJustBlock,
     media,
     mainImage,
+    menu,
+    menuItem,
     page,
     pageSettings,
     person,

@@ -6,10 +6,30 @@ import '@reach/dialog/styles.css'
 
 import GridIcon from '../assets/icons/grid.svg'
 import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
+
+const query = graphql`
+  query {
+    menu: sanityMenu(_id: { regex: "/(drafts.|)mainMenu/" }) {
+      items {
+        _key
+        title
+        linkedPage {
+          ... on SanityPage {
+            path
+          }
+        }
+      }
+    }
+  }
+`
 
 const Menu = () => {
   const [showModal, setShowModal] = useState(false)
+
+  const data = useStaticQuery(query)
+
+  const { menu } = data
 
   const linkStyle = {
     textDecoration: 'none',
@@ -43,7 +63,8 @@ const Menu = () => {
             fontSize: 4,
             width: '24px',
             height: '24px',
-            fill: 'text'
+            fill: showModal ? 'primary' : 'text',
+            transition: `0.25s ease-in`
           }}
         />
       </button>
@@ -65,29 +86,30 @@ const Menu = () => {
             margin: '0 !important',
             bg: 'background',
             '&&&': {
-              px: 4,
-              py: 6,
+              px: 5,
+              py: 6
             }
           }}
         >
-          <ul
-            sx={{
-              listStyle: 'none',
-              padding: 0,
-              margin: 0
-            }}
-          >
-            <li>
-              <Link to='/' sx={{ ...linkStyle }}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to='/projects/' sx={{ ...linkStyle }}>
-                Projects
-              </Link>
-            </li>
-          </ul>
+          {menu && (
+            <ul
+              sx={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0
+              }}
+            >
+              {menu?.items?.map(item => {
+                return (
+                  <li key={item._key} sx={{ textAlign: `right` }}>
+                    <Link to={item.linkedPage?.path} sx={{ ...linkStyle }}>
+                      {item.title}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
         </DialogContent>
       </DialogOverlay>
     </div>
