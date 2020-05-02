@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 /** @jsx jsx */
-import { jsx, css } from 'theme-ui'
+import { jsx } from 'theme-ui'
+import { animated, useTransition, useTrail, useChain } from 'react-spring'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
 import '@reach/dialog/styles.css'
 
@@ -38,6 +39,35 @@ const Menu = () => {
     fontWeight: 'bold'
   }
 
+  const AnimatedDialogOverlay = animated(DialogOverlay)
+
+  const transitionRef = useRef()
+
+  const transitions = useTransition(showModal, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    ref: transitionRef,
+  })
+
+  const config = { mass: 5, tension: 2000, friction: 200 }
+
+  const trailRef = useRef()
+
+  const trail =
+    menu?.items?.length > 0 &&
+    useTrail(menu.items.length, {
+      config,
+      opacity: showModal ? 1 : 0,
+      x: showModal ? 0 : 20,
+      height: showModal ? 80 : 0,
+      willChange: 'auto',
+      from: { opacity: 0, x: 20, height: 0 },
+      ref: trailRef
+    })
+
+  useChain([transitionRef, trailRef], [0, 0.5])
+
   return (
     <div
       sx={{
@@ -68,50 +98,65 @@ const Menu = () => {
           }}
         />
       </button>
-      <DialogOverlay
-        isOpen={showModal}
-        sx={{
-          height: '100vh',
-          width: '100% !important',
-          margin: '0 !important',
-          bg: 'background',
-          position: 'fixed',
-          zIndex: 1
-        }}
-      >
-        <DialogContent
-          sx={{
-            width: '100%',
-            height: '100%',
-            margin: '0 !important',
-            bg: 'background',
-            '&&&': {
-              px: 5,
-              py: 6
-            }
-          }}
-        >
-          {menu && (
-            <ul
+      {transitions.map(
+        ({ item, key, props: styles }) =>
+          item && (
+            <AnimatedDialogOverlay
+              key={key}
               sx={{
-                listStyle: 'none',
-                padding: 0,
-                margin: 0
+                height: '100vh',
+                width: '100% !important',
+                margin: '0 !important',
+                bg: 'background',
+                position: 'fixed',
+                zIndex: 1,
+                willChange: `opacity`,
               }}
+              style={{ opacity: styles.opacity }}
             >
-              {menu?.items?.map(item => {
-                return (
-                  <li key={item._key} sx={{ textAlign: `right` }}>
-                    <Link to={item.linkedPage?.path} sx={{ ...linkStyle }}>
-                      {item.title}
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-          )}
-        </DialogContent>
-      </DialogOverlay>
+              <DialogContent
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  margin: '0 !important',
+                  bg: 'background',
+                  '&&&': {
+                    px: 5,
+                    py: 6
+                  }
+                }}
+              >
+                {trail && (
+                  <ul
+                    sx={{
+                      listStyle: 'none',
+                      padding: 0,
+                      margin: 0
+                    }}
+                  >
+                    {trail?.map(({ x, height, ...rest }, index) => {
+                      const item = menu.items[index]
+                      return (
+                        <animated.li
+                          key={item._key}
+                          sx={{ textAlign: `right`, willChange: `transform, opacity` }}
+                          style={{
+                            ...rest,
+                            transform: x.interpolate(x => `translate3d(0,${x}px,0)`)
+                          }}
+                        >
+                          <Link to={item.linkedPage?.path} sx={{ ...linkStyle }}>
+                            {item.title}
+                          </Link>
+                        </animated.li>
+                      )
+                    })}
+                  </ul>
+                )}
+              </DialogContent>
+            </AnimatedDialogOverlay>
+          )
+      )}
     </div>
   )
 }
