@@ -30,7 +30,7 @@ export const HeroWithLargeTextAndImageStrip = ({ blocks, mainImage, ...rest }) =
       <Container
         variant="container.large"
         sx={{
-          px: 4,
+          px: 0,
           py: 5,
           margin: '0 auto',
           pt: `calc(${baseTheme.space[5]}px + ${constants.headerHeight})`,
@@ -46,12 +46,13 @@ export const HeroWithLargeTextAndImageStrip = ({ blocks, mainImage, ...rest }) =
       >
         <div
           sx={{
-            display: `flex`,
-            flexDirection: `column-reverse`,
+            display: `grid`,
+            gridTemplateColumns: `2fr 3fr`,
+            gridTemplateRows: `300px`,
+            position: `relative`,
             [mediaQueries.lg]: {
               display: `grid`,
-              gridTemplateColumns: `calc(${baseTheme.space[7]}px + ${baseTheme.space[6]}px) 1fr`,
-              position: `relative`
+              gridTemplateColumns: `calc(${baseTheme.space[7]}px + ${baseTheme.space[6]}px) 1fr`
             },
             [mediaQueries.xxl]: {
               gridTemplateColumns: `2fr 3fr`
@@ -60,6 +61,18 @@ export const HeroWithLargeTextAndImageStrip = ({ blocks, mainImage, ...rest }) =
         >
           <TextBlockContainer
             sx={{
+              position: `absolute`,
+              width: `100`,
+              left: 4,
+              right: 0,
+              zIndex: 1,
+              transform: `translateY(-${baseTheme.space[4]}px)`,
+              h1: {
+                fontSize: 7,
+                fontWeight: `bold`,
+                lineHeight: `1`,
+                maxWidth: `75%`,
+              },
               [mediaQueries.lg]: {
                 position: `absolute`,
                 width: `100`,
@@ -73,7 +86,7 @@ export const HeroWithLargeTextAndImageStrip = ({ blocks, mainImage, ...rest }) =
                   lineHeight: `1`,
                   maxWidth: 600
                 }
-              },
+              }
             }}
           >
             <BaseBlockContent blocks={blocks} serializers={heroSerializers} {...rest} />
@@ -83,6 +96,7 @@ export const HeroWithLargeTextAndImageStrip = ({ blocks, mainImage, ...rest }) =
               fluid={fluidProps}
               alt={mainImage?.alt}
               sx={{
+                gridColumnStart: 2,
                 [mediaQueries.lg]: {
                   gridColumnStart: 2
                 },
