@@ -135,23 +135,44 @@ const Menu = () => {
                       margin: 0,
                       display: `flex`,
                       flexDirection: `column`,
-                      height: `100%`,
+                      height: `100%`
                     }}
                   >
                     {trail?.map(({ x, height, ...rest }, index) => {
                       const item = menu.items[index]
+                      console.log(item)
                       if (menu.items.length === index + 1) {
                         return (
-                          <animated.li
-                            key={item._key}
-                            sx={{ textAlign: `right`, willChange: `transform, opacity`, display: `flex`, justifyContent: `flex-end`, flex: 1, }}
-                            style={{
-                              ...rest,
-                              transform: x.interpolate(x => `translate3d(0,${x}px,0)`)
-                            }}
-                          >
-                            <ColorModeToggle />
-                          </animated.li>
+                          <>
+                            <animated.li
+                              key={item._key}
+                              sx={{ textAlign: `right`, willChange: `transform, opacity` }}
+                              style={{
+                                ...rest,
+                                transform: x.interpolate(x => `translate3d(0,${x}px,0)`)
+                              }}
+                            >
+                              <Link to={item.linkedPage?.path} sx={{ ...linkStyle }}>
+                                {item.title}
+                              </Link>
+                            </animated.li>
+                            <animated.li
+                              key={`${index}-color-toggle`}
+                              sx={{
+                                textAlign: `right`,
+                                willChange: `transform, opacity`,
+                                display: `flex`,
+                                justifyContent: `flex-end`,
+                                flex: 1
+                              }}
+                              style={{
+                                ...rest,
+                                transform: x.interpolate(x => `translate3d(0,${x}px,0)`)
+                              }}
+                            >
+                              <ColorModeToggle />
+                            </animated.li>
+                          </>
                         )
                       }
                       return (
