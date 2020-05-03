@@ -28,7 +28,7 @@ export const SectionContact = ({ section, ...rest }) => {
     '::placeholder': {
       color: 'text',
       textTransform: `uppercase`,
-      opacity: 0.5,
+      opacity: 0.5
     }
   }
 
@@ -82,7 +82,8 @@ export const SectionContact = ({ section, ...rest }) => {
               </Text>
             </Styled.h2>
           )}
-          <form>
+          <form name="contact" method="post" netlify-honeypot="bot-field" data-netlify="true">
+            <input type="hidden" name="bot-field" />
             <div sx={{ ...inputGroupStyle }}>
               <input type="text" placeholder="Full name" sx={{ ...inputStyle }} />
             </div>
