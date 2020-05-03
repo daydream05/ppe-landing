@@ -8,6 +8,7 @@ import '@reach/dialog/styles.css'
 import GridIcon from '../assets/icons/grid.svg'
 import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
 import { Link, useStaticQuery, graphql } from 'gatsby'
+import ColorModeToggle from './color-mode-toggle'
 
 const query = graphql`
   query {
@@ -47,7 +48,7 @@ const Menu = () => {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    ref: transitionRef,
+    ref: transitionRef
   })
 
   const config = { mass: 5, tension: 2000, friction: 200 }
@@ -110,7 +111,7 @@ const Menu = () => {
                 bg: 'background',
                 position: 'fixed',
                 zIndex: 1,
-                willChange: `opacity`,
+                willChange: `opacity`
               }}
               style={{ opacity: styles.opacity }}
             >
@@ -131,11 +132,28 @@ const Menu = () => {
                     sx={{
                       listStyle: 'none',
                       padding: 0,
-                      margin: 0
+                      margin: 0,
+                      display: `flex`,
+                      flexDirection: `column`,
+                      height: `100%`,
                     }}
                   >
                     {trail?.map(({ x, height, ...rest }, index) => {
                       const item = menu.items[index]
+                      if (menu.items.length === index + 1) {
+                        return (
+                          <animated.li
+                            key={item._key}
+                            sx={{ textAlign: `right`, willChange: `transform, opacity`, display: `flex`, justifyContent: `flex-end`, flex: 1, }}
+                            style={{
+                              ...rest,
+                              transform: x.interpolate(x => `translate3d(0,${x}px,0)`)
+                            }}
+                          >
+                            <ColorModeToggle />
+                          </animated.li>
+                        )
+                      }
                       return (
                         <animated.li
                           key={item._key}
