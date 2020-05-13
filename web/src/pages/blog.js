@@ -64,9 +64,6 @@ export const query = graphql`
         }
       }
     }
-    post: sanityPost(slug: { current: { eq: "first-blog-post" } }) {
-      title
-    }
   }
 `
 

@@ -7,6 +7,7 @@ import { FaFile } from 'react-icons/fa'
 import SeoPreview from './src/previews/seo/seo-preview'
 import IframePreview from './src/previews/iframe/iframe-preview'
 import { page } from './src/structures/page'
+import { blog } from './src/structures/blog'
 
 const hiddenTypes = [
   'category',
@@ -78,31 +79,7 @@ export default () =>
                 ])
             )
         ),
-      S.listItem()
-        .title('Blog posts')
-        .schemaType('post')
-        .child(
-          S.documentTypeList('post')
-            .title('Blog posts')
-            .child(documentId =>
-              S.document()
-                .documentId(documentId)
-                .schemaType('post')
-                .views([
-                  S.view.form().icon(EditIcon),
-                  S.view
-                    .component(SeoPreview)
-                    .options({ previewURL })
-                    .title('SEO Preview')
-                    .icon(EyeIcon),
-                  S.view
-                    .component(IframePreview)
-                    .options({ previewURL })
-                    .title('Web Preview')
-                    .icon(EyeIcon)
-                ])
-            )
-        ),
+      blog,
       page,
       S.listItem()
         .title('People')
