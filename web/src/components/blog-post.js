@@ -68,7 +68,7 @@ function BlogPost(props) {
         >
           <TextBlockContainer>
             <Styled.h1 sx={{ fontWeight: 'bold', textAlign: `center`, mt: 0 }}>{title}</Styled.h1>
-            {tocBlocks && (
+            {tocBlocks.length > 0 && (
               <div
                 sx={{
                   [mediaQueries.lg]: {
@@ -79,7 +79,7 @@ function BlogPost(props) {
                 <TableOfContents blocks={tocBlocks} />
               </div>
             )}
-            {_rawBody && <BlockContent blocks={_rawBody || []} />}
+            {_rawBody.length > 0 && <BlockContent blocks={_rawBody || []} />}
           </TextBlockContainer>
         </div>
       </Container>
