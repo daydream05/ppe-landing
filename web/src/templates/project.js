@@ -125,7 +125,7 @@ const ProjectTemplate = props => {
   const { seo } = project
 
   const title = seo?.metaTitle || project?.title
-  const description = seo?.metaDescription || excerpt
+  const description = seo?.metaDescription || project?.excerpt
 
   return (
     <Layout pageSettings={project?.pageSettings}>
