@@ -24,5 +24,7 @@
     "lerna": "^3.20.2",
     "rimraf": "^2.6.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "slugify": "^1.4.0"
+  }
 }

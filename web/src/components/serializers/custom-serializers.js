@@ -6,7 +6,7 @@ import Slideshow from '../block-content/slideshow'
 import { jsx, Text, Styled } from 'theme-ui'
 import { TextColumn } from '../block-content/text-column'
 import ButtonLink from '../button-link'
-import { getPagePath } from '../../lib/helpers'
+import { getPagePath, slugifyHeading } from '../../lib/helpers'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 import { SectionSelector } from '../sections/section-selector'
 import { SpecsTable } from '../block-content/specsTable'
@@ -31,12 +31,29 @@ export const customSerializers = {
     block(props) {
       const { node } = props
 
+      const slug = `${slugifyHeading(node.children[0].text)}-${node._key}`
+
       switch (props.node.style) {
         case 'h2': {
-          return <Styled.h2 sx={{ color: 'inherit' }}>{props.children}</Styled.h2>
+          return (
+            <Styled.h2 sx={{ color: 'inherit' }} id={slug}>
+              {props.children}
+            </Styled.h2>
+          )
         }
         case 'h3': {
-          return <Styled.h3 sx={{ color: 'inherit' }}>{props.children}</Styled.h3>
+          return (
+            <Styled.h3 sx={{ color: 'inherit' }} id={slug}>
+              {props.children}
+            </Styled.h3>
+          )
+        }
+        case 'h4': {
+          return (
+            <Styled.h4 sx={{ color: 'inherit' }} id={slug}>
+              {props.children}
+            </Styled.h4>
+          )
         }
         case 'small.h2': {
           return (
@@ -149,7 +166,7 @@ export const customSerializers = {
                 mb: 3,
                 '+ section': {
                   mt: 6
-                },
+                }
               }}
             >
               {props.children}
@@ -161,7 +178,6 @@ export const customSerializers = {
       return <Figure {...props.node} />
     },
     section(props) {
-
       return (
         <SectionSelector
           section={props.node}
@@ -169,7 +185,7 @@ export const customSerializers = {
             mx: -4,
             '+ p, + div': {
               mt: 6,
-              mb: 3,
+              mb: 3
             },
             [mediaQueries.lg]: {
               ml: 'calc(-100vw / 2 + 900px / 2)',
@@ -188,7 +204,7 @@ export const customSerializers = {
           {...props.node}
           sx={{
             '+ section': {
-              mt: 6,
+              mt: 6
             }
           }}
         />
@@ -216,10 +232,7 @@ export const customSerializers = {
       )
     },
     specsTable(props) {
-
-      return (
-        <SpecsTable rows={props.node?.table?.rows} />
-      )
+      return <SpecsTable rows={props.node?.table?.rows} />
     },
     photoGallery(props) {
       return (
@@ -228,15 +241,13 @@ export const customSerializers = {
           targetRowHeight={props.node?.targetRowHeight}
           margin={props.node?.margin}
           sx={{
-            my: 5,
+            my: 5
           }}
         />
       )
     },
     dataTable(props) {
-      return (
-        <DataTable rows={props.node?.table?.rows} />
-      )
+      return <DataTable rows={props.node?.table?.rows} />
     }
   }
 }

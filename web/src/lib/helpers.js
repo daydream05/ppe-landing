@@ -1,4 +1,4 @@
-import { format } from 'date-fns'
+import slugify from 'slugify'
 
 export function cn(...args) {
   return args.filter(Boolean).join(' ')
@@ -62,4 +62,10 @@ export function blocksToText(blocks, opts = {}) {
       return block.children.map(child => child.text).join('')
     })
     .join('\n\n')
+}
+
+export const slugifyHeading = (text) => {
+  return slugify(text.toLowerCase(), {
+    strict: true
+  })
 }

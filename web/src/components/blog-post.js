@@ -11,9 +11,22 @@ import RoleList from './role-list'
 import { constants } from '../gatsby-plugin-theme-ui'
 import { TextBlockContainer } from './text-block-container'
 import { mediaQueries } from '../gatsby-plugin-theme-ui/media-queries'
+import { TableOfContents } from './table-of-contents'
+import { breakpoints } from '../gatsby-plugin-theme-ui/breakpoints'
 
 function BlogPost(props) {
   const { _rawBody, authors, categories, title, mainImage, publishedAt } = props
+
+  console.log(_rawBody)
+
+  const headings = [`h2`, `h3`, `h4`]
+
+  const tocBlocks =
+    _rawBody.length > 0 &&
+    _rawBody.filter(block => {
+      return headings.includes(block.style)
+    })
+
   return (
     <article>
       {mainImage && mainImage.asset?.fluid && (
@@ -49,14 +62,23 @@ function BlogPost(props) {
             py: [5, 5, 5, 5],
             [mediaQueries.lg]: {
               pb: 6,
-              pt: 6,
+              pt: 6
             }
           }}
         >
           <TextBlockContainer>
             <Styled.h1 sx={{ fontWeight: 'bold', textAlign: `center`, mt: 0 }}>{title}</Styled.h1>
-          </TextBlockContainer>
-          <TextBlockContainer>
+            {tocBlocks && (
+              <div
+                sx={{
+                  [mediaQueries.lg]: {
+                    py: 4,
+                  }
+                }}
+              >
+                <TableOfContents blocks={tocBlocks} />
+              </div>
+            )}
             {_rawBody && <BlockContent blocks={_rawBody || []} />}
           </TextBlockContainer>
         </div>
