@@ -21,7 +21,7 @@ const hiddenTypes = [
 ]
 
 const localURL = 'http://localhost:8000'
-const gatsbyPreview = 'https://hungrygatsbydev-3775585431.gtsb.io/'
+const gatsbyPreview = 'https://hungrygatsbydev-3775585431.gtsb.io'
 const previewURL = window.location.hostname === 'localhost' ? localURL : gatsbyPreview
 
 export default () =>
