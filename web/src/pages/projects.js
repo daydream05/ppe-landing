@@ -33,7 +33,7 @@ export const query = graphql`
           mainImage {
             asset {
               _id
-              fluid(maxWidth: 600, maxHeight: 400) {
+              fluid(maxWidth: 540, maxHeight: 370) {
                 ...GatsbySanityImageFluid_noBase64
               }
               metadata {
@@ -48,6 +48,10 @@ export const query = graphql`
               }
             }
             alt
+          }
+          categories {
+            id
+            title
           }
           title
           excerpt

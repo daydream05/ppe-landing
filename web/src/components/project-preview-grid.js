@@ -36,12 +36,10 @@ function ProjectPreviewGrid (props) {
         <ul
           sx={{
             display: 'grid',
-            gridGap: 3,
+            gridGap: 6,
             listStyle: `none`,
             margin: 0,
             p: 0,
-            gridTemplateColumns: `repeat(auto-fit, minmax(300px, 1fr))`,
-            overflow: `hidden`,
           }}
         >
           {props.nodes &&
@@ -49,27 +47,12 @@ function ProjectPreviewGrid (props) {
               <li key={node.id}
                 sx={{
                   position: `relative`,
-                  paddingTop: `100%`,
                 }}
               >
-                <div
-                  sx={{
-                    position: `absolute`,
-                    width: `100%`,
-                    height: `100%`,
-                    top: 0,
-                  }}
-                >
-                  <ProjectPreview {...node} />
-                </div>
+                <ProjectPreview {...node} />
               </li>
             ))}
         </ul>
-        {props.browseMoreHref && (
-          <div>
-            <Link to={props.browseMoreHref}>Browse more</Link>
-          </div>
-        )}
       </Container>
     </section>
   )

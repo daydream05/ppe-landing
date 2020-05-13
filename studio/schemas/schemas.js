@@ -40,6 +40,7 @@ import company from './documents/company'
 import heroWithImage from './objects/heroWithImage'
 import menu from './documents/menu'
 import menuItem from './objects/menuItem'
+import socialMedia from './documents/socialMedia'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -80,6 +81,7 @@ export default createSchema({
     projectMember,
     seo,
     section,
+    socialMedia,
     siteSettings,
     slideshow,
     specsTable,
