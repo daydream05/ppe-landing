@@ -6,7 +6,8 @@ import SeoPreview from '../previews/seo/seo-preview'
 import IframePreview from '../previews/iframe/iframe-preview'
 
 const localURL = 'http://localhost:8000'
-const previewURL = window.location.hostname === 'localhost' ? localURL : null
+const gatsbyPreview = 'https://hungrygatsbydev-3775585431.gtsb.io/'
+const previewURL = window.location.hostname === 'localhost' ? localURL : gatsbyPreview
 
 export const blog = S.listItem()
   .title('Blog posts')
