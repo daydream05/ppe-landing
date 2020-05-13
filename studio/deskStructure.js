@@ -6,6 +6,7 @@ import { MdBusiness, MdSettings } from 'react-icons/md'
 import { FaFile } from 'react-icons/fa'
 import SeoPreview from './src/previews/seo/seo-preview'
 import IframePreview from './src/previews/iframe/iframe-preview'
+import { page } from './src/structures/page'
 
 const hiddenTypes = [
   'category',
@@ -102,57 +103,7 @@ export default () =>
                 ])
             )
         ),
-      S.listItem()
-        .title('Default Pages')
-        .child(
-          S.list()
-            .title('Default Pages')
-            .items([
-              S.listItem()
-                .title('About')
-                .child(
-                  S.editor()
-                    .id('aboutPage')
-                    .schemaType('page')
-                    .documentId('about')
-                )
-                .icon(FaFile),
-              S.listItem()
-                .title('Contact')
-                .child(
-                  S.editor()
-                    .id('contactPage')
-                    .schemaType('page')
-                    .documentId('contact')
-                )
-                .icon(FaFile)
-            ])
-        ),
-      S.listItem()
-        .title('All Pages')
-        .schemaType('page')
-        .child(
-          S.documentTypeList('page')
-            .title('All pages')
-            .child(documentId =>
-              S.document()
-                .documentId(documentId)
-                .schemaType('page')
-                .views([
-                  S.view.form().icon(EditIcon),
-                  S.view
-                    .component(SeoPreview)
-                    .options({ previewURL })
-                    .title('SEO Preview')
-                    .icon(EyeIcon),
-                  S.view
-                    .component(IframePreview)
-                    .options({ previewURL })
-                    .title('Web Preview')
-                    .icon(EyeIcon)
-                ])
-            )
-        ),
+      page,
       S.listItem()
         .title('People')
         .schemaType('person')
