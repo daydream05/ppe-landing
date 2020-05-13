@@ -16,7 +16,6 @@ export const query = graphql`
       id
       path
       publishedAt
-      excerpt
       pageSettings {
         hideHeader
         headerLinkColor
@@ -122,8 +121,6 @@ const ProjectTemplate = props => {
   const { projects } = data
 
   const projectIndex = projects?.edges.find(({ node }) => node.id === project?.id)
-
-  const excerpt = project?._rawExcerpt && blocksToText(project._rawExcerpt)
 
   const { seo } = project
 
