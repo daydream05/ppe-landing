@@ -20,12 +20,14 @@ function BlogPost(props) {
   console.log(_rawBody)
 
   const headings = [`h2`, `h3`, `h4`]
-
+  
   const tocBlocks =
-    _rawBody.length > 0 &&
+    _rawBody?.length > 0 &&
     _rawBody.filter(block => {
       return headings.includes(block.style)
     })
+
+  console.log(tocBlocks)
 
   return (
     <article>
@@ -68,7 +70,7 @@ function BlogPost(props) {
         >
           <TextBlockContainer>
             <Styled.h1 sx={{ fontWeight: 'bold', textAlign: `center`, mt: 0 }}>{title}</Styled.h1>
-            {tocBlocks.length > 0 && (
+            {tocBlocks && (
               <div
                 sx={{
                   [mediaQueries.lg]: {
@@ -79,7 +81,7 @@ function BlogPost(props) {
                 <TableOfContents blocks={tocBlocks} />
               </div>
             )}
-            {_rawBody.length > 0 && <BlockContent blocks={_rawBody || []} />}
+            {_rawBody?.length > 0 && <BlockContent blocks={_rawBody || []} />}
           </TextBlockContainer>
         </div>
       </Container>
