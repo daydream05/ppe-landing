@@ -97,7 +97,6 @@ const baseTheme = merge(future, {
   text: {
     heading: {
       normal: {
-        fontSize: [5, 5, 5, 5, 6]
       },
       large: {
         fontWeight: '600',

@@ -12,6 +12,7 @@ import { SectionSelector } from '../sections/section-selector'
 import { SpecsTable } from '../block-content/specsTable'
 import { PhotoGallery } from '../block-content/photo-gallery'
 import { ButtonGroup } from '../block-content/button-group'
+import { Spacer } from '../block-content/spacer'
 
 export const heroSerializers = {
   marks: {
@@ -236,6 +237,12 @@ export const heroSerializers = {
             mt: 4,
           }}
         />
+      )
+    },
+    spacer(props) {
+      const { node } = props
+      return (
+        <Spacer value={node.value} />
       )
     }
   }

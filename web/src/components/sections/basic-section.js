@@ -9,6 +9,7 @@ import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 import { TextBlockContainer } from '../text-block-container'
 
 export const BasicSection = ({ section, ...rest }) => {
+  console.log(section.heading.size)
   return (
     <Section variant={section?.theme} {...rest}>
       <Container

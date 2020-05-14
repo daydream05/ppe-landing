@@ -87,6 +87,9 @@ export default {
     },
     {
       type: 'buttonGroup'
+    },
+    {
+      type: 'spacer',
     }
   ]
 }

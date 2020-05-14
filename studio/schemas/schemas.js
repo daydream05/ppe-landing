@@ -42,6 +42,7 @@ import menu from './documents/menu'
 import menuItem from './objects/menuItem'
 import socialMedia from './documents/socialMedia'
 import buttonGroup from './objects/buttonGroup'
+import spacer from './objects/spacer'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -86,6 +87,7 @@ export default createSchema({
     socialMedia,
     siteSettings,
     slideshow,
+    spacer,
     specsTable,
     textColumn,
     video
