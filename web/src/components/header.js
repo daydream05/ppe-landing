@@ -101,16 +101,6 @@ const Header = ({ linkTheme }) => {
               </Link>
             </li>
             <li>
-              <Link to="/projects/" sx={linkItemStyle} activeClassName="active">
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link to="/blog/" sx={linkItemStyle} activeClassName="active">
-                Blog
-              </Link>
-            </li>
-            <li>
               <Link to="/contact/" sx={linkItemStyle} activeClassName="active">
                 Contact
               </Link>

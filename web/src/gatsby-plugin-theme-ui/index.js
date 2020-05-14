@@ -36,12 +36,6 @@ const baseTheme = merge(future, {
   lineHeights: {
     body: 1.625
   },
-  fonts: {
-    body:
-      'sofia-pro, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
-    heading:
-      'sofia-pro, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif'
-  },
   buttons: {
     white: {
       color: 'text',

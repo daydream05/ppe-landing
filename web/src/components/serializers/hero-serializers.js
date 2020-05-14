@@ -38,6 +38,7 @@ export const heroSerializers = {
                 color: 'inherit',
                 mt: 0,
                 mb: 3,
+                fontWeight: `bold`,
                 [mediaQueries.lg]: {
                   fontSize: 6
                 }

@@ -15,9 +15,6 @@ const Layout = ({ children, pageSettings }) => {
         position: 'relative'
       }}
     >
-      <Helmet>
-        <link rel="stylesheet" href="https://use.typekit.net/woj5zqc.css" />
-      </Helmet>
       <Header linkTheme={pageSettings?.headerLinkColor} />
       <Menu />
       <main

@@ -114,9 +114,6 @@ const IndexPage = props => {
   }
 
   const site = (data || {}).site
-  const projectNodes = (data || {}).projects
-    ? mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
-    : []
 
   const page = (data || {}).page
   const seo = page && page.seo
@@ -127,7 +124,7 @@ const IndexPage = props => {
     )
   }
 
-  const title = seo ? seo.metaTitle : page.title
+  const title = seo ? seo.metaTitle : page?.title
 
   const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
 
