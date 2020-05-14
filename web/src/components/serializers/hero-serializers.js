@@ -11,6 +11,7 @@ import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 import { SectionSelector } from '../sections/section-selector'
 import { SpecsTable } from '../block-content/specsTable'
 import { PhotoGallery } from '../block-content/photo-gallery'
+import { ButtonGroup } from '../block-content/button-group'
 
 export const heroSerializers = {
   marks: {
@@ -222,6 +223,19 @@ export const heroSerializers = {
         >
           {node?.label}
         </ButtonLink>
+      )
+    },
+    buttonGroup(props) {
+      const { node } = props
+      return (
+        <ButtonGroup
+          buttons={node.buttons}
+          position={node.position}
+          layout={node.layout}
+          sx={{
+            mt: 4,
+          }}
+        />
       )
     }
   }

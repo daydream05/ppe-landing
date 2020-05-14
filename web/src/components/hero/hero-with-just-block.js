@@ -9,6 +9,7 @@ import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 import { customSerializers } from '../serializers/custom-serializers'
 import { TextBlockContainer } from '../text-block-container'
 import baseTheme, { constants } from '../../gatsby-plugin-theme-ui'
+import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 
 export const HeroWithJustBlock = ({ blocks, ...rest }) => {
   console.log('hello')
@@ -32,7 +33,11 @@ export const HeroWithJustBlock = ({ blocks, ...rest }) => {
           }
         }}
       >
-        <TextBlockContainer>
+        <TextBlockContainer
+          sx={{
+            maxWidth: breakpoints.md,
+          }}
+        >
           <BaseBlockContent blocks={blocks} serializers={heroSerializers} {...rest} />
         </TextBlockContainer>
       </Container>

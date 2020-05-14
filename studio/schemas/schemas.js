@@ -41,6 +41,7 @@ import heroWithImage from './objects/heroWithImage'
 import menu from './documents/menu'
 import menuItem from './objects/menuItem'
 import socialMedia from './documents/socialMedia'
+import buttonGroup from './objects/buttonGroup'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -56,6 +57,7 @@ export default createSchema({
     blockHero,
     blockForHeroBasic,
     button,
+    buttonGroup,
     category,
     company,
     companyInfo,

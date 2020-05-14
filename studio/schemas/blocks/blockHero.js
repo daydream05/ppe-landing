@@ -85,6 +85,9 @@ export default {
       type: 'button'
     },
     {
+      type: 'buttonGroup'
+    },
+    {
       type: 'figure'
     },
   ]

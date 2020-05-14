@@ -36,6 +36,9 @@ const baseTheme = merge(future, {
   lineHeights: {
     body: 1.625
   },
+  fontWeights: {
+    heading: `bold`
+  },
   buttons: {
     white: {
       color: 'text',
@@ -66,6 +69,22 @@ const baseTheme = merge(future, {
       text: {
         maxWidth: '900px',
         margin: '0 auto'
+      }
+    },
+    buttonGroup: {
+      row: {
+        display: 'grid',
+        gridGap: `${future.space[3]}px`
+      },
+      column: {
+        display: 'grid',
+        gridGap: `${future.space[3]}px`,
+        [mediaQueries.lg]: {
+          display: 'flex',
+          '> :first-child': {
+            marginRight: `${future.space[3]}px`
+          }
+        }
       }
     }
   },
@@ -167,7 +186,7 @@ const baseTheme = merge(future, {
     },
     primary: {
       bg: 'primary',
-      color: 'black',
+      color: 'black'
     }
   },
   styles: {
@@ -180,6 +199,8 @@ const baseTheme = merge(future, {
     },
     h1: {
       fontSize: 5,
+      marginLeft: 0,
+      marginRight: 0,
       [mediaQueries.lg]: {
         fontSize: 6
       }
