@@ -37,7 +37,7 @@ const baseTheme = merge(future, {
     body: 1.625
   },
   fontWeights: {
-    heading: `bold`
+    heading: 'bold'
   },
   buttons: {
     white: {
@@ -96,8 +96,7 @@ const baseTheme = merge(future, {
   },
   text: {
     heading: {
-      normal: {
-      },
+      normal: {},
       large: {
         fontWeight: '600',
         fontSize: [5, 5, 5, 5, 7]
@@ -191,6 +190,18 @@ const baseTheme = merge(future, {
   styles: {
     root: {
       transition: 'color 0.2s ease-out, background 0.2s ease-out',
+      h2: {
+        fontSize: 4,
+        [mediaQueries.lg]: {
+          fontSize: 5
+        }
+      },
+      h3: {
+        fontSize: 3,
+        [mediaQueries.lg]: {
+          fontSize: 4
+        }
+      },
       li: {
         color: 'paragraphColor',
         fontSize: 3

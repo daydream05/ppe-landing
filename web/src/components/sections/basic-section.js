@@ -9,9 +9,8 @@ import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 import { TextBlockContainer } from '../text-block-container'
 
 export const BasicSection = ({ section, ...rest }) => {
-  console.log(section.heading.size)
   return (
-    <Section variant={section?.theme} {...rest}>
+    <Section sx={{ position: `relative` }} variant={section?.theme} {...rest}>
       <Container
         variant="container.large"
         sx={{
@@ -28,29 +27,43 @@ export const BasicSection = ({ section, ...rest }) => {
           }
         }}
       >
-        <TextBlockContainer>
+        <TextBlockContainer
+          sx={{
+            position: `relative`,
+            zIndex: 1
+          }}
+        >
           {section?.heading?.text && (
-            <Styled.h2
+            <Text
+              variant={`heading.${section?.heading?.size}`}
               sx={{
                 color: `inherit`,
                 m: 0,
                 mb: 4,
+                textAlign: section?.heading?.textAlignment
               }}
+              as={section?.heading?.headingType || 'h2'}
             >
-              <Text
-                variant={`heading.${section?.heading?.size}`}
-                sx={{
-                  color: `inherit`,
-                  m: 0,
-                  textAlign: section?.heading?.textAlignment
-                }}
-              >
-                {section?.heading?.text}
-              </Text>
-            </Styled.h2>
+              {section?.heading?.text}
+            </Text>
           )}
           {section?.body && <BasicSectionBody blocks={section?.body} />}
         </TextBlockContainer>
+        {section?.divider && (
+          <div
+            sx={{
+              variant: `section.${section.theme}`,
+              position: `absolute`,
+              top: `0`,
+              bottom: 0,
+              left: 0,
+              width: `100%`,
+              height: `100%`,
+              transform: `skewY(7deg)`,
+              transformOrigin: `top right`
+            }}
+          />
+        )}
       </Container>
     </Section>
   )
