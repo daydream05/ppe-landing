@@ -8,8 +8,8 @@ import { jsx } from 'theme-ui'
 export const FadeIn = ({ children, delay, ...rest }) => {
   const [elementLoaded, setElementLoaded] = useState(false)
   const variants = {
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 }
+    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 32 }
   }
 
   const [ref, inView, entry] = useInView({
@@ -28,12 +28,6 @@ export const FadeIn = ({ children, delay, ...rest }) => {
 
   return (
     <div
-      sx={{
-        position: 'relative',
-        overflow: 'hidden',
-        width: '100%',
-        height: '100%'
-      }}
       {...rest}
     >
       <motion.div
