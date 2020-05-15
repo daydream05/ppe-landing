@@ -70,6 +70,12 @@ module.exports = {
       options: {
         policy: [{ userAgent: '*', allow: '/' }]
       }
+    },
+    {
+      resolve: 'gatsby-plugin-polyfill-io',
+      options: {
+        features: ['IntersectionObserver']
+      }
     }
   ]
 }

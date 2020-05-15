@@ -13,6 +13,7 @@ import { SpecsTable } from '../block-content/specsTable'
 import { PhotoGallery } from '../block-content/photo-gallery'
 import { ButtonGroup } from '../block-content/button-group'
 import { Spacer } from '../block-content/spacer'
+import { FadeIn } from '../motion/fade-in'
 
 export const heroSerializers = {
   marks: {
@@ -35,19 +36,21 @@ export const heroSerializers = {
       switch (props.node.style) {
         case 'h1': {
           return (
-            <Styled.h1
-              sx={{
-                color: 'inherit',
-                mt: 0,
-                mb: 3,
-                fontWeight: `bold`,
-                [mediaQueries.lg]: {
-                  fontSize: 6
-                }
-              }}
-            >
-              {props.children}
-            </Styled.h1>
+            <FadeIn>
+              <Styled.h1
+                sx={{
+                  color: 'inherit',
+                  mt: 0,
+                  mb: 3,
+                  fontWeight: `bold`,
+                  [mediaQueries.lg]: {
+                    fontSize: 7
+                  }
+                }}
+              >
+                {props.children}
+              </Styled.h1>
+            </FadeIn>
           )
         }
         case 'h2': {
@@ -176,17 +179,19 @@ export const heroSerializers = {
         }
         default:
           return (
-            <Styled.p
-              sx={{
-                mt: 0,
-                mb: 3,
-                '+ section': {
-                  mt: 6
-                }
-              }}
-            >
-              {props.children}
-            </Styled.p>
+            <FadeIn delay={0.5}>
+              <Styled.p
+                sx={{
+                  mt: 0,
+                  mb: 3,
+                  '+ section': {
+                    mt: 6
+                  }
+                }}
+              >
+                {props.children}
+              </Styled.p>
+            </FadeIn>
           )
       }
     },
@@ -229,21 +234,21 @@ export const heroSerializers = {
     buttonGroup(props) {
       const { node } = props
       return (
-        <ButtonGroup
-          buttons={node.buttons}
-          position={node.position}
-          layout={node.layout}
-          sx={{
-            mt: 4,
-          }}
-        />
+        <FadeIn delay={1}>
+          <ButtonGroup
+            buttons={node.buttons}
+            position={node.position}
+            layout={node.layout}
+            sx={{
+              mt: 4
+            }}
+          />
+        </FadeIn>
       )
     },
     spacer(props) {
       const { node } = props
-      return (
-        <Spacer value={node.value} />
-      )
+      return <Spacer value={node.value} />
     }
   }
 }

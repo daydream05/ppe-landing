@@ -21,7 +21,7 @@ export const HeroBasic = ({ blocks, mainImage, ...rest }) => {
   return (
     <Section
       sx={{
-        position: `relative`
+        position: `relative`,
       }}
     >
       <Container

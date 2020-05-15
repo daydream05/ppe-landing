@@ -12,6 +12,7 @@ import { SectionSelector } from '../sections/section-selector'
 import { SpecsTable } from '../block-content/specsTable'
 import { PhotoGallery } from '../block-content/photo-gallery'
 import { DataTable } from '../block-content/dataTable'
+import { FadeIn } from '../motion/fade-in'
 
 export const customSerializers = {
   marks: {
@@ -160,17 +161,22 @@ export const customSerializers = {
         }
         default:
           return (
-            <Styled.p
+            <FadeIn
               sx={{
-                mt: 0,
                 mb: 3,
                 '+ section': {
                   mt: 6
                 }
               }}
             >
-              {props.children}
-            </Styled.p>
+              <Styled.p
+                sx={{
+                  mt: 0,
+                }}
+              >
+                {props.children}
+              </Styled.p>
+            </FadeIn>
           )
       }
     },

@@ -7,6 +7,7 @@ import GatsbyImage from 'gatsby-image'
 import { MediaSelector } from '../media/media-selector'
 import { BasicSectionBody } from './basic-section-body'
 import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
+import { FadeIn } from '../motion/fade-in'
 
 export const SectionContentHalfWithMedia = ({ section, reverseDirection, ...rest }) => {
   const { theme, heading, body, media } = section
@@ -47,21 +48,28 @@ export const SectionContentHalfWithMedia = ({ section, reverseDirection, ...rest
             }}
           >
             {heading && (
-              <Text
-                variant={`heading.${heading?.size}`}
+              <FadeIn
                 sx={{
-                  color: `inherit`,
-                  lineHeight: 1,
-                  m: 0,
                   mb: 4,
-                  textAlign: heading?.textAlignment
                 }}
-                as={heading?.headingType || 'h2'}
               >
-                {heading?.text}
-              </Text>
+                <Text
+                  variant={`heading.${heading?.size}`}
+                  sx={{
+                    color: `inherit`,
+                    lineHeight: 1,
+                    m: 0,
+                    textAlign: heading?.textAlignment
+                  }}
+                  as={heading?.headingType || 'h2'}
+                >
+                  {heading?.text}
+                </Text>
+              </FadeIn>
             )}
-            {body && <BasicSectionBody blocks={body} />}
+            {body && (
+              <BasicSectionBody blocks={body} />
+            )}
           </Container>
         </div>
         <div

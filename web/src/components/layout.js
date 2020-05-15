@@ -8,11 +8,10 @@ import Header from './header'
 import Menu from './menu'
 
 const Layout = ({ children, pageSettings }) => {
-
   return (
     <div
       sx={{
-        position: 'relative'
+        position: 'relative',
       }}
     >
       <Header linkTheme={pageSettings?.headerLinkColor} />
