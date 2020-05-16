@@ -9,9 +9,12 @@ import { BasicSectionBody } from './basic-section-body'
 import { TextBlockContainer } from '../text-block-container'
 import { FadeIn } from '../motion/fade-in'
 import { BlockCardDescription } from '../serializers/card-serializers'
+import { StepLine } from '../../step-line'
 
 export const SectionWithCards = ({ section, ...rest }) => {
   const { cards } = section
+
+  console.log(cards)
   return (
     <Section sx={{ position: `relative` }} variant={section?.theme} {...rest}>
       <Container
@@ -44,7 +47,10 @@ export const SectionWithCards = ({ section, ...rest }) => {
                   color: `inherit`,
                   m: 0,
                   mb: 4,
-                  textAlign: section?.heading?.textAlignment
+                  textAlign: section?.heading?.textAlignment,
+                  [mediaQueries.lg]: {
+                    mb: 4
+                  }
                 }}
                 as={section?.heading?.headingType || 'h2'}
               >
@@ -55,52 +61,80 @@ export const SectionWithCards = ({ section, ...rest }) => {
           {section?.body && <BasicSectionBody blocks={section?.body} />}
         </TextBlockContainer>
         {cards?.length > 0 && (
-          <ul
-            sx={{
-              listStyle: `none`,
-              padding: 0,
-              margin: 0,
-              display: `grid`,
-              gridGap: 5,
-              [mediaQueries.lg]: {
-                display: `flex`,
-                flexFlow: `wrap`
-              }
-            }}
-          >
-            {cards.map((card, index) => {
-              return (
-                <li
-                  key={card._key}
-                  sx={{
-                    [mediaQueries.lg]: {
-                      width: `25%`,
-                      px: 3
-                    }
-                  }}
-                >
-                  <div
+          <TextBlockContainer>
+            <ul
+              sx={{
+                listStyle: `none`,
+                padding: 0,
+                margin: 0,
+                display: `grid`,
+                gridGap: 5,
+                [mediaQueries.lg]: {
+                  display: `flex`,
+                  flexDirection: `column`,
+                  mt: 6
+                }
+              }}
+            >
+              {cards.map((card, index) => {
+                return (
+                  <li
+                    key={card._key}
                     sx={{
-                      position: `relative`
+                      position: `relative`,
+                      [mediaQueries.lg]: {
+                        width: `50%`,
+                        px: 3,
+                        mb: 6,
+                        ':nth-of-type(even)': {
+                          alignSelf: `flex-end`
+                        }
+                      }
                     }}
                   >
-                    <Text
-                      as={card.heading?.headingType || 'h3'}
+                    <motion.div
                       sx={{
-                        fontSize: 2,
-                        color: `inherit`,
-                        textAlign: card?.heading?.textAlignment || `left`,
-                        mb: 3
+                        position: `relative`,
+                        display: `flex`,
+                        flexDirection: `column`
                       }}
                     >
-                      <span>{card.heading?.text}</span>
-                    </Text>
-                  </div>
-                  {card.description && <BlockCardDescription blocks={card.description} />}
-                </li>
-              )
-            })}
-          </ul>
+                      {card.image && (
+                        <FadeIn>
+                          <img
+                            src={card.image?.asset?.url}
+                            alt={card.image?.alt}
+                            sx={{
+                              maxHeight: `128px`,
+                              mb: 4,
+                              [mediaQueries.lg]: {
+                                maxHeight: `192px`
+                              }
+                            }}
+                          />
+                        </FadeIn>
+                      )}
+                      <FadeIn>
+                        <Text
+                          as={card.heading?.headingType || 'h3'}
+                          sx={{
+                            fontSize: 2,
+                            color: `inherit`,
+                            textAlign: card?.heading?.textAlignment || `left`,
+                            mb: 2
+                          }}
+                        >
+                          <span>{card.heading?.text}</span>
+                        </Text>
+                      </FadeIn>
+                    </motion.div>
+                    {card.description && <BlockCardDescription blocks={card.description} />}
+                    {cards.length !== index + 1 && <StepLine index={index} />}
+                  </li>
+                )
+              })}
+            </ul>
+          </TextBlockContainer>
         )}
         {section?.divider && (
           <div

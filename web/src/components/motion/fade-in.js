@@ -14,7 +14,7 @@ export const FadeIn = ({ children, delay, ...rest }) => {
 
   const [ref, inView, entry] = useInView({
     /* Optional options */
-    threshold: 0
+    rootMargin: '-25%'
   })
 
   useEffect(() => {
@@ -27,21 +27,18 @@ export const FadeIn = ({ children, delay, ...rest }) => {
   }, [inView])
 
   return (
-    <div
+    <motion.div
+      variants={variants}
+      initial='hidden'
+      animate={elementLoaded ? 'visible' : 'hidden'}
+      transition={{ duration: 1, type: 'tween', delay: delay }}
+      ref={ref}
+      sx={{
+        position: 'relative'
+      }}
       {...rest}
     >
-      <motion.div
-        variants={variants}
-        initial='hidden'
-        animate={elementLoaded ? 'visible' : 'hidden'}
-        transition={{ duration: 1, type: 'tween', delay: delay }}
-        ref={ref}
-        sx={{
-          position: 'relative'
-        }}
-      >
-        {children}
-      </motion.div>
-    </div>
+      {children}
+    </motion.div>
   )
 }

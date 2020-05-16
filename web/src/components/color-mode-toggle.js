@@ -25,16 +25,16 @@ const ColorModeToggle = () => {
         icons={false}
         sx={{
           '.react-toggle-track': {
-            bg: 'black !important'
+            bg: `${colors.text} !important`
           },
           '.react-toggle-thumb': {
-            border: `3px solid ${colors.black}`
+            border: `3px solid ${colors.text}`
           },
           '&.react-toggle--checked .react-toggle-track': {
-            bg: 'white !important'
+            bg: `white !important`
           },
           '&.react-toggle--checked .react-toggle-thumb': {
-            bg: 'black !important',
+            bg: `${colors.text} !important`,
             border: `3px solid ${colors.white}`
           }
         }}

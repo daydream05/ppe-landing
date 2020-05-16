@@ -15,9 +15,10 @@ export const colors = {
   shadowGreen: 'hsla(172, 23%, 69%, 0.2)',
   grey: '#d2d2d2',
   primary: '#FFC001',
+  text: '#2B4162',
   modes: {
     dark: {
-      background: '#0A0A0A',
+      background: '#2B4162',
       mute: 'hsla(0, 0%, 87%, 0.2)',
       paragraphColor: 'hsla(0, 0%, 100%, 0.8)',
       lightGray: '#2b2626',
