@@ -34,7 +34,7 @@ export const FadeIn = ({ children, delay, ...rest }) => {
         variants={variants}
         initial='hidden'
         animate={elementLoaded ? 'visible' : 'hidden'}
-        transition={{ duration: 1.5, type: 'tween', delay: delay }}
+        transition={{ duration: 1, type: 'tween', delay: delay }}
         ref={ref}
         sx={{
           position: 'relative'

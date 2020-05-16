@@ -138,6 +138,9 @@ export default {
     },
     {
       type: 'dataTable',
+    },
+    {
+      type: 'card',
     }
   ]
 }

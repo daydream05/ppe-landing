@@ -43,6 +43,8 @@ import menuItem from './objects/menuItem'
 import socialMedia from './documents/socialMedia'
 import buttonGroup from './objects/buttonGroup'
 import spacer from './objects/spacer'
+import card from './objects/card'
+import sectionWithCards from './objects/sectionWithCards'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -59,6 +61,7 @@ export default createSchema({
     blockForHeroBasic,
     button,
     buttonGroup,
+    card,
     category,
     company,
     companyInfo,
@@ -84,6 +87,7 @@ export default createSchema({
     projectMember,
     seo,
     section,
+    sectionWithCards,
     socialMedia,
     siteSettings,
     slideshow,

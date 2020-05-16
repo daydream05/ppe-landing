@@ -4,14 +4,19 @@ import ButtonLink from '../button-link'
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { getPagePath } from '../../lib/helpers'
+import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 
 export const ButtonGroup = ({ buttons, position, layout, className }) => {
+  console.log(layout)
   return (
     <div
       sx={{
-        variant: `layout.buttonGroup.${layout}`,
         margin: `0 auto`,
-        justifyContent: position === 'left' ? `flex-start` : `center`
+        variant: `layout.buttonGroup.${layout}`,
+        [mediaQueries.lg]: {
+          justifyContent: position === 'left' ? `flex-start` : `center`,
+          variant: `layout.buttonGroup.${layout}`
+        }
       }}
       className={className}
     >

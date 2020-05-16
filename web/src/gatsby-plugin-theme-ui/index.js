@@ -74,11 +74,11 @@ const baseTheme = merge(future, {
     buttonGroup: {
       row: {
         display: 'grid',
-        gridGap: `${future.space[3]}px`
+        gridGap: `${future.space[2]}px`
       },
       column: {
         display: 'grid',
-        gridGap: `${future.space[3]}px`,
+        gridGap: `${future.space[2]}px`,
         [mediaQueries.lg]: {
           display: 'flex',
           '> :first-child': {
@@ -203,7 +203,6 @@ const baseTheme = merge(future, {
         }
       },
       li: {
-        color: 'paragraphColor',
         fontSize: 3
       }
     },

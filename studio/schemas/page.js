@@ -24,7 +24,13 @@ export default {
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{ type: 'section' }, { type: 'heroWithJustBlock'}, { type: 'heroBasic'}, { type: 'heroWithImage'} ]
+      of: [
+        { type: 'section' },
+        { type: 'heroWithJustBlock' },
+        { type: 'heroBasic' },
+        { type: 'heroWithImage' },
+        { type: 'sectionWithCards' }
+      ]
     },
     {
       name: 'body',
@@ -45,13 +51,12 @@ export default {
       name: 'relatedPages',
       title: 'Related Pages',
       type: 'array',
-      of: [{
-        type: 'reference',
-        to: [
-          { type: 'page' },
-          { type: 'post' }
-        ]
-      }]
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'page' }, { type: 'post' }]
+        }
+      ]
     }
   ]
 }

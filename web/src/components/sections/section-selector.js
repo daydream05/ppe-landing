@@ -3,9 +3,9 @@ import { BasicSection } from './basic-section'
 import { SectionContentHalfWithMedia } from './section-content-half-with-media'
 import { SectionMediaFullScreen } from './section-media-full-screen'
 import { HeroSelector } from '../hero/hero-selector'
+import { SectionWithCards } from './section-with-cards'
 
 export const SectionSelector = ({ section, ...rest }) => {
-  console.log(section)
   if (section._type === `section`) {
     switch (section?.layout) {
       case 'contentWithMediaRight': {
@@ -20,6 +20,10 @@ export const SectionSelector = ({ section, ...rest }) => {
       default:
         return <BasicSection section={section} {...rest} />
     }
+  } else if(section._type === `sectionWithCards`) {
+    return (
+      <SectionWithCards section={section} {...rest} />
+    )
   } else {
     return <HeroSelector hero={section} />
   }

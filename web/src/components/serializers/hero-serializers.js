@@ -240,7 +240,7 @@ export const heroSerializers = {
             position={node.position}
             layout={node.layout}
             sx={{
-              mt: 4
+              mt: 5
             }}
           />
         </FadeIn>

@@ -22,7 +22,7 @@ export default {
       name: 'headingType',
       title: 'Heading Type',
       type: 'string',
-      description: 'All headings will be h2 by default on the frontend if not specified',
+      description: "All headings will be h2 by default on the frontend if not specified. For cards, it's h3.",
       options: {
         list: [
           { title: 'H2', value: 'h2' },
