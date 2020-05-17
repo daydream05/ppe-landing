@@ -45,6 +45,7 @@ import buttonGroup from './objects/buttonGroup'
 import spacer from './objects/spacer'
 import card from './objects/card'
 import sectionWithCards from './objects/sectionWithCards'
+import frequentlyAskedQuestion from './objects/frequentlyAskedQuestion'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -67,6 +68,7 @@ export default createSchema({
     companyInfo,
     dataTable,
     figure,
+    frequentlyAskedQuestion,
     heading,
     image,
     hero,

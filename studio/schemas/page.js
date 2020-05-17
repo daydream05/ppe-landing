@@ -33,6 +33,12 @@ export default {
       ]
     },
     {
+      name: 'faqs',
+      title: 'FAQs',
+      type: 'array',
+      of: [{ type: 'frequentlyAskedQuestion'}]
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'blockContent'
