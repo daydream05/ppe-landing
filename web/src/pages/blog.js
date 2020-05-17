@@ -81,8 +81,8 @@ const BlogPage = props => {
   const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
 
   const { site, page } = data
-  const seo = page && page.seo
-  const title = seo ? seo.metaTitle : page.title
+  const seo = page?.seo
+  const title = seo ? seo.metaTitle : page?.title
   const pageUrl = `${site.url}${page?.path}`
 
   console.log(data)
