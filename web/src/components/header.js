@@ -96,16 +96,6 @@ const Header = ({ linkTheme }) => {
             }}
           >
             <li>
-              <Link to="/about/" sx={linkItemStyle} activeClassName="active">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact/" sx={linkItemStyle} activeClassName="active">
-                Contact
-              </Link>
-            </li>
-            <li>
               <ColorModeToggle />
             </li>
           </ul>

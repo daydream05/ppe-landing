@@ -13,7 +13,7 @@ import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 export const HeroWithJustBlock = ({ blocks, ...rest }) => {
   console.log('hello')
   return (
-    <Section sx={{ height: '100vh', display: `flex`, alignItems: `center` }}>
+    <Section sx={{ minHeight: '100vh', display: `flex`, alignItems: `center`, position: `relative` }}>
       <Container
         variant='container.large'
         sx={{

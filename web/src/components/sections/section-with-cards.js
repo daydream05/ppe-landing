@@ -72,7 +72,7 @@ export const SectionWithCards = ({ section, ...rest }) => {
                 [mediaQueries.lg]: {
                   display: `flex`,
                   flexDirection: `column`,
-                  mt: 6
+                  mt: 5
                 }
               }}
             >
@@ -118,7 +118,7 @@ export const SectionWithCards = ({ section, ...rest }) => {
                         <Text
                           as={card.heading?.headingType || 'h3'}
                           sx={{
-                            fontSize: 2,
+                            fontSize: 3,
                             color: `inherit`,
                             textAlign: card?.heading?.textAlignment || `left`,
                             mb: 2
