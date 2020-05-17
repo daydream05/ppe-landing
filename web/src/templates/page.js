@@ -50,8 +50,9 @@ const PageTemplate = props => {
           <GraphQLErrorList errors={errors} />
         </Container>
       )}
-
-      {page && <PageSEO metaTitle={title} metaDescription={seo?.metaDescription} path={page?.path} />}
+      {page && (
+        <PageSEO metaTitle={title} metaDescription={seo?.metaDescription} path={page?.path} />
+      )}
       {page?._rawSections?.map(section => {
         return <SectionSelector key={section._key} section={section} />
       })}

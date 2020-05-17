@@ -14,8 +14,10 @@ export const HeroSelector = ({ hero, ...rest }) => {
       return <HeroBasic blocks={hero.content} mainImage={hero.mainImage} />
     }
     case 'heroWithImage': {
-      if(hero.layout === 'a') {
+      if (hero.layout === 'a') {
         return <HeroWithLargeTextAndImageStrip blocks={hero.content} mainImage={hero.mainImage} />
+      } else {
+        return <HeroBasic blocks={hero.content} mainImage={hero.mainImage} />
       }
     }
     default:
