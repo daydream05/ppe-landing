@@ -8,6 +8,7 @@ import Layout from '../containers/layout'
 import DefaultHero from '../components/hero/default-hero'
 import PageSEO from '../components/page-seo'
 import { SectionSelector } from '../components/sections/section-selector'
+import { SectionFAQ } from '../components/sections/section-faq'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -21,6 +22,7 @@ export const query = graphql`
       _rawSections(resolveReferences: { maxDepth: 1000 })
       title
       path
+      _rawFaqs
       seo {
         metaTitle
         metaDescription
@@ -128,7 +130,7 @@ const IndexPage = props => {
 
   const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
 
-  console.log(data)
+  console.log(page?._rawFaqs)
 
   return (
     <Layout>
@@ -137,6 +139,9 @@ const IndexPage = props => {
       {page?._rawSections?.map(section => {
         return <SectionSelector key={section._key} section={section} />
       })}
+      {page?._rawFaqs?.length > 0 && (
+        <SectionFAQ faqs={page?._rawFaqs} />
+      )}
     </Layout>
   )
 }
