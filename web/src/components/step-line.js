@@ -3,7 +3,7 @@ import { motion, useElementScroll } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { colors } from './gatsby-plugin-theme-ui'
+import { colors } from '../gatsby-plugin-theme-ui'
 
 const icon = {
   hidden: {

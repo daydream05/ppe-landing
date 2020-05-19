@@ -68,7 +68,7 @@ export const SectionContentHalfWithMedia = ({ section, reverseDirection, ...rest
               </FadeIn>
             )}
             {body && (
-              <BasicSectionBody blocks={body} />
+              <BasicSectionBody blocks={body} enableAnimation={section?.settings?.animate} />
             )}
           </Container>
         </div>

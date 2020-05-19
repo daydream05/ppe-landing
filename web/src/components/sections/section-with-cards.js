@@ -9,7 +9,7 @@ import { BasicSectionBody } from './basic-section-body'
 import { TextBlockContainer } from '../text-block-container'
 import { FadeIn } from '../motion/fade-in'
 import { BlockCardDescription } from '../serializers/card-serializers'
-import { StepLine } from '../../step-line'
+import { StepLine } from '../step-line'
 
 export const SectionWithCards = ({ section, ...rest }) => {
   const { cards } = section
