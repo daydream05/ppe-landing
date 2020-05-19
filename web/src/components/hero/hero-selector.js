@@ -8,16 +8,26 @@ export const HeroSelector = ({ hero, ...rest }) => {
   console.log(hero)
   switch (hero._type) {
     case 'heroWithJustBlock': {
-      return <HeroWithJustBlock blocks={hero.block} />
+      return <HeroWithJustBlock blocks={hero.block} settings={hero?.settings} />
     }
     case 'heroBasic': {
-      return <HeroBasic blocks={hero.content} mainImage={hero.mainImage} />
+      return (
+        <HeroBasic blocks={hero.content} mainImage={hero.mainImage} settings={hero?.settings} />
+      )
     }
     case 'heroWithImage': {
       if (hero.layout === 'a') {
-        return <HeroWithLargeTextAndImageStrip blocks={hero.content} mainImage={hero.mainImage} />
+        return (
+          <HeroWithLargeTextAndImageStrip
+            blocks={hero.content}
+            mainImage={hero.mainImage}
+            settings={hero?.settings}
+          />
+        )
       } else {
-        return <HeroBasic blocks={hero.content} mainImage={hero.mainImage} />
+        return (
+          <HeroBasic blocks={hero.content} mainImage={hero.mainImage} settings={hero?.settings} />
+        )
       }
     }
     default:

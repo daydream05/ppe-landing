@@ -4,10 +4,10 @@ import React from 'react'
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
-import { customSerializers } from '../serializers/custom-serializers'
+import { getCustomSerializers } from '../serializers/custom-serializers'
 
 const BlockContent = ({ blocks, ...rest }) => (
-  <BaseBlockContent blocks={blocks} serializers={customSerializers} {...rest} />
+  <BaseBlockContent blocks={blocks} serializers={getCustomSerializers()} {...rest} />
 )
 
 export default BlockContent

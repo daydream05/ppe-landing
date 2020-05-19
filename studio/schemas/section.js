@@ -44,6 +44,11 @@ export default {
       name: 'media',
       title: 'Media',
       type: 'media',
+    },
+    {
+      name: 'settings',
+      title: 'Settings',
+      type: 'sectionSettings',
     }
   ],
   preview: {

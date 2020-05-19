@@ -26,6 +26,11 @@ export default {
           { title: 'Gradient', value: 'c' }
         ]
       }
+    },
+    {
+      name: 'settings',
+      title: 'Settings',
+      type: 'sectionSettings'
     }
   ]
 }

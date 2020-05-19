@@ -2,7 +2,7 @@ import React from 'react'
 import BaseBlockContent from '@sanity/block-content-to-react'
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { customSerializers } from '../serializers/custom-serializers'
+import { getCustomSerializers } from '../serializers/custom-serializers'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 
 export const TextColumn = ({ body, columnCount, ...rest}) => {
@@ -17,7 +17,7 @@ export const TextColumn = ({ body, columnCount, ...rest}) => {
       }}
       {...rest}
     >
-      {body && <BaseBlockContent blocks={body} serializers={customSerializers} sx={{
+      {body && <BaseBlockContent blocks={body} serializers={getCustomSerializers()} sx={{
         ':last-child': {
           mb: 0
         }

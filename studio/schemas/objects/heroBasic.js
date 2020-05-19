@@ -15,5 +15,10 @@ export default {
       type: 'blockHero',
       description: 'Please add an h1 tag at all times',
     },
+    {
+      name: 'settings',
+      title: 'Settings',
+      type: 'sectionSettings',
+    }
   ]
 }

@@ -3,10 +3,9 @@ import BaseBlockContent from '@sanity/block-content-to-react'
 /** @jsx jsx */
 import { jsx, Container } from 'theme-ui'
 
-import { heroSerializers } from '../serializers/hero-serializers'
+import { getHeroSerializers } from '../serializers/hero-serializers'
 import { Section } from '../sections/section'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
-import { customSerializers } from '../serializers/custom-serializers'
 import { TextBlockContainer } from '../text-block-container'
 import baseTheme, { constants } from '../../gatsby-plugin-theme-ui'
 import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
@@ -15,7 +14,7 @@ export const HeroWithFullHeight = ({ blocks, ...rest }) => {
   return (
     <Section sx={{ height: '100vh', display: `flex`, alignItems: `center` }}>
       <Container
-        variant='container.large'
+        variant="container.large"
         sx={{
           px: 4,
           margin: '0 auto',
@@ -37,7 +36,11 @@ export const HeroWithFullHeight = ({ blocks, ...rest }) => {
             maxWidth: breakpoints.md
           }}
         >
-          <BaseBlockContent blocks={blocks} serializers={heroSerializers} {...rest} />
+          <BaseBlockContent
+            blocks={blocks}
+            serializers={getHeroSerializers({ enableAnimation: section?.settings?.animate })}
+            {...rest}
+          />
         </TextBlockContainer>
       </Container>
     </Section>

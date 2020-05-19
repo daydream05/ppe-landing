@@ -52,7 +52,7 @@ export const BasicSection = ({ section, ...rest }) => {
             </FadeIn>
           )}
           {section?.body && (
-              <BasicSectionBody blocks={section?.body} />
+              <BasicSectionBody blocks={section?.body} enableAnimation={section?.settings?.animate} />
           )}
         </TextBlockContainer>
         {section?.divider && (

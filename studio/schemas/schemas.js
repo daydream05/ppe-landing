@@ -46,6 +46,7 @@ import spacer from './objects/spacer'
 import card from './objects/card'
 import sectionWithCards from './objects/sectionWithCards'
 import frequentlyAskedQuestion from './objects/frequentlyAskedQuestion'
+import sectionSettings from './objects/sectionSettings'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -89,6 +90,7 @@ export default createSchema({
     projectMember,
     seo,
     section,
+    sectionSettings,
     sectionWithCards,
     socialMedia,
     siteSettings,

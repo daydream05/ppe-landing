@@ -7,7 +7,7 @@ import { api as sanityConfig } from '../../../../studio/sanity.json'
 /** @jsx jsx */
 import { jsx, Container } from 'theme-ui'
 
-import { heroSerializers } from '../serializers/hero-serializers'
+import { getHeroSerializers } from '../serializers/hero-serializers'
 import { Section } from '../sections/section'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 
@@ -15,9 +15,9 @@ import { TextBlockContainer } from '../text-block-container'
 import baseTheme, { constants } from '../../gatsby-plugin-theme-ui'
 import GatsbyImage from 'gatsby-image'
 
-export const HeroWithLargeTextAndImageStrip = ({ blocks, mainImage, ...rest }) => {
+export const HeroWithLargeTextAndImageStrip = ({ blocks, mainImage, settings, ...rest }) => {
   const imageAssetId = mainImage?.asset?._id
-  console.log(mainImage)
+
   const fluidProps =
     imageAssetId &&
     getFluidGatsbyImage(imageAssetId, { maxWidth: 2000, maxHeight: 750 }, sanityConfig)
@@ -71,7 +71,7 @@ export const HeroWithLargeTextAndImageStrip = ({ blocks, mainImage, ...rest }) =
                 fontSize: 7,
                 fontWeight: `bold`,
                 lineHeight: `1`,
-                maxWidth: `75%`,
+                maxWidth: `75%`
               },
               [mediaQueries.lg]: {
                 position: `absolute`,
@@ -89,7 +89,11 @@ export const HeroWithLargeTextAndImageStrip = ({ blocks, mainImage, ...rest }) =
               }
             }}
           >
-            <BaseBlockContent blocks={blocks} serializers={heroSerializers} {...rest} />
+            <BaseBlockContent
+              blocks={blocks}
+              serializers={getHeroSerializers({ enableAnimation: settings?.animate })}
+              {...rest}
+            />
           </TextBlockContainer>
           {fluidProps && (
             <GatsbyImage
