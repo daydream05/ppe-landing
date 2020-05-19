@@ -12,7 +12,6 @@ import baseTheme, { constants } from '../../gatsby-plugin-theme-ui'
 import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 
 export const HeroWithFullHeight = ({ blocks, ...rest }) => {
-
   return (
     <Section sx={{ height: '100vh', display: `flex`, alignItems: `center` }}>
       <Container

@@ -41,18 +41,16 @@ export const SectionFAQ = ({ section, faqs, ...rest }) => {
             zIndex: 1
           }}
         >
-          <FadeIn>
-            <Text
-              sx={{
-                color: `inherit`,
-                m: 0,
-                mb: 4
-              }}
-              as={'h2'}
-            >
-              Frequently asked questions
-            </Text>
-          </FadeIn>
+          <Text
+            sx={{
+              color: `inherit`,
+              m: 0,
+              mb: 4
+            }}
+            as={'h2'}
+          >
+            Frequently asked questions
+          </Text>
           {faqs?.length > 0 && (
             <Accordion
               sx={{
@@ -69,7 +67,8 @@ export const SectionFAQ = ({ section, faqs, ...rest }) => {
                       <h3 sx={{ m: 0 }}>
                         <AccordionButton
                           sx={{
-                            fontSize: 3,
+                            fontSize: 2,
+                            fontWeight: 600,
                             width: `100%`,
                             py: 3,
                             px: 3,
@@ -147,7 +146,7 @@ export const SectionFAQ = ({ section, faqs, ...rest }) => {
 
 const serializers = {
   marks: {
-    bold: props => <strong>{props.children}</strong>
+    bold: (props) => <strong>{props.children}</strong>
   },
   types: {
     block(props) {
