@@ -28,7 +28,7 @@ export const HeroBasic = ({ blocks, mainImage, settings, ...rest }) => {
         variant="container.large"
         sx={{
           px: 4,
-          py: 5,
+          pt: 5,
           margin: '0 auto',
           pt: `calc(${baseTheme.space[5]}px + ${constants.headerHeight})`,
           [mediaQueries.xl]: {
@@ -57,7 +57,7 @@ export const HeroBasic = ({ blocks, mainImage, settings, ...rest }) => {
         >
           <TextBlockContainer
             sx={{
-              py: 4,
+              pt: 4,
               display: `flex`,
               alignItems: `center`,
               [mediaQueries.lg]: {

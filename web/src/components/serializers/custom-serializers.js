@@ -15,6 +15,7 @@ import { DataTable } from '../block-content/dataTable'
 import { FadeIn } from '../motion/fade-in'
 import { Callout } from '../block-content/callout'
 import { TextBlockContainer } from '../text-block-container'
+import baseTheme from '../../gatsby-plugin-theme-ui'
 
 export const getCustomSerializers = ({ enableAnimation = false }) => {
   const customSerializers = {
@@ -283,7 +284,8 @@ export const getCustomSerializers = ({ enableAnimation = false }) => {
             targetRowHeight={props.node?.targetRowHeight}
             margin={props.node?.margin}
             sx={{
-              my: 5
+              mx: -2,
+              my: `calc(${baseTheme.space[5]}px - ${props.node?.margin || `8px`})`,
             }}
           />
         )

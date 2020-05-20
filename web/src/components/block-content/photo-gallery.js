@@ -15,7 +15,7 @@ const Photo = ({ photo, margin, index, top, left }) => {
     <figure
       sx={{
         m: `${margin}px`,
-        height: `calc(${photo.height} + ${captionHeight})`,
+        height: `calc(${photo.height}px + ${captionHeight}px)`,
         width: photo.width,
         position: `relative`,
         overflow: `hidden`

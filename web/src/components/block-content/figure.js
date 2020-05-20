@@ -40,7 +40,7 @@ function Figure (props) {
           sx={{
             textAlign: 'center',
             mt: 3,
-            fontSize: 2,
+            fontSize: [1,1,1,1,2],
             color: 'paragraphColor',
           }}
         >

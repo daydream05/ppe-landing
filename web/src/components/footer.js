@@ -19,31 +19,6 @@ export const Footer = props => {
         variant='layout.container.large'
         sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
       >
-        <p
-          sx={{
-            fontSize: [5, 5, 5, 5, 5, 7],
-            fontWeight: 'bold',
-            m: 0,
-            lineHeight: 1,
-            textAlign: 'center',
-            color: 'inherit'
-          }}
-        >
-          Let’s work together.
-        </p>
-        <p
-          sx={{
-            fontSize: [5, 5, 5, 5, 5, 7],
-            fontWeight: 'bold',
-            m: 0,
-            lineHeight: 1,
-            textAlign: 'center',
-            mb: 5,
-            color: 'inherit'
-          }}
-        >
-          hello@vinceparulan.com
-        </p>
         <div
           sx={{
             fontWeight: '600',
