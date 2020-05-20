@@ -1,7 +1,10 @@
+import { MdInsertPhoto } from 'react-icons/md'
+
 export default {
   name: 'figure',
   title: 'Figure',
   type: 'image',
+  icon: MdInsertPhoto,
   options: {
     hotspot: true
   },

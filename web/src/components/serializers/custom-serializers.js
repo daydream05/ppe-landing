@@ -14,6 +14,7 @@ import { PhotoGallery } from '../block-content/photo-gallery'
 import { DataTable } from '../block-content/dataTable'
 import { FadeIn } from '../motion/fade-in'
 import { Callout } from '../block-content/callout'
+import { TextBlockContainer } from '../text-block-container'
 
 export const getCustomSerializers = ({ enableAnimation = false }) => {
   const customSerializers = {
@@ -41,14 +42,14 @@ export const getCustomSerializers = ({ enableAnimation = false }) => {
         switch (props.node.style) {
           case 'h2': {
             return (
-              <Styled.h2 sx={{ color: 'inherit' }} id={slug}>
+              <Styled.h2 sx={{ color: 'inherit', mt: 5 }} id={slug}>
                 {props.children}
               </Styled.h2>
             )
           }
           case 'h3': {
             return (
-              <Styled.h3 sx={{ color: 'inherit' }} id={slug}>
+              <Styled.h3 sx={{ color: 'inherit', mt: 5 }} id={slug}>
                 {props.children}
               </Styled.h3>
             )
@@ -200,7 +201,23 @@ export const getCustomSerializers = ({ enableAnimation = false }) => {
         }
       },
       figure(props) {
-        return <Figure {...props.node} />
+        return (
+          <div
+            sx={{
+              my: 5,
+              mx: -4,
+              [mediaQueries.lg]: {
+                my: 5,
+                mx: -6,
+              },
+              [mediaQueries.xxxl]: {
+                margin: `0 auto`
+              }
+            }}
+          >
+            <Figure {...props.node} />
+          </div>
+        )
       },
       section(props) {
         return (
