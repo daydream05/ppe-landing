@@ -47,6 +47,7 @@ import card from './objects/card'
 import sectionWithCards from './objects/sectionWithCards'
 import frequentlyAskedQuestion from './objects/frequentlyAskedQuestion'
 import sectionSettings from './objects/sectionSettings'
+import callout from './objects/callout'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -63,6 +64,7 @@ export default createSchema({
     blockForHeroBasic,
     button,
     buttonGroup,
+    callout,
     card,
     category,
     company,

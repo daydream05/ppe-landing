@@ -13,6 +13,7 @@ import { SpecsTable } from '../block-content/specsTable'
 import { PhotoGallery } from '../block-content/photo-gallery'
 import { DataTable } from '../block-content/dataTable'
 import { FadeIn } from '../motion/fade-in'
+import { Callout } from '../block-content/callout'
 
 export const getCustomSerializers = ({ enableAnimation = false }) => {
   const customSerializers = {
@@ -271,7 +272,26 @@ export const getCustomSerializers = ({ enableAnimation = false }) => {
         )
       },
       dataTable(props) {
-        return <DataTable rows={props.node?.table?.rows} />
+        return (
+          <div
+            sx={{
+              my: 4
+            }}
+          >
+            <DataTable rows={props.node?.table?.rows} />
+          </div>
+        )
+      },
+      callout(props) {
+        return (
+          <div
+            sx={{
+              my: 4
+            }}
+          >
+            <Callout title={props.node?.title} type={props.node?.type} body={props.node?.body} />
+          </div>
+        )
       }
     }
   }

@@ -141,6 +141,9 @@ export default {
     },
     {
       type: 'card',
+    },
+    {
+      type: 'callout',
     }
   ]
 }

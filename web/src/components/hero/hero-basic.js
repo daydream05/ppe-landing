@@ -32,12 +32,11 @@ export const HeroBasic = ({ blocks, mainImage, settings, ...rest }) => {
           margin: '0 auto',
           pt: `calc(${baseTheme.space[5]}px + ${constants.headerHeight})`,
           [mediaQueries.xl]: {
-            px: 6,
-            py: 6,
-            pt: `calc(${baseTheme.space[6]}px + ${constants.headerHeight})`
+            px: 0,
+            py: 0,
+            pt: `calc(${constants.headerHeight})`
           },
           [mediaQueries.xxl]: {
-            px: 7
           }
         }}
       >
@@ -48,16 +47,24 @@ export const HeroBasic = ({ blocks, mainImage, settings, ...rest }) => {
             [mediaQueries.lg]: {
               flexDirection: `row`,
               '> :first-of-type': {
-                flex: `50%`,
-                mr: 5
+                flex: `75%`,
               },
               '> :nth-of-type(2)': {
-                flex: `50%`
+                flex: `25%`
               }
             }
           }}
         >
-          <TextBlockContainer>
+          <TextBlockContainer
+            sx={{
+              py: 4,
+              display: `flex`,
+              alignItems: `center`,
+              [mediaQueries.lg]: {
+                px: `calc(${baseTheme.space[5]}px + ${baseTheme.space[6]}px)`,
+              },
+            }}
+          >
             <BaseBlockContent blocks={blocks} serializers={getHeroSerializers({ enableAnimation: settings?.animate })} {...rest} />
           </TextBlockContainer>
           {fluidProps && <GatsbyImage fluid={fluidProps} alt={mainImage?.alt} />}

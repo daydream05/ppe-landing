@@ -2,6 +2,7 @@ import { future } from '@theme-ui/presets'
 import merge from 'deepmerge'
 import { breakpoints } from './breakpoints'
 import { mediaQueries } from './media-queries'
+import { palette } from './tokens'
 
 export const colors = {
   white: '#fff',
@@ -16,6 +17,7 @@ export const colors = {
   grey: '#d2d2d2',
   primary: '#FFC001',
   text: '#2B4162',
+  darkBlue: '#2B4162',
   modes: {
     dark: {
       background: '#2B4162',
@@ -168,6 +170,24 @@ const baseTheme = merge(future, {
           color: 'white'
         }
       }
+    }
+  },
+  callout: {
+    info: {
+      bg: palette.blue[20],
+      color: 'darkBlue'
+    },
+    danger: {
+      bg: palette.red[20],
+      color: 'darkBlue'
+    },
+    success: {
+      bg: palette.green[20],
+      color: 'darkBlue',
+    },
+    warning: {
+      color: `darkBlue`,
+      bg: palette.orange[20]
     }
   },
   footer: {
