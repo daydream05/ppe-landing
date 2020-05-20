@@ -15,7 +15,6 @@ const Layout = ({ children, pageSettings }) => {
       }}
     >
       <Header linkTheme={pageSettings?.headerLinkColor} />
-      <Menu />
       <main
         sx={{
           minHeight: '100vh',
