@@ -286,7 +286,10 @@ export const getCustomSerializers = ({ enableAnimation = false }) => {
             margin={props.node?.margin}
             sx={{
               mx: -2,
-              my: `calc(${baseTheme.space[5]}px - ${props.node?.margin || `8px`})`
+              my: `calc(${baseTheme.space[5]}px - ${props.node?.margin || `8px`})`,
+              [mediaQueries.xl]: {
+                mx: -6
+              }
             }}
           />
         )
@@ -319,7 +322,7 @@ export const getCustomSerializers = ({ enableAnimation = false }) => {
             sx={{
               my: 5,
               [mediaQueries.xl]: {
-                mx: -6,
+                mx: -6
               }
             }}
           >
