@@ -25,6 +25,7 @@ export const ButtonGroup = ({ buttons, position, layout, className }) => {
           const pagePath = getPagePath(button.internalLink?._type, button.internalLink?.slug)
           return (
             <ButtonLink
+              key={button._key}
               variant={button.color}
               shape={button.variant}
               to={pagePath || button.url}
