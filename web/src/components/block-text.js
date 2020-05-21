@@ -10,7 +10,7 @@ const serializers = {
     block (props) {
       switch (props.node.style) {
         default:
-          return <p sx={{ fontSize: 2, color: 'paragraphColor' }}>{props.children}</p>
+          return <p sx={{ fontSize: 2 }}>{props.children}</p>
       }
     }
   }

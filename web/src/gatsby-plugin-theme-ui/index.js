@@ -22,7 +22,7 @@ export const colors = {
     dark: {
       background: '#0A0A0A',
       mute: 'hsla(0, 0%, 87%, 0.2)',
-      paragraphColor: 'hsla(0, 0%, 100%, 0.8)',
+      paragraphColor: '#f4f4f4',
       lightGray: '#2b2626',
       grey: '#2b2626',
       primary: '#FFC001'
@@ -176,18 +176,18 @@ const baseTheme = merge(future, {
   callout: {
     info: {
       bg: palette.blue[20],
-      color: 'darkBlue'
+      color: 'black'
     },
     danger: {
       bg: palette.red[20],
-      color: 'darkBlue'
+      color: 'black'
     },
     success: {
       bg: palette.green[20],
-      color: 'darkBlue'
+      color: 'black'
     },
     warning: {
-      color: 'darkBlue',
+      color: 'black',
       bg: palette.orange[20]
     }
   },
