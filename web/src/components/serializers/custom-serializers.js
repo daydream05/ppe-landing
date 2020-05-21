@@ -16,6 +16,7 @@ import { FadeIn } from '../motion/fade-in'
 import { Callout } from '../block-content/callout'
 import { TextBlockContainer } from '../text-block-container'
 import baseTheme from '../../gatsby-plugin-theme-ui'
+import { CardGrid } from '../block-content/card-grid'
 
 export const getCustomSerializers = ({ enableAnimation = false }) => {
   const customSerializers = {
@@ -209,7 +210,7 @@ export const getCustomSerializers = ({ enableAnimation = false }) => {
               mx: -4,
               [mediaQueries.lg]: {
                 my: 5,
-                mx: -6,
+                mx: -6
               },
               [mediaQueries.xxxl]: {
                 margin: `0 auto`
@@ -285,7 +286,7 @@ export const getCustomSerializers = ({ enableAnimation = false }) => {
             margin={props.node?.margin}
             sx={{
               mx: -2,
-              my: `calc(${baseTheme.space[5]}px - ${props.node?.margin || `8px`})`,
+              my: `calc(${baseTheme.space[5]}px - ${props.node?.margin || `8px`})`
             }}
           />
         )
@@ -309,6 +310,20 @@ export const getCustomSerializers = ({ enableAnimation = false }) => {
             }}
           >
             <Callout title={props.node?.title} type={props.node?.type} body={props.node?.body} />
+          </div>
+        )
+      },
+      cardGrid(props) {
+        return (
+          <div
+            sx={{
+              my: 5,
+              [mediaQueries.xl]: {
+                mx: -6,
+              }
+            }}
+          >
+            <CardGrid cards={props.node?.cards} />
           </div>
         )
       }

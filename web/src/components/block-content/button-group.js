@@ -7,7 +7,7 @@ import { getPagePath } from '../../lib/helpers'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 
 export const ButtonGroup = ({ buttons, position, layout, className }) => {
-  console.log(layout)
+
   return (
     <div
       sx={{
@@ -24,7 +24,12 @@ export const ButtonGroup = ({ buttons, position, layout, className }) => {
         buttons.map(button => {
           const pagePath = getPagePath(button.internalLink?._type, button.internalLink?.slug)
           return (
-            <ButtonLink variant={button.color} shape={button.variant} to={pagePath}>
+            <ButtonLink
+              variant={button.color}
+              shape={button.variant}
+              to={pagePath || button.url}
+              isInternalLink={button.internalLink}
+            >
               {button.label}
             </ButtonLink>
           )

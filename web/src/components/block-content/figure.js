@@ -11,9 +11,8 @@ import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 
 function Figure (props) {
   const imageAssetId = (props.asset && props.asset._id) || props.asset?._ref
-  const fluidProps = getFluidGatsbyImage(imageAssetId, {}, sanityConfig)
+  const fluidProps = getFluidGatsbyImage(imageAssetId, props.fluidOptions || {}, sanityConfig)
 
-  console.log(fluidProps)
 
   if (!fluidProps) {
     return null

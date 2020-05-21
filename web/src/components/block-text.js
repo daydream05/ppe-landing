@@ -10,12 +10,19 @@ const serializers = {
     block (props) {
       switch (props.node.style) {
         default:
-          return <p sx={{ fontSize: 2, }}>{props.children}</p>
+          return <p sx={{ fontSize: 2, color: 'paragraphColor' }}>{props.children}</p>
       }
     }
   }
 }
 
-const BlockText = ({ blocks }) => <BaseBlockContent blocks={blocks} serializers={serializers} />
+const BlockText = ({ blocks, className }) => (
+  <BaseBlockContent
+    blocks={blocks}
+    serializers={serializers}
+    className={className}
+    renderContainerOnSingleChild
+  />
+)
 
 export default BlockText

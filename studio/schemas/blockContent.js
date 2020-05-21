@@ -144,6 +144,9 @@ export default {
     },
     {
       type: 'callout',
+    },
+    {
+      type: 'cardGrid'
     }
   ]
 }

@@ -17,6 +17,11 @@ export default {
       name: 'image',
       title: 'Image',
       type: 'mainImage',
+    },
+    {
+      name: 'buttonGroup',
+      title: 'Button Group',
+      type: 'buttonGroup',
     }
   ],
   preview: {
