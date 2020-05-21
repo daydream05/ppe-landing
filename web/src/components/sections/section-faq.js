@@ -79,7 +79,8 @@ export const SectionFAQ = ({ section, faqs, ...rest }) => {
                             justifyContent: `space-between`,
                             backgroundColor: `white`,
                             textAlign: `left`,
-                            position: `relative`
+                            position: `relative`,
+                            fontFamily: `body`,
                           }}
                           onClick={() => setSelectedItem(id)}
                         >
