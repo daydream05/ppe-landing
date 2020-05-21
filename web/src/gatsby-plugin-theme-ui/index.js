@@ -85,7 +85,7 @@ const baseTheme = merge(future, {
         gridGap: `${future.space[2]}px`,
         [mediaQueries.lg]: {
           display: 'flex',
-          '> :first-child': {
+          '> :first-of-type': {
             marginRight: `${future.space[3]}px`
           }
         }
