@@ -16,11 +16,11 @@ export const colors = {
   shadowGreen: 'hsla(172, 23%, 69%, 0.2)',
   grey: '#d2d2d2',
   primary: '#FFC001',
-  text: '#2B4162',
+  text: '#0A0A0A',
   darkBlue: '#2B4162',
   modes: {
     dark: {
-      background: '#2B4162',
+      background: '#0A0A0A',
       mute: 'hsla(0, 0%, 87%, 0.2)',
       paragraphColor: 'hsla(0, 0%, 100%, 0.8)',
       lightGray: '#2b2626',
@@ -77,7 +77,7 @@ const baseTheme = merge(future, {
     buttonGroup: {
       row: {
         '> :not(:last-of-type)': {
-          mb: `${future.space[2]}px`,
+          mb: `${future.space[2]}px`
         }
       },
       column: {

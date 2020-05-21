@@ -60,9 +60,14 @@ export const CardGrid = ({ cards }) => {
                   {card.image && (
                     <div
                       sx={{
-                        maxWidth: `256px`,
+                        maxWidth: `150px`,
+                        height: `200px`,
                         mx: `auto`,
                         width: `100%`,
+                        display: `flex`,
+                        flexDirection: `column`,
+                        justifyContent: `center`,
+                        alignItems: `center`,
                         mb: 4
                       }}
                     >
@@ -71,6 +76,9 @@ export const CardGrid = ({ cards }) => {
                         alt={card.image?.alt}
                         fluidOptions={{
                           maxWidth: 300
+                        }}
+                        sx={{
+                          width: `100%`,
                         }}
                       />
                     </div>
