@@ -77,14 +77,20 @@ export const CardGrid = ({ cards }) => {
                   )}
                   {card.description && <BlockText blocks={card.description} sx={{ flex: 1 }} />}
                   {card.buttonGroup && (
-                    <ButtonGroup
-                      buttons={card.buttonGroup?.buttons}
-                      position={card.buttonGroup?.position}
-                      layout={card.buttonGroup?.layout}
+                    <div
                       sx={{
-                        mt: 4
+                        width: `100%`,
                       }}
-                    />
+                    >
+                       <ButtonGroup
+                        buttons={card.buttonGroup?.buttons}
+                        position={card.buttonGroup?.position}
+                        layout={card.buttonGroup?.layout}
+                        sx={{
+                          mt: 4
+                        }}
+                      />
+                    </div>
                   )}
                 </div>
               </li>

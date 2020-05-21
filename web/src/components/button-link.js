@@ -48,9 +48,6 @@ const ButtonLink = ({ children, variant, shape, to, isInternalLink, ...rest }) =
     '~ p, ~ div': {
       mt: 5
     },
-    [mediaQueries.lg]: {
-      display: 'inline-block'
-    }
   }
 
   if (!isInternalLink) {

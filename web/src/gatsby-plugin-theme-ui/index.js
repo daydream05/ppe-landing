@@ -76,8 +76,9 @@ const baseTheme = merge(future, {
     },
     buttonGroup: {
       row: {
-        display: 'grid',
-        gridGap: `${future.space[2]}px`
+        '> :not(:last-of-type)': {
+          mb: `${future.space[2]}px`,
+        }
       },
       column: {
         display: 'grid',
@@ -183,10 +184,10 @@ const baseTheme = merge(future, {
     },
     success: {
       bg: palette.green[20],
-      color: 'darkBlue',
+      color: 'darkBlue'
     },
     warning: {
-      color: `darkBlue`,
+      color: 'darkBlue',
       bg: palette.orange[20]
     }
   },
