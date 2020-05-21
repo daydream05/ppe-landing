@@ -208,7 +208,7 @@ export const getCustomSerializers = ({ enableAnimation = false }) => {
             sx={{
               my: 5,
               mx: -4,
-              [mediaQueries.lg]: {
+              [mediaQueries.xxl]: {
                 my: 5,
                 mx: -6
               },
