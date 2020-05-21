@@ -14,6 +14,7 @@ import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 import { TextBlockContainer } from '../text-block-container'
 import baseTheme, { constants } from '../../gatsby-plugin-theme-ui'
 import GatsbyImage from 'gatsby-image'
+import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 
 export const HeroBasic = ({ blocks, mainImage, settings, ...rest }) => {
   const imageAssetId = mainImage?.asset?._id
@@ -31,13 +32,17 @@ export const HeroBasic = ({ blocks, mainImage, settings, ...rest }) => {
           pt: 5,
           margin: '0 auto',
           pt: `calc(${baseTheme.space[5]}px + ${constants.headerHeight})`,
+          [mediaQueries.lg]: {
+            px: 0,
+            maxWidth: `900px`
+          },
           [mediaQueries.xl]: {
+            maxWidth: breakpoints.xxxl,
             px: 0,
             py: 0,
             pt: `calc(${constants.headerHeight})`
           },
-          [mediaQueries.xxl]: {
-          }
+          [mediaQueries.xxl]: {},
         }}
       >
         <div
@@ -47,7 +52,16 @@ export const HeroBasic = ({ blocks, mainImage, settings, ...rest }) => {
             [mediaQueries.lg]: {
               flexDirection: `row`,
               '> :first-of-type': {
-                flex: `75%`,
+                flex: `50%`
+              },
+              '> :nth-of-type(2)': {
+                flex: `50%`
+              }
+            },
+            [mediaQueries.xxl]: {
+              flexDirection: `row`,
+              '> :first-of-type': {
+                flex: `75%`
               },
               '> :nth-of-type(2)': {
                 flex: `25%`
@@ -61,11 +75,18 @@ export const HeroBasic = ({ blocks, mainImage, settings, ...rest }) => {
               display: `flex`,
               alignItems: `center`,
               [mediaQueries.lg]: {
-                px: `calc(${baseTheme.space[5]}px + ${baseTheme.space[6]}px)`,
+                px: 0
               },
+              [mediaQueries.xl]: {
+                px: `calc(${baseTheme.space[5]}px + ${baseTheme.space[6]}px)`
+              }
             }}
           >
-            <BaseBlockContent blocks={blocks} serializers={getHeroSerializers({ enableAnimation: settings?.animate })} {...rest} />
+            <BaseBlockContent
+              blocks={blocks}
+              serializers={getHeroSerializers({ enableAnimation: settings?.animate })}
+              {...rest}
+            />
           </TextBlockContainer>
           {fluidProps && <GatsbyImage fluid={fluidProps} alt={mainImage?.alt} />}
         </div>

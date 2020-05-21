@@ -47,7 +47,7 @@ export const getHeroSerializers = ({ enableAnimation = false }) => {
                       mt: 0,
                       mb: 3,
                       fontWeight: `bold`,
-                      [mediaQueries.lg]: {
+                      [mediaQueries.xxl]: {
                         fontSize: 7
                       }
                     }}
@@ -64,7 +64,7 @@ export const getHeroSerializers = ({ enableAnimation = false }) => {
                     mt: 0,
                     mb: 3,
                     fontWeight: `bold`,
-                    [mediaQueries.lg]: {
+                    [mediaQueries.xxl]: {
                       fontSize: 7
                     }
                   }}
@@ -88,7 +88,7 @@ export const getHeroSerializers = ({ enableAnimation = false }) => {
                 sx={{
                   color: 'inherit',
                   mb: 4,
-                  mt: 0
+                  mt: 0,
                 }}
               >
                 {props.children}
