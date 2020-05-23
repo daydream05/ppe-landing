@@ -3,6 +3,7 @@ import React from 'react'
 import { jsx, Text } from 'theme-ui'
 import Figure from './figure'
 import BlockText from '../block-text'
+import { TextBlockContainer } from '../text-block-container'
 import { ButtonGroup } from './button-group'
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 
@@ -27,7 +28,7 @@ export const CardGrid = ({ cards }) => {
             }
           }}
         >
-          {cards.map((card) => {
+          {cards.map(card => {
             return (
               <li
                 key={card._key}
@@ -44,63 +45,65 @@ export const CardGrid = ({ cards }) => {
                   }
                 }}
               >
-                <div
-                  sx={{
-                    display: `flex`,
-                    flexDirection: `column`,
-                    height: `100%`,
-                  }}
-                >
-                  <Text
-                    as={card.heading?.title || 'h3'}
-                    sx={{ textAlign: `center`, mb: 5, lineHeight: 1 }}
+                <TextBlockContainer sx={{ height: `100%` }}>
+                  <div
+                    sx={{
+                      display: `flex`,
+                      flexDirection: `column`,
+                      height: `100%`
+                    }}
                   >
-                    {card.heading?.text}
-                  </Text>
-                  {card.image && (
-                    <div
-                      sx={{
-                        maxWidth: `150px`,
-                        height: `200px`,
-                        mx: `auto`,
-                        width: `100%`,
-                        display: `flex`,
-                        flexDirection: `column`,
-                        justifyContent: `center`,
-                        alignItems: `center`,
-                        mb: 4
-                      }}
+                    <Text
+                      as={card.heading?.title || 'h3'}
+                      sx={{ textAlign: `center`, mb: 5, lineHeight: 1 }}
                     >
-                      <Figure
-                        asset={card.image?.asset}
-                        alt={card.image?.alt}
-                        fluidOptions={{
-                          maxWidth: 300
-                        }}
+                      {card.heading?.text}
+                    </Text>
+                    {card.image && (
+                      <div
                         sx={{
+                          maxWidth: `150px`,
+                          height: `200px`,
+                          mx: `auto`,
                           width: `100%`,
+                          display: `flex`,
+                          flexDirection: `column`,
+                          justifyContent: `center`,
+                          alignItems: `center`,
+                          mb: 4
                         }}
-                      />
-                    </div>
-                  )}
-                  {card.description && <BlockText blocks={card.description} sx={{ flex: 1 }} />}
-                  {card.buttonGroup && (
-                    <div
-                      sx={{
-                        width: `100%`,
-                      }}
-                    >
-                       <ButtonGroup
-                        buttons={card.buttonGroup?.buttons}
-                        position={card.buttonGroup?.position}
-                        layout={card.buttonGroup?.layout}
+                      >
+                        <Figure
+                          asset={card.image?.asset}
+                          alt={card.image?.alt}
+                          fluidOptions={{
+                            maxWidth: 300
+                          }}
+                          sx={{
+                            width: `100%`
+                          }}
+                        />
+                      </div>
+                    )}
+                    {card.description && <BlockText blocks={card.description} sx={{ flex: 1 }} />}
+                    {card.buttonGroup && (
+                      <div
                         sx={{
-                          mt: 4
+                          width: `100%`
                         }}
-                      />
-                    </div>
-                  )}
-                </div>
+                      >
+                        <ButtonGroup
+                          buttons={card.buttonGroup?.buttons}
+                          position={card.buttonGroup?.position}
+                          layout={card.buttonGroup?.layout}
+                          sx={{
+                            mt: 4
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </TextBlockContainer>
               </li>
             )
           })}
