@@ -238,15 +238,16 @@ export const SectionContact = ({ section, ...rest }) => {
               alignItems: 'center'
             }}
           >
-            <DialogContent aria-label="success message">
-              <p
+            <DialogContent aria-label="success message" sx={{ bg: 'lightGray' }}> 
+              <Styled.p
                 sx={{
                   marginBottom: 4,
-                  fontSize: 3
+                  fontSize: 3,
+                  color: 'text',
                 }}
               >
                 Thanks for reaching out! We'll get back to you as soon as possibble.
-              </p>
+              </Styled.p>
               <button
                 sx={{
                   variant: 'buttons.black',
