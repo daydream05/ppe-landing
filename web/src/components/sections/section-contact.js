@@ -100,7 +100,13 @@ export const SectionContact = ({ section, ...rest }) => {
             }
           }}
         >
-          <div>
+          <div
+            sx={{
+              [mediaQueries.lg]: {
+                mt: 5
+              }
+            }}
+          >
             {section?.heading?.text && (
               <Styled.h2
                 sx={{
