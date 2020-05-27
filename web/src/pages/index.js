@@ -127,13 +127,10 @@ const IndexPage = props => {
 
   const title = seo ? seo.metaTitle : page?.title
 
-  const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
-
-  console.log(page?._rawSections)
 
   return (
     <Layout>
-      {page && <PageSEO metaTitle={title} title={seo?.metaDescription} path={page?.path} />}
+      {page && <PageSEO metaTitle={title} metaDescription={seo?.metaDescription} path={page?.path} />}
       {page && page._rawHero && <DefaultHero hero={page._rawHero} />}
       {page?._rawSections?.map(section => {
         return <SectionSelector key={section._key} section={section} />
