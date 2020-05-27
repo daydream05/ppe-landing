@@ -14,6 +14,7 @@ const Layout = ({ children, pageSettings }) => {
         position: 'relative',
       }}
     >
+      <Helmet htmlAttributes={{ lang: 'en' }}/>
       <Header linkTheme={pageSettings?.headerLinkColor} />
       <main
         sx={{
