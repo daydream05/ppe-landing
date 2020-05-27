@@ -49,6 +49,7 @@ import frequentlyAskedQuestion from './objects/frequentlyAskedQuestion'
 import sectionSettings from './objects/sectionSettings'
 import callout from './objects/callout'
 import cardGrid from './objects/cardGrid'
+import sectionContact from './objects/sectionContact'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -94,6 +95,7 @@ export default createSchema({
     projectMember,
     seo,
     section,
+    sectionContact,
     sectionSettings,
     sectionWithCards,
     socialMedia,

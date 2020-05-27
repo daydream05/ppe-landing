@@ -8,11 +8,11 @@ export const Footer = props => {
     <footer
       sx={{
         bg: 'iceberg',
-        variant: 'footer.primary',
+        variant: 'footer.dark',
         py: 6,
         px: 6,
         bottom: 0,
-        width: '100%',
+        width: '100%'
       }}
     >
       <Container
@@ -25,8 +25,23 @@ export const Footer = props => {
             fontSize: 4
           }}
         >
-          © {new Date().getFullYear()}, Built with <a href='https://www.sanity.io'>Sanity</a> &amp;{' '}
-          <a href='https://www.gatsbyjs.org'>Gatsby</a>
+          © {new Date().getFullYear()}, Built with{' '}
+          <a
+            href='https://www.sanity.io'
+            target='_blank'
+            rel='noopener noferrer nofollow'
+            sx={{ color: 'inherit' }}
+          >
+            Sanity
+          </a>{' '}
+          &amp;{' '}
+          <a
+            href='https://www.gatsbyjs.org'
+            rel='noopener noferrer nofollow'
+            sx={{ color: 'inherit' }}
+          >
+            Gatsby
+          </a>
         </div>
       </Container>
     </footer>

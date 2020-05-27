@@ -4,6 +4,7 @@ import { SectionContentHalfWithMedia } from './section-content-half-with-media'
 import { SectionMediaFullScreen } from './section-media-full-screen'
 import { HeroSelector } from '../hero/hero-selector'
 import { SectionWithCards } from './section-with-cards'
+import { SectionContact } from './section-contact'
 
 export const SectionSelector = ({ section, ...rest }) => {
   if (section._type === `section`) {
@@ -20,10 +21,10 @@ export const SectionSelector = ({ section, ...rest }) => {
       default:
         return <BasicSection section={section} {...rest} />
     }
-  } else if(section._type === `sectionWithCards`) {
-    return (
-      <SectionWithCards section={section} {...rest} />
-    )
+  } else if (section._type === `sectionWithCards`) {
+    return <SectionWithCards section={section} {...rest} />
+  } else if (section._type === `sectionContact`) {
+    return <SectionContact section={section} {...rest} />
   } else {
     return <HeroSelector hero={section} />
   }

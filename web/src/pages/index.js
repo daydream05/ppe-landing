@@ -1,14 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
-import { BlogPostPreviewGrid } from '../components/blog-post-preview-grid'
+import { mapEdgesToNodes } from '../lib/helpers'
 import GraphQLErrorList from '../components/graphql-error-list'
-import ProjectPreviewGrid from '../components/project-preview-grid'
 import Layout from '../containers/layout'
 import DefaultHero from '../components/hero/default-hero'
 import PageSEO from '../components/page-seo'
 import { SectionSelector } from '../components/sections/section-selector'
 import { SectionFAQ } from '../components/sections/section-faq'
+import { SectionContact } from '../components/sections/section-contact'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -130,7 +129,7 @@ const IndexPage = props => {
 
   const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
 
-  console.log(page?._rawFaqs)
+  console.log(page?._rawSections)
 
   return (
     <Layout>

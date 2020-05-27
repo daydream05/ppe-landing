@@ -1,40 +1,76 @@
-import React from 'react'
+import React, { useState } from 'react'
 /** @jsx jsx */
 import { jsx, Styled, Container, Text } from 'theme-ui'
+
+import { DialogOverlay, DialogContent } from '@reach/dialog'
+import '@reach/dialog/styles.css'
+
 import { mediaQueries } from '../../gatsby-plugin-theme-ui/media-queries'
 import { Section } from './section'
-import { BasicSectionBody } from './basic-section-body'
-import { breakpoints } from '../../gatsby-plugin-theme-ui/breakpoints'
 import { TextBlockContainer } from '../text-block-container'
+import { BasicSectionBody } from './basic-section-body'
+
+const inputStyle = {
+  px: 4,
+  bg: 'lightGray',
+  border: `2px solid`,
+  borderColor: `lightGray`,
+  minHeight: `96px`,
+  fontSize: 2,
+  color: `text`,
+  display: `block`,
+  width: `100%`,
+  letterSpacing: `3px`,
+  transition: `border-color .2s`,
+  ':focus': {
+    border: `2px solid`,
+    borderColor: `primary`,
+    outline: 0
+  },
+  '::placeholder': {
+    color: 'text',
+    textTransform: `uppercase`,
+    opacity: 0.5
+  }
+}
+
+const inputGroupStyle = {
+  mb: 3
+}
 
 export const SectionContact = ({ section, ...rest }) => {
-  const inputStyle = {
-    px: 4,
-    bg: 'lightGray',
-    border: `2px solid`,
-    borderColor: `lightGray`,
-    minHeight: `96px`,
-    fontSize: 2,
-    color: `text`,
-    display: `block`,
-    width: `100%`,
-    letterSpacing: `3px`,
-    transition: `border-color .2s`,
-    ':focus': {
-      border: `2px solid`,
-      borderColor: `primary`,
-      outline: 0
-    },
-    '::placeholder': {
-      color: 'text',
-      textTransform: `uppercase`,
-      opacity: 0.5
-    }
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [subject, setSubject] = useState('')
+  const [message, setMessage] = useState('')
+  const [showModal, setShowModal] = useState(false)
+
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&')
   }
 
-  const inputGroupStyle = {
-    mb: 3
+  const handleSubmit = e => {
+    e.preventDefault()
+    fetch('/?no-cache=1', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', name, email, subject, message })
+    })
+      .then(handleSuccess)
+      .catch(error => alert(error))
   }
+
+  const handleSuccess = () => {
+    setName('')
+    setEmail('')
+    setSubject('')
+    setMessage('')
+    setShowModal(true)
+  }
+
+  console.log(name)
 
   return (
     <Section variant={section?.theme} {...rest}>
@@ -56,47 +92,104 @@ export const SectionContact = ({ section, ...rest }) => {
       >
         <TextBlockContainer
           sx={{
+            display: `grid`,
+            gridGap: 4,
             [mediaQueries.lg]: {
               display: `grid`,
               gridTemplateColumns: `1fr 1fr`
             }
           }}
         >
-          {section?.heading?.text && (
-            <Styled.h2
-              sx={{
-                color: `inherit`,
-                m: 0,
-                mb: 4
-              }}
-            >
-              <Text
-                variant={`heading.${section?.heading?.size}`}
+          <div>
+            {section?.heading?.text && (
+              <Styled.h2
                 sx={{
                   color: `inherit`,
                   m: 0,
-                  textAlign: section?.heading?.textAlignment
+                  mb: 4
                 }}
               >
-                {section?.heading?.text}
-              </Text>
-            </Styled.h2>
-          )}
-          <form name="contact" method="post" netlify-honeypot="bot-field" data-netlify="true">
+                <Text
+                  variant={`heading.${section?.heading?.size}`}
+                  sx={{
+                    color: `inherit`,
+                    m: 0,
+                    textAlign: section?.heading?.textAlignment
+                  }}
+                >
+                  {section?.heading?.text}
+                </Text>
+              </Styled.h2>
+            )}
+            {section?.body && (
+              <BasicSectionBody
+                blocks={section?.body}
+                enableAnimation={section?.settings?.animate}
+              />
+            )}
+          </div>
+
+          <form
+            name="contact"
+            onSubmit={handleSubmit}
+            netlify-honeypot="bot-field"
+            data-netlify="true"
+          >
             <input type="hidden" name="bot-field" />
             <div sx={{ ...inputGroupStyle }}>
-              <input type="text" placeholder="Full name" sx={{ ...inputStyle }} />
+              <input
+                type="text"
+                placeholder="Full name"
+                name="name"
+                id="name"
+                value={name}
+                sx={{ ...inputStyle }}
+                onChange={e => {
+                  setName(e.target.value)
+                }}
+              />
             </div>
             <div sx={{ ...inputGroupStyle }}>
-              <input type="text" placeholder="Email" sx={{ ...inputStyle }} />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                value={email}
+                required
+                sx={{ ...inputStyle }}
+                onChange={e => {
+                  setEmail(e.target.value)
+                }}
+              />
+            </div>
+            <div sx={{ ...inputGroupStyle }}>
+              <input
+                type="text"
+                name="subject"
+                id="subject"
+                placeholder="Subject"
+                value={subject}
+                sx={{ ...inputStyle }}
+                onChange={e => {
+                  setSubject(e.target.value)
+                }}
+              />
             </div>
             <div sx={{ ...inputGroupStyle, position: `relative` }}>
               <textarea
+                value={message}
                 placeholder="Message"
-                sx={{ ...inputStyle, py: 4, resize: `none` }}
+                sx={{ ...inputStyle, py: 4, resize: `none`, fontFamily: 'body' }}
                 rows={8}
+                onChange={e => {
+                  setMessage(e.target.value)
+                }}
               />
-              <button
+              <input
+                name="submit"
+                type="submit"
+                value="Submit"
                 sx={{
                   position: `absolute`,
                   bottom: 3,
@@ -116,21 +209,46 @@ export const SectionContact = ({ section, ...rest }) => {
                   border: 0,
                   borderRadius: 4,
                   variant: `buttons.black`,
-                  '~ button, ~ a': {
-                    mt: `0 !important`
-                  },
-                  '~ p, ~ div': {
-                    mt: 5
-                  },
                   [mediaQueries.lg]: {
                     display: 'inline-block'
                   }
                 }}
-              >
-                Submit
-              </button>
+              />
             </div>
           </form>
+          <DialogOverlay
+            isOpen={showModal}
+            onDismiss={() => setShowModal(false)}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <DialogContent aria-label="success message">
+              <p
+                sx={{
+                  marginBottom: 4,
+                  fontSize: 3
+                }}
+              >
+                Thanks for reaching out! We'll get back to you as soon as possibble.
+              </p>
+              <button
+                sx={{
+                  variant: 'buttons.black',
+                  px: 3,
+                  py: 2,
+                  fontSize: 2,
+                  fontWeight: 'bold',
+                  border: 0
+                }}
+                onClick={() => setShowModal(false)}
+              >
+                Got it
+              </button>
+            </DialogContent>
+          </DialogOverlay>
         </TextBlockContainer>
       </Container>
     </Section>

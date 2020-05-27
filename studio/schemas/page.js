@@ -29,7 +29,8 @@ export default {
         { type: 'heroWithJustBlock' },
         { type: 'heroBasic' },
         { type: 'heroWithImage' },
-        { type: 'sectionWithCards' }
+        { type: 'sectionWithCards' },
+        { type: 'sectionContact'}
       ]
     },
     {
