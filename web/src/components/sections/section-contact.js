@@ -148,6 +148,7 @@ export const SectionContact = ({ section, ...rest }) => {
                 placeholder="Full name"
                 name="name"
                 id="name"
+                aria-label="Full name"
                 value={name}
                 sx={{ ...inputStyle }}
                 onChange={e => {
@@ -160,6 +161,7 @@ export const SectionContact = ({ section, ...rest }) => {
                 type="email"
                 name="email"
                 id="email"
+                aria-label="Email"
                 placeholder="Email"
                 value={email}
                 required
@@ -175,6 +177,7 @@ export const SectionContact = ({ section, ...rest }) => {
                 name="subject"
                 id="subject"
                 placeholder="Subject"
+                aria-label="Subject"
                 value={subject}
                 sx={{ ...inputStyle }}
                 onChange={e => {
@@ -185,7 +188,10 @@ export const SectionContact = ({ section, ...rest }) => {
             <div sx={{ ...inputGroupStyle, position: `relative` }}>
               <textarea
                 value={message}
+                name="message"
+                id="message"
                 placeholder="Message"
+                aria-label="Message"
                 sx={{ ...inputStyle, py: 4, resize: `none`, fontFamily: 'body' }}
                 rows={8}
                 onChange={e => {
@@ -196,6 +202,7 @@ export const SectionContact = ({ section, ...rest }) => {
                 name="submit"
                 type="submit"
                 value="Submit"
+                aria-label="Submit"
                 sx={{
                   position: `absolute`,
                   bottom: 3,
